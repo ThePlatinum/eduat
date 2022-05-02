@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,12 +21,10 @@ Route::get('/', function () {
 })->middleware('guest');
 
 Auth::routes();
-Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::get('/accounts', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/classes', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/reports', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/teachers', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/students', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/profile', function () {
-  return view('components.profile');
-})->name('profile');
+Route::get('/profile',  [UserController::class, 'profile'])->name('profile');

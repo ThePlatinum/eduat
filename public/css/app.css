@@ -86,12 +86,12 @@ body {
 .sidebar .text {
   font-size: 17px;
   font-weight: 500;
-  white-space: nowrap;
   opacity: 1;
 }
 
 .sidebar.close .text {
-  opacity: 0;
+  opacity: 0 !important;
+  display: none;
 }
 
 .sidebar header {
@@ -111,7 +111,7 @@ body {
 header .image-text .name {
   margin-top: 2px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .sidebar header .image {
@@ -148,7 +148,7 @@ header .image-text .name {
 }
 
 .sidebar .menu {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .sidebar ul {
@@ -177,11 +177,11 @@ header .image-text .name {
 }
 
 .sidebar .menu-bar {
-  height: calc(100% - 55px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow-y: scroll;
+  flex-grow: 1;
 }
 
 .menu-bar::-webkit-scrollbar {
@@ -197,11 +197,15 @@ header .image-text .name {
   width: calc(100% - var(--sidebar-width));
   background-color: var(--body-color);
   transition: var(--tran-03);
+  /* overflow: hidden; */
+}
+
+.content::-webkit-scrollbar {
+  display: none;
 }
 
 .sidebar.close~.content {
   left: var(--sidebar-width-mobile);
-  height: 100%;
   width: calc(100% - var(--sidebar-width-mobile));
 }
 
@@ -226,6 +230,6 @@ header .image-text .name {
 
 @media only screen and (max-width: 500px) {
   .sidebar ul {
-    padding-left: 1vw;
+    padding-left: 2vw;
   }
 }

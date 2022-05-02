@@ -14,23 +14,23 @@
   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/components.css') }}" rel="stylesheet">
 
 </head>
 
 <body>
 
-  <nav class="sidebar" id="sidebar">
+  <nav class="sidebar close" id="sidebar">
     <header>
       <div class="image-text">
         <span class="image">
-          <img src="logo.png" alt="">
+          <img src="{{ asset('images/logo.png') }}" alt="">
         </span>
 
         <div class="text logo-text">
-          <span class="name">EduAT</span>
+          <span class="name">The School's Name</span>
         </div>
       </div>
-
       <span class='bx bx-chevron-right toggle' id="toggle"></span>
     </header>
 
@@ -109,13 +109,13 @@
     </div>
   </nav>
 
-  <div class="content d-flex flex-column justify-content-between">
-    <div>
+  <div class="content d-flex flex-column">
+    <div class="flex-grow-1">
       @yield('content')
     </div>
     <div class="p-3">
       <hr>
-      <div class="d-flex d-flex justify-content-between justify-content-between credit">
+      <div class="d-flex d-flex justify-content-between credit">
         EduAT
         <!-- <img src="" alt=""> -->
         <div class="social">
