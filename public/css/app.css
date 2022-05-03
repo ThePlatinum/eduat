@@ -14,6 +14,7 @@
   --sidebar-width: 18vw;
   --sidebar-width-mobile: 5vw;
   --border-radius: 5px;
+  --sidebar-width-mobile-hide: 0px;
 
   /* ===== Colors ===== */
   --body-color: #E4E9F7;
@@ -232,5 +233,16 @@ header .image-text .name {
 @media only screen and (max-width: 500px) {
   .sidebar ul {
     padding-left: 2vw;
+  }
+  .sidebar.close {
+    width: var(--sidebar-width-mobile-hide);
+  }
+  .sidebar.close~.content {
+    left: var(--sidebar-width-mobile-hide);
+    width: calc(100% - var(--sidebar-width-mobile-hide));
+  }
+  
+  .sidebar.close .image-text {
+    opacity: 0 !important;
   }
 }
