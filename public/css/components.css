@@ -22,3 +22,11 @@
   /* max-height: 75vh !important;
   overflow-y: scroll; */
 }
+
+.allsubjects {
+  font-size: 5rem;
+}
+
+.card {
+  margin-top: 1.5vh;
+}
