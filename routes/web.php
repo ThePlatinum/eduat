@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::get('/accounts', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/classes', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/classes', [ClassesController::class, 'index']);
 Route::get('/reports', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/teachers', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/students', [App\Http\Controllers\HomeController::class, 'index']);

@@ -6,10 +6,9 @@
 
 .role{
   background-color: gray;
-  padding: 2px 20px;
+  padding: 3px 15px;
   border-radius: 10px;
   color: white;
-  font-size: small;
 }
 
 .profile p{
@@ -28,5 +27,9 @@
 }
 
 .card {
-  margin-top: 1.5vh;
+  margin: 1.5vh 0px;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
