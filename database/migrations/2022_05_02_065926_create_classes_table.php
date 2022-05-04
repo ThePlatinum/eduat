@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateClassesTable extends Migration
@@ -20,6 +21,11 @@ class CreateClassesTable extends Migration
       $table->integer('fee');
       $table->timestamps();
     });
+
+    // Create the graduated student's class
+    DB::table('classes')->insert(array(
+      array('id' => 1, 'name'=> 'Graduated', 'level'=> '0', 'fee'=> 0),
+    ));
   }
 
   /**
