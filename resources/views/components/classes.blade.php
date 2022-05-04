@@ -7,9 +7,12 @@
   </div>
 
   <div class="page p-3 flex-grow-1">
-
+    <div class="text-end">
+      <a href=" {{ route('addclass') }} " class="btn btn-primary">
+        <i class='bx bx-list-plus'></i> <span>New Class</span>
+      </a>
+    </div>
     <div class="row pt-3">
-
       @forelse([1,2,3,4,5,6] as $subject)
       <div class="col-md-4">
         <div class="card card-body">
@@ -32,7 +35,12 @@
                 <div class="py-1">
                   <h5 class="role text-center">123 Students</h5>
                 </div>
-                <a href="#" class="btn btn-danger btn-sm">View</a>
+                <a href="" onclick="event.preventDefault();
+                document.getElementById('view{{$subject}}').submit();" class="btn btn-danger btn-sm">View</a>
+
+                <form id="view{{$subject}}" action=" {{ route('viewclass') }} " method="POST" style="display: none;">
+                  @csrf
+                </form>
               </div>
             </div>
           </div>

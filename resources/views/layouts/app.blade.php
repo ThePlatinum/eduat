@@ -41,7 +41,7 @@
 
         <ul class="menu-links">
 
-          <li class="nav-link active">
+          <li class="nav-link">   <!-- active -->
             <a href="/dashboard">
               <i class='bx bx-home-alt icon'></i>
               <span class="text nav-text">Dashboard</span>

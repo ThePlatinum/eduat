@@ -22,10 +22,16 @@ Route::get('/', function () {
 })->middleware('guest');
 
 Auth::routes();
+// Menus
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::get('/accounts', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/classes', [ClassesController::class, 'index']);
+Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
 Route::get('/reports', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/teachers', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/students', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/profile',  [UserController::class, 'profile'])->name('profile');
+
+// Class routes
+Route::get('/classes/add', [ClassesController::class, 'addclass'])->name('addclass');
+Route::post('/createclass', [ClassesController::class, 'create'])->name('createclass');
+Route::post('/classes/view', [ClassesController::class, 'view'])->name('viewclass');
