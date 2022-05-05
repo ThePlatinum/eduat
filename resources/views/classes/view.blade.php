@@ -20,31 +20,40 @@
       </div>
       <div class="col-md-6 p-3">
         Subjects
-        @forelse(['Mathematics', 'English', 'Yoruba'] as $subjects)
-        <div class="subjectlist">
-          {{$subjects}}
+        <hr>
+        <div class="row">
+          @forelse(['Mathematics', 'English', 'Yoruba'] as $subjects)
+          <div class="col-6 p-2">
+            <div class="subjectlist">{{$subjects}}</div>
+          </div>
+          @empty
+          <p class="text-center p-5">No Subjects added yet.</p>
+          @endforelse
         </div>
-        @empty
-        <p class="text-center p-5">No Subjects added yet.</p>
-        @endforelse
       </div>
       <div class="py-3">
         Students
         <hr />
         <table class="table">
-            <tr class="bg-light">
-              <th scope="col">Id</th>
-              <th scope="col">Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Phone</th>
-              <th scope="col">Actions</th>
-            </tr>
+          <tr class="bg-light">
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col"></th>
+          </tr>
           </thead>
           <tbody>
-            @forelse(['Seyi Baby', 'John Doe', 'Olubisi S John', 'Mum Abigial'] as $student)
+            @forelse(['Seyi Baby', 'Ewami', 'John Doe', 'Olubisi S John', 'Mum Abigial'] as $student)
             <tr>
               <td></td>
               <td> {{$student}} </td>
+              <td> studentemail@schol.com </td>
+              <td> 09023781983 </td>
+              <td>
+                <a href="{{ route('viewprofile') }}" class="btn btn-primary btn-sm">
+                  <i class='bx bx-show'></i></a>
+              </td>
             </tr>
             @empty
             <p class="text-center p-5">No students registered in the class yet.</p>

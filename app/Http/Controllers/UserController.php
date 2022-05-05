@@ -15,6 +15,11 @@ class UserController extends Controller
     return view('components.profile', ['user'=>$user]);
   }
 
+  public function viewprofile(){
+    $user = Auth::user()->lastname;
+    return view('common.viewprofile', ['user'=>$user]);
+  }
+
   public function editprofile()
   {
     return view('common.editprofile');
