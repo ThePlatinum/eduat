@@ -15,9 +15,9 @@
             <span class="role my-3">Male</span>
             <span class="role my-3">admin</span>
           </div>
-          <h4>Emmanuel Adesina</h4>
+          <h4> {{$user}} </h4>
           <div class="d-flex gap-2">
-            <input type="button" value="Edit Profile" class="btn btn-primary btn-sm">
+            <a href=" {{ route('editprofile') }} " class="btn btn-primary btn-sm" > Edit Profile </a>
             <input type="button" value="Change Avater" class="btn btn-primary btn-sm">
           </div>
         </div>
