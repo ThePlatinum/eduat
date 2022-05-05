@@ -18,14 +18,14 @@ class CreateClassesTable extends Migration
       $table->id();
       $table->string('name');
       $table->string('level');
-      $table->integer('fee');
+      $table->json('fees');
       $table->timestamps();
     });
 
     // Create the graduated student's class
     DB::table('classes')->insert(array(
-      array('id' => 1, 'name'=> 'Graduated', 'level'=> '0', 'fee'=> 0),
-    ));
+      'id' => 1, 'name'=> 'Graduated', 'level'=> '0', 'fees'=> "[15500, 20000, 16000]"),
+    );
   }
 
   /**
