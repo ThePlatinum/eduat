@@ -30,6 +30,7 @@ Route::get('/reports', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/teachers', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/students', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/profile',  [UserController::class, 'profile'])->name('profile');
+Route::get('/settings',  [UserController::class, 'settings'])->name('settings');
 
 // Profile routes
 Route::get('/profile/edit',  [UserController::class, 'editprofile'])->name('editprofile');

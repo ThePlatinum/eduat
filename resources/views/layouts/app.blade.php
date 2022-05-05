@@ -83,6 +83,13 @@
             </a>
           </li>
 
+          <li class="nav-link">
+            <a href="/settings">
+              <i class='bx bx-wrench bx-flip-horizontal icon' ></i>
+              <span class="text nav-text">Settings</span>
+            </a>
+          </li>
+
         </ul>
       </div>
       <div class="bottom-content">
