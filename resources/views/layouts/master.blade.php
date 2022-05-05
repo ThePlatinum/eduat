@@ -46,7 +46,7 @@
     </div>
     <div class="p-3">
       <hr>
-      <div class="d-flex d-flex justify-content-between justify-content-between credit">
+      <div class="d-flex justify-content-between credit">
         EduAT
         <!-- <img src="" alt=""> -->
         <div class="social">
