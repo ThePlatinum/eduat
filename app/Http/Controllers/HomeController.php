@@ -34,8 +34,8 @@ class HomeController extends Controller
     })->count();
 
     $classes = Classes::all()->count();
-
+    
     $counts = ['students'=>$students, 'teachers'=>$teachers, 'classes'=>$classes];
-    return view('components.dashboard', compact('counts','settings'));
+    return view('components.dashboard', compact('counts'));
   }
 }

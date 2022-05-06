@@ -17,7 +17,7 @@ class UserController extends Controller
 
   public function viewprofile($user_id){
     $user = User::find($user_id);
-    return view('common.viewprofile', compact($user));
+    return view('common.viewprofile', compact('user'));
   }
 
   public function editprofile()
