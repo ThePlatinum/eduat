@@ -16,15 +16,15 @@ class CreateClassesTable extends Migration
   {
     Schema::create('classes', function (Blueprint $table) {
       $table->id();
-      $table->string('name');
-      $table->string('level');
+      $table->string('name')->unique();
+      $table->integer('level')->unique();
       $table->json('fees');
       $table->timestamps();
     });
 
     // Create the graduated student's class
     DB::table('classes')->insert(array(
-      'id' => 1, 'name'=> 'Graduated', 'level'=> '0', 'fees'=> "[15500, 20000, 16000]"),
+      'name'=> 'Graduated', 'level'=> 0, 'fees'=> "[0,0,0]"),
     );
   }
 

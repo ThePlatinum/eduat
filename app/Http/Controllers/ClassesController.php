@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classes;
+use App\Models\Settings;
 use Illuminate\Http\Request;
 
 class ClassesController extends Controller
@@ -13,11 +15,19 @@ class ClassesController extends Controller
   }
 
   public function addclass(){
-    return view('classes.add');
+    $session = Settings::where("name", "sessions")->first()->value;
+    return view('classes.add', compact("session"));
   }
   
   public function create(Request $request){
-    return back();
+
+    Classes::create([
+      'name' => $request->name,
+      'level' => $request->level,
+      'fees' => "[$request->fee1_, $request->fee2_, $request->fee3_]",
+    ]);
+    // if teacher is provided, add the teacher to the class
+    return back()->with('message', 'Class added successfully');
   }
   
   public function view(){
