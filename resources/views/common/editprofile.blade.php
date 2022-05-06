@@ -57,6 +57,19 @@
             </div>
 
             <div class="col-md-6 py-2">
+              <label for="gender" class="col-md-4 col-form-label ">{{ __('Gender') }}</label>
+              <select id="gender" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" autofocus autocomplete="gender" >
+                <option value="Male" > Male </option>
+                <option value="Female" > Female </option>
+              </select>
+              @error('gender')
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+              </span>
+              @enderror
+            </div>
+
+            <div class="col-md-6 py-2">
               <label for="phone" class="col-md-4 col-form-label ">{{ __('Phone Number') }}</label>
               <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" required autofocus autocomplete="phone">
               @error('phone')
@@ -66,7 +79,7 @@
               @enderror
             </div>
 
-            <div class="col-12 py-2">
+            <div class="col-md-6 py-2">
               <label for="email" class="col-md-4 col-form-label ">{{ __('Email') }}</label>
               <input id="email" type="email" class="form-control @error('phone') is-invalid @enderror" name="email" required autofocus autocomplete="email">
               @error('email')
