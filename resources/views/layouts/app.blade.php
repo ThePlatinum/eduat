@@ -20,6 +20,10 @@
 
 <body>
 
+@php
+  $school_name = App\Models\Settings::Where('name', 'school_name')->first()->value;
+@endphp
+
   <nav class="sidebar close" id="sidebar">
     <header>
       <div class="image-text">
@@ -28,7 +32,7 @@
         </span>
 
         <div class="text logo-text">
-          <span class="name">The School's Name</span>
+          <span class="name"> {{ $school_name }} </span>
         </div>
       </div>
       <span class='bx bx-chevron-right toggle' id="toggle"></span>
