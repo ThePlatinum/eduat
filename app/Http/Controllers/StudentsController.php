@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classes;
 use App\Models\StudentClasses;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,7 +21,8 @@ class StudentsController extends Controller
 
   public function newstudent()
   {
-    return view('students.admission');
+    $classes = Classes::all();
+    return view('students.admission', compact('classes'));
   }
 
   public function admission(Request $request){
@@ -35,6 +37,12 @@ class StudentsController extends Controller
       'password' => Hash::make($request->firstname),
     ]);
     $user->assignRole('Student');
+
+    // Assign class
+    StudentClasses::create([
+      'student_id' => $user->id,
+      'class_id' => $request->class,
+    ]);
 
     return back()->with('message', 'New student added successfully');
   }

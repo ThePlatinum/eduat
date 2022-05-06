@@ -8,6 +8,12 @@
 
   <div class="page p-3 flex-grow-1">
 
+    @if(session()->has('message'))
+    <div class="alert alert-success">
+      {{ session()->get('message') }}
+    </div>
+    @endif
+
     <div class="text-end">
       <a href=" {{ url()->previous() }} " class="btn btn-secondary btn-sm">
         <i class='bx bx-arrow-back'></i> <span>BACK</span>
@@ -99,6 +105,18 @@
               <strong>{{ $message }}</strong>
             </span>
             @enderror
+          </div>
+
+          <div class="col-12 py-3">
+            <div class="py-3">
+              <label for="class" class="col-md-4 col-form-label ">{{ __('Assign Class') }}</label>
+              <select id="class" type="class" class="form-control @error('class') is-invalid @enderror" name="class" autofocus autocomplete="class">
+                <option value=""> Select Class </option>
+                @foreach ($classes as $class)
+                <option value="{{ $class->id }}"> {{ $class->name }} </option>
+                @endforeach
+              </select>
+            </div>
           </div>
 
           <div class="col-12 d-flex gap-3 py-3">

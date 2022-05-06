@@ -32,12 +32,12 @@
         @forelse($students as $student)
         <tr>
           <td></td>
-          <td> {{$student->firstname}} </td>
-          <td> studentemail@schol.com </td>
-          <td> 09023781983 </td>
+          <td class="name">{{$student->lastname}} {{$student->firstname}} {{$student->othername  ?? ''}} </td>
+          <td> {{$student->email ?? ''}} </td>
+          <td> {{$student->phone ?? ''}} </td>
           <td> JSS 1 </td>
           <td>
-            <a href="{{ route('viewprofile', 1) }}" class="btn btn-primary btn-sm">
+            <a href="{{ route('viewprofile', $student->id ) }}" class="btn btn-primary btn-sm">
               <i class='bx bx-show'></i></a>
           </td>
         </tr>
