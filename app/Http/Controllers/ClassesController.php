@@ -11,7 +11,8 @@ class ClassesController extends Controller
     //
   public function index()
   {
-    return view('components.classes');
+    $classes = Classes::with('students')->get();
+    return view('components.classes', compact('classes'));
   }
 
   public function addclass(){
@@ -30,8 +31,9 @@ class ClassesController extends Controller
     return back()->with('message', 'Class added successfully');
   }
   
-  public function view(){
-    return view('classes.view');
+  public function viewclass($class_id){
+    $class = Classes::with('students')->find($class_id);
+    return view('classes.view', compact('class'));
   }
   
   public function edit(Request $request){

@@ -13,34 +13,29 @@
       </a>
     </div>
     <div class="row pt-3">
-      @forelse([1,2,3,4,5,6] as $subject)
+      @forelse($classes as $class)
       <div class="col-md-4">
         <div class="card card-body">
           <div class="row">
             <div class="col-2">
-              <h5>{{$subject}}</h5>
+              <h5>{{$class->level}}</h5>
             </div>
             <div class="col-10">
-              <h5> JS {{$subject}} </h5>
+              <h5> {{$class->name}} </h5>
               Class Teacher: <span>Jhon Edy</span>
             </div>
             <hr />
             <div class="row px-2">
               <div class="col-md-6">
-                <h5 class="text-center allsubjects"> 9 </h5>
+                <h5 class="text-center allsubjects"> 6 </h5>
                 <p class="text-center">subjects</p>
               </div>
               <div class="col-md-6 text-end d-flex flex-column justify-content-center">
 
                 <div class="py-1">
-                  <h5 class="role text-center">123 Students</h5>
+                  <h5 class="role text-center"> {{ $class->students->count() }} Students</h5>
                 </div>
-                <a href="" onclick="event.preventDefault();
-                document.getElementById('view{{$subject}}').submit();" class="btn btn-danger btn-sm">View</a>
-
-                <form id="view{{$subject}}" action=" {{ route('viewclass') }} " method="POST" style="display: none;">
-                  @csrf
-                </form>
+                <a href="{{ route('viewclass', $class->id ) }}" class="btn btn-danger btn-sm">View</a>
               </div>
             </div>
           </div>

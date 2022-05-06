@@ -41,7 +41,7 @@ Route::get('/profile/view/{user_id}',  [UserController::class, 'viewprofile'])->
 // Class routes
 Route::get('/classes/add', [ClassesController::class, 'addclass'])->name('addclass');
 Route::post('/createclass', [ClassesController::class, 'create'])->name('createclass');
-Route::post('/classes/view', [ClassesController::class, 'view'])->name('viewclass');
+Route::get('/classes/view/{class_id}', [ClassesController::class, 'viewclass'])->name('viewclass');
 
 // Students routes
 Route::get('/students/admission', [StudentsController::class, 'newstudent'])->name('newstudent');

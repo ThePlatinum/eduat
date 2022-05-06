@@ -7,9 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Classes extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    protected $fillable = [
-        'name', 'level', 'fees',
-    ];
+  protected $fillable = [
+    'name', 'level', 'fees',
+  ];
+
+  protected $casts = [
+    'fees' => 'array'
+  ];
+
+  public function students()
+  {
+    return $this->hasMany(StudentClasses::class, 'class_id');
+  }
 }

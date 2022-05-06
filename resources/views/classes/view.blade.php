@@ -15,7 +15,7 @@
 
     <div class="row py-3">
       <div class="col-md-6">
-        <h3> JS 1 </h3>
+        <h3> {{$class->name}} </h3>
         Class Teacher: <span>Jhon Edy</span>
       </div>
       <div class="col-md-6 p-3">
@@ -36,7 +36,7 @@
         <hr />
         <table class="table">
           <tr class="bg-light">
-            <th scope="col">Id</th>
+            <th scope="col"></th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
@@ -44,14 +44,17 @@
           </tr>
           </thead>
           <tbody>
-            @forelse(['Seyi Baby', 'Ewami', 'John Doe', 'Olubisi S John', 'Mum Abigial'] as $student)
+            @forelse($class->students as $toget)
+            @php
+            $student = App\Models\User::Where('id', $toget->student_id)->first()
+            @endphp
             <tr>
-              <td></td>
-              <td> {{$student}} </td>
-              <td> studentemail@schol.com </td>
-              <td> 09023781983 </td>
+              <td>{{ $loop->index + 1 }}</td>
+              <td> {{$student->lastname}} {{$student->firstname}} {{$student->othername ?? ''}} </td>
+              <td> {{$student->email ?? ''}} </td>
+              <td> {{$student->phone ?? ''}} </td>
               <td>
-                <a href="{{ route('viewprofile') }}" class="btn btn-primary btn-sm">
+                <a href="{{ route('viewprofile', $student->id ) }}" class="btn btn-primary btn-sm">
                   <i class='bx bx-show'></i></a>
               </td>
             </tr>
