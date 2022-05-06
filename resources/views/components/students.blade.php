@@ -16,7 +16,6 @@
       </div>
     </div>
 
-
     <hr />
     <table class="table">
       <tr class="bg-light">
