@@ -10,7 +10,7 @@ class Classes extends Model
   use HasFactory;
 
   protected $fillable = [
-    'name', 'level', 'fees',
+    'name', 'fees',
   ];
 
   protected $casts = [
@@ -25,5 +25,10 @@ class Classes extends Model
   public function subjects()
   {
     return $this->hasMany(Subjects::class, 'class_id');
+  }
+
+  public function teacher()
+  {
+    return $this->hasOne(ClassTeacher::class, 'class_id');
   }
 }

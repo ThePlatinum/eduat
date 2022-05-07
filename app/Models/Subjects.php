@@ -12,4 +12,9 @@ class Subjects extends Model
     protected $fillable = [
         'name', 'class_id', 'teacher_id',
     ];
+
+    public function teacher()
+    {
+        return $this->hasOne(User::class, 'id', 'teacher_id');
+    }
 }

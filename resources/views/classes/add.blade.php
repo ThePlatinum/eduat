@@ -21,23 +21,12 @@
 
     <div class="justify-content-center d-flex ">
       <div class="col-md-8">
-        <form method="POST" action="{{ route('createclass') }}" class=" p-3">
+        <form method="POST" action="{{ $class->id == null ?  route('createclass') :   route('editclass') }}" class=" p-3">
           @csrf
           <div class="col py-2">
             <label for="name" class="col-md-4 col-form-label">{{ __('Class Name') }}</label>
-            <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name" required autofocus>
+            <input id="name" type="name" value=" {{ $class->name ?? '' }} " class="form-control @error('name') is-invalid @enderror" name="name" required autofocus>
             @error('name')
-            <span class="invalid-feedback" role="alert">
-              <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-          </div>
-
-          <div class="col py-2">
-            <label for="level" class="col-md-4 col-form-label ">{{ __('Class Level') }}</label>
-            <input id="level" type="number" class="form-control @error('level') is-invalid @enderror" name="level" required>
-
-            @error('level')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
             </span>
@@ -51,7 +40,7 @@
               @foreach(range( 1, $session ) as $fee)
               <div class="col-md-2">
                 {{$fee}}:
-                <input id="{{ $fee }}" type="number" class="form-control @error('fee') is-invalid @enderror" name=" fee{{$fee}} " required>
+                <input id="{{ $fee }}" type="number" value=" {{ $class->fee['$loop->index + 1'] ?? '' }} " class="form-control @error('fee') is-invalid @enderror" name=" fee{{$loop->index}} " required>
                 @error('fee')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>
@@ -64,7 +53,11 @@
 
           <div class="col py-2">
             <label for="teacher" class="col-md-4 col-form-label ">{{ __('Class Teacher') }}</label>
-            <select id="teacher" class="form-control @error('teacher') is-invalid @enderror" name="level">
+            <select id="teacher" value="{{ $class->teacher->id ?? '' }}" class="form-control @error('teacher') is-invalid @enderror" name="teacher">
+              <option value="">Select Teacher</option>
+              @foreach($teachers as $teacher)
+              <option value="{{ $teacher->id }}"> {{$teacher->lastname}} {{$teacher->firstname}} {{$teacher->othername ?? ''}} </option>
+              @endforeach
             </select>
 
             @error('teacher')

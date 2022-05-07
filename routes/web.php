@@ -41,8 +41,11 @@ Route::GET('/profile/view/{user_id}',  [UserController::class, 'viewprofile'])->
 // Class routes
 Route::GET('/classes/add', [ClassesController::class, 'addclass'])->name('addclass');
 Route::POST('/createclass', [ClassesController::class, 'create'])->name('createclass');
+Route::GET('/classes/edit/{class_id}', [ClassesController::class, 'edit'])->name('edit');
+Route::POST('/editclass', [ClassesController::class, 'editclass'])->name('editclass');
 Route::GET('/classes/view/{class_id}', [ClassesController::class, 'viewclass'])->name('viewclass');
 Route::POST('/classes/subject/createsubject', [ClassesController::class, 'createsubject'])->name('createsubject');
+Route::POST('/classes/subject/editsubject', [ClassesController::class, 'editsubject'])->name('editsubject');
 
 // Students routes
 Route::GET('/students/admission', [StudentsController::class, 'newstudent'])->name('newstudent');
