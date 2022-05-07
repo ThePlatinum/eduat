@@ -20,10 +20,6 @@
   border-left: 2px solid red;
 }
 
-.allsubjects {
-  font-size: 5rem;
-}
-
 .card {
   margin: 1.5vh 0px;
 }
@@ -39,4 +35,8 @@ body::-webkit-scrollbar {
 
 .name {
   font-size: 1.2rem;
+}
+
+.dashboardcounts {
+  font-size: 4rem;
 }

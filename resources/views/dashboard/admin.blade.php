@@ -5,7 +5,9 @@
       <div class="card card-body">
         Teachers
         <hr />
-        {{ $counts['teachers'] }}
+        <div class="text-center dashboardcounts">
+          {{ $counts['teachers'] }}
+        </div>
       </div>
     </div>
 
@@ -13,7 +15,9 @@
       <div class="card card-body">
         Students
         <hr />
+        <div class="text-center dashboardcounts">
         {{ $counts['students'] }}
+        </div>
       </div>
     </div>
 
@@ -21,7 +25,9 @@
       <div class="card card-body">
         Classes
         <hr />
+        <div class="text-center dashboardcounts">
         {{ $counts['classes'] }}
+        </div>
       </div>
     </div>
   </div>
