@@ -33,11 +33,10 @@ body::-webkit-scrollbar {
 }
 
 .subjectlist {
-  padding: 1vh 2vw;
   background-color: #B8B8B8;
   border-radius: 5px; 
 }
 
 .name {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }

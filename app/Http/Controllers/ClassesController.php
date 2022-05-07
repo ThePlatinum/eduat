@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Classes;
 use App\Models\Settings;
+use App\Models\Subjects;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ClassesController extends Controller
@@ -11,7 +13,7 @@ class ClassesController extends Controller
     //
   public function index()
   {
-    $classes = Classes::with('students')->get();
+    $classes = Classes::with('students')->with('subjects')->get();
     return view('components.classes', compact('classes'));
   }
 
@@ -32,12 +34,31 @@ class ClassesController extends Controller
   }
   
   public function viewclass($class_id){
+    
+    $teachers = User::whereHas("roles", function($q) {
+      $q->where("name", "Teacher");
+    })->get();
+
     $class = Classes::with('students')->find($class_id);
-    return view('classes.view', compact('class'));
+
+    $subjects = Subjects::where("class_id", $class_id)->get();
+
+    return view('classes.view', compact('class', 'teachers', 'subjects'));
   }
   
   public function edit(Request $request){
     return view('classes.add');
+  }
+
+  public function createsubject(Request $request){
+
+    Subjects::create([
+      'name' => $request->name,
+      'class_id' => $request->class,
+      'teacher_id' => $request->teacher,
+    ]);
+
+    return back()->with('message', 'Subject added successfully');
   }
   
 }

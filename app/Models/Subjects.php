@@ -9,7 +9,7 @@ class Subjects extends Model
 {
     use HasFactory;
 
-    protected $casts = [
-      'fees' => 'array'
-  ];
+    protected $fillable = [
+        'name', 'class_id', 'teacher_id',
+    ];
 }

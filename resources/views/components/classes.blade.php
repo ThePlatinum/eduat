@@ -27,7 +27,7 @@
             <hr />
             <div class="row px-2">
               <div class="col-md-6">
-                <h5 class="text-center allsubjects"> 6 </h5>
+                <h5 class="text-center allsubjects"> {{ $class->subjects->count() }} </h5>
                 <p class="text-center">subjects</p>
               </div>
               <div class="col-md-6 text-end d-flex flex-column justify-content-center">

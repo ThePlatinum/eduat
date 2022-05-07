@@ -19,35 +19,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::GET('/', function () {
     return view('auth.login');
 })->middleware('guest');
 
 Auth::routes();
 // Menus
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-Route::get('/accounts', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
-Route::get('/reports', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/teachers', [TeachersController::class, 'teachers']);
-Route::get('/students', [StudentsController::class, 'students'])->name('students');
-Route::get('/profile',  [UserController::class, 'profile'])->name('profile');
-Route::get('/settings',  [UserController::class, 'settings'])->name('settings');
+Route::GET('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+Route::GET('/accounts', [App\Http\Controllers\HomeController::class, 'index']);
+Route::GET('/classes', [ClassesController::class, 'index'])->name('classes');
+Route::GET('/reports', [App\Http\Controllers\HomeController::class, 'index']);
+Route::GET('/teachers', [TeachersController::class, 'teachers']);
+Route::GET('/students', [StudentsController::class, 'students'])->name('students');
+Route::GET('/profile',  [UserController::class, 'profile'])->name('profile');
+Route::GET('/settings',  [UserController::class, 'settings'])->name('settings');
 
 // Profile routes
-Route::get('/profile/edit',  [UserController::class, 'editprofile'])->name('editprofile');
-Route::get('/profile/view/{user_id}',  [UserController::class, 'viewprofile'])->name('viewprofile');
+Route::GET('/profile/edit',  [UserController::class, 'editprofile'])->name('editprofile');
+Route::GET('/profile/view/{user_id}',  [UserController::class, 'viewprofile'])->name('viewprofile');
 
 // Class routes
-Route::get('/classes/add', [ClassesController::class, 'addclass'])->name('addclass');
-Route::post('/createclass', [ClassesController::class, 'create'])->name('createclass');
-Route::get('/classes/view/{class_id}', [ClassesController::class, 'viewclass'])->name('viewclass');
+Route::GET('/classes/add', [ClassesController::class, 'addclass'])->name('addclass');
+Route::POST('/createclass', [ClassesController::class, 'create'])->name('createclass');
+Route::GET('/classes/view/{class_id}', [ClassesController::class, 'viewclass'])->name('viewclass');
+Route::POST('/classes/subject/createsubject', [ClassesController::class, 'createsubject'])->name('createsubject');
 
 // Students routes
-Route::get('/students/admission', [StudentsController::class, 'newstudent'])->name('newstudent');
-Route::post('/admission', [StudentsController::class, 'admission'])->name('admission');
-// Route::get('/students/view/{user_id}', [StudentsController::class, 'viewstudent'])->name('viewstudent');
+Route::GET('/students/admission', [StudentsController::class, 'newstudent'])->name('newstudent');
+Route::POST('/admission', [StudentsController::class, 'admission'])->name('admission');
+// Route::GET('/students/view/{user_id}', [StudentsController::class, 'viewstudent'])->name('viewstudent');
 
 // Teachers routes
-Route::get('/teachers/new', [TeachersController::class, 'newteacher'])->name('newteacher');
-Route::post('/employ', [TeachersController::class, 'employ'])->name('employ');
+Route::GET('/teachers/new', [TeachersController::class, 'newteacher'])->name('newteacher');
+Route::POST('/employ', [TeachersController::class, 'employ'])->name('employ');
