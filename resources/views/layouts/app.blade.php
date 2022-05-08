@@ -53,24 +53,47 @@
             </a>
           </li>
 
+          @hasrole('Accountant')
+          <li class="nav-link">
+            <a href="/items">
+              <i class='bx bx-bar-chart-alt-2 icon'></i>
+              <span class="text nav-text">Items</span>
+            </a>
+          </li>
+          @endhasrole
+
+          @hasrole('Student|Accountant')
           <li class="nav-link">
             <a href="/accounts">
               <i class='bx bx-bar-chart-alt-2 icon'></i>
               <span class="text nav-text">Accounts</span>
             </a>
           </li>
+          @endhasrole
 
+          @hasrole('Teacher')
           <li class="nav-link">
-            <a href="/classes">
-              <i class='bx bx-chalkboard icon'></i>
-              <span class="text nav-text">Classes</span>
+            <a href="/assessments">
+              <i class='bx bx-pie-chart-alt icon'></i>
+              <span class="text nav-text">Assessments</span>
             </a>
           </li>
+          @endhasrole
 
+          @hasrole('Student|Teacher')
           <li class="nav-link">
             <a href="/reports">
               <i class='bx bx-pie-chart-alt icon'></i>
               <span class="text nav-text">Reports</span>
+            </a>
+          </li>
+          @endhasrole
+
+          @hasrole('Admin')
+          <li class="nav-link">
+            <a href="/classes">
+              <i class='bx bx-chalkboard icon'></i>
+              <span class="text nav-text">Classes</span>
             </a>
           </li>
 
@@ -94,6 +117,7 @@
               <span class="text nav-text">Settings</span>
             </a>
           </li>
+          @endhasrole
 
         </ul>
       </div>
