@@ -51,21 +51,32 @@ class ClassesController extends Controller
       $q->where("name", "Teacher");
     })->get();
 
-    $class = Classes::where('id',$class_id);
+    $class = Classes::find($class_id);
     $session = Settings::where("name", "sessions")->first()->value;
     return view('classes.add', compact("session", "class", "teachers"));
   }
 
   public function editclass(Request $request){
 
-    Classes::where('id', $request->class )->update([
-      'name' => $request->name,
-      'fees' => "[$request->fee1, $request->fee2, $request->fee3]",
-    ]);
+    $class = Classes::find($request->class);
     
-    ClassTeacher::where('id', $request->class )->update([
-      'teacher_id' => $request->teacher,
-    ]);
+    if($class){
+      $class->name = $request->name;
+      $class->fees = "[$request->fee1, $request->fee2, $request->fee3]";
+      $class->save();
+    }
+    
+    $teacher = ClassTeacher::find($request->class);
+    if($teacher) {
+      $teacher->teacher_id = $request->teacher;
+      $teacher->save();
+    }
+    else{
+      ClassTeacher::create([
+        'class_id' => $request->class,
+        'teacher_id' => $request->teacher,
+      ]);
+    }
     
     return back()->with('message', 'Class updated successfully');
   }

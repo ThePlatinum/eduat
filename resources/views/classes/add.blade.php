@@ -23,6 +23,9 @@
       <div class="col-md-8">
         <form method="POST" action="{{ isset($class)  ?  route('editclass') : route('createclass') }}" class=" p-3">
           @csrf
+
+          <input id="class" type="class" value=" {{ $class->id ?? '' }} " name="class" hidden>
+
           <div class="col py-2">
             <label for="name" class="col-md-4 col-form-label">{{ __('Class Name') }}</label>
             <input id="name" type="name" value=" {{ $class->name ?? '' }} " class="form-control @error('name') is-invalid @enderror" name="name" required autofocus>
@@ -72,7 +75,7 @@
               {{ __('Reset') }}
             </button>
             <button type="submit" class="btn btn-primary block">
-              {{ __('Create') }}
+              {{ isset($class)  ? 'Update Class' : 'Create Class'}}
             </button>
           </div>
         </form>

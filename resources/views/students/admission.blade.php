@@ -15,7 +15,7 @@
     @endif
 
     <div class="text-end">
-      <a href=" {{ url()->previous() }} " class="btn btn-secondary btn-sm">
+      <a href=" {{ route('students') }} " class="btn btn-secondary btn-sm">
         <i class='bx bx-arrow-back'></i> <span>BACK</span>
       </a>
     </div>
