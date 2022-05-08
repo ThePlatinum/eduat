@@ -38,12 +38,10 @@
       </div>
       <span class='bx bx-chevron-right toggle' id="toggle"></span>
     </header>
+      <hr />
 
-    <hr />
-
-    <div class="menu-bar">
+    <div class="menu-bar ">
       <div class="menu">
-
         <ul class="menu-links">
 
           <li class="nav-link">   <!-- active -->
@@ -56,7 +54,7 @@
           @hasrole('Accountant')
           <li class="nav-link">
             <a href="/items">
-              <i class='bx bx-bar-chart-alt-2 icon'></i>
+              <i class='bx bx-list-ul icon'></i>
               <span class="text nav-text">Items</span>
             </a>
           </li>
@@ -74,7 +72,7 @@
           @hasrole('Teacher')
           <li class="nav-link">
             <a href="/assessments">
-              <i class='bx bx-pie-chart-alt icon'></i>
+              <i class='bx bx-dumbbell icon'></i>
               <span class="text nav-text">Assessments</span>
             </a>
           </li>

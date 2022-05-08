@@ -50,6 +50,8 @@ body {
   background: var(--sidebar-color);
   transition: var(--tran-03);
   z-index: 100;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar.close {
@@ -182,6 +184,7 @@ header .image-text .name {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex-grow: 1;
   overflow-y: scroll;
   flex-grow: 1;
 }
