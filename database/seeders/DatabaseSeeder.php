@@ -22,15 +22,28 @@ class DatabaseSeeder extends Seeder
 
     // Create super admin
     $user = User::create([
-      'firstname' => 'Super',
-      'lastname'  => 'Eduat',
-      'othername' => 'Admin',
+      'firstname' => 'Eduat',
+      'lastname'  => 'Admin',
+      'othername' => 'User',
       'email'     => 'admin@eduat.com',
       'password'  => Hash::make('12345678'),
       'created_at'=> now(),
     ]);
 
     $user->assignRole('Admin');
+
+
+    // Create accountant
+    $user = User::create([
+      'firstname' => 'Eduat',
+      'lastname'  => 'Accountant',
+      'othername' => 'User',
+      'email'     => 'accountant@eduat.com',
+      'password'  => Hash::make('12345678'),
+      'created_at'=> now(),
+    ]);
+
+    $user->assignRole('Accountant');
 
     // Set School name
     Settings::create([
