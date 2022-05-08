@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\UserController;
@@ -27,12 +28,13 @@ Auth::routes();
 // Menus
 Route::GET('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::GET('/accounts', [App\Http\Controllers\HomeController::class, 'index']);
+Route::GET('/reports', [App\Http\Controllers\HomeController::class, 'index']);
 Route::GET('/classes', [ClassesController::class, 'index'])->name('classes');
 Route::GET('/reports', [App\Http\Controllers\HomeController::class, 'index']);
 Route::GET('/teachers', [TeachersController::class, 'teachers']);
 Route::GET('/students', [StudentsController::class, 'students'])->name('students');
 Route::GET('/profile',  [UserController::class, 'profile'])->name('profile');
-Route::GET('/settings',  [UserController::class, 'settings'])->name('settings');
+Route::GET('/settings',  [SettingsController::class, 'settings'])->name('settings');
 
 // Profile routes
 Route::GET('/profile/edit',  [UserController::class, 'editprofile'])->name('editprofile');
@@ -55,3 +57,4 @@ Route::POST('/admission', [StudentsController::class, 'admission'])->name('admis
 // Teachers routes
 Route::GET('/teachers/new', [TeachersController::class, 'newteacher'])->name('newteacher');
 Route::POST('/employ', [TeachersController::class, 'employ'])->name('employ');
+
