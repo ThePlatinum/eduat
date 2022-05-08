@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\TeachersController;
@@ -28,7 +29,7 @@ Auth::routes();
 // Menus
 Route::GET('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::GET('/accounts', [App\Http\Controllers\HomeController::class, 'index']);
-Route::GET('/reports', [App\Http\Controllers\HomeController::class, 'index']);
+Route::GET('/items', [ItemsController::class, 'items'])->name('items');
 Route::GET('/classes', [ClassesController::class, 'index'])->name('classes');
 Route::GET('/reports', [App\Http\Controllers\HomeController::class, 'index']);
 Route::GET('/teachers', [TeachersController::class, 'teachers']);
@@ -58,3 +59,7 @@ Route::POST('/admission', [StudentsController::class, 'admission'])->name('admis
 Route::GET('/teachers/new', [TeachersController::class, 'newteacher'])->name('newteacher');
 Route::POST('/employ', [TeachersController::class, 'employ'])->name('employ');
 
+// Items
+Route::GET('/item/add', [ItemsController::class, 'additem'])->name('additem');
+Route::POST('/item/create', [ItemsController::class, 'create'])->name('create');
+Route::POST('/item/edit', [ItemsController::class, 'edit'])->name('edititem');
