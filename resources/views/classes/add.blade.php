@@ -21,7 +21,7 @@
 
     <div class="justify-content-center d-flex ">
       <div class="col-md-8">
-        <form method="POST" action="{{ $class->id == null ?  route('createclass') :   route('editclass') }}" class=" p-3">
+        <form method="POST" action="{{ isset($class)  ?  route('editclass') : route('createclass') }}" class=" p-3">
           @csrf
           <div class="col py-2">
             <label for="name" class="col-md-4 col-form-label">{{ __('Class Name') }}</label>
@@ -40,7 +40,7 @@
               @foreach(range( 1, $session ) as $fee)
               <div class="col-md-2">
                 {{$fee}}:
-                <input id="{{ $fee }}" type="number" value=" {{ $class->fee['$loop->index + 1'] ?? '' }} " class="form-control @error('fee') is-invalid @enderror" name=" fee{{$loop->index}} " required>
+                <input id="{{ $fee }}" type="number" value=" {{ $class->fee['$loop->index + 1'] ?? '' }} " class="form-control @error('fee') is-invalid @enderror" name=" fee{{$loop->index+1}} " required>
                 @error('fee')
                 <span class="invalid-feedback" role="alert">
                   <strong>{{ $message }}</strong>

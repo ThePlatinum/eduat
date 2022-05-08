@@ -32,13 +32,15 @@ class ClassesController extends Controller
 
     $class = Classes::create([
       'name' => $request->name,
-      'fees' => "[$request->fee1_, $request->fee2_, $request->fee3_]",
+      'fees' => "[$request->fee1, $request->fee2, $request->fee3]",
     ]);
     
-    ClassTeacher::create([
-      'class_id' => $class->id,
-      'teacher_id' => $request->teacher,
-    ]);
+    if($request->teacher){
+      ClassTeacher::create([
+        'class_id' => $class->id,
+        'teacher_id' => $request->teacher,
+      ]);
+    }
 
     return back()->with('message', 'Class added successfully');
   }
