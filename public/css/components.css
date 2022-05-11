@@ -47,3 +47,14 @@ body::-webkit-scrollbar {
   color: white;
   width: fit-content;
 }
+
+#searchbox{
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px 0px 0px 10px;
+}
+
+#searchbtn{
+  padding: 10px 15px;
+  border-radius: 0px 10px 10px 0px;
+}

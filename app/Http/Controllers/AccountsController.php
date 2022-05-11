@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classes;
+use App\Models\Items;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AccountsController extends Controller
@@ -14,6 +17,20 @@ class AccountsController extends Controller
     public function index()
     {
         //
+        // $items = Items::all()->count();
+        // return view('components.dashboard', compact('items'));
+        $students = User::with('class')->whereHas("roles", function($q) {
+          $q->where("name", "Student");
+        })->get();
+
+        $eachstudent = [];
+        foreach ($students as $student) {
+          $current = $student->class[0];
+          $theclass = Classes::find($current->class_id);
+          $schoolFee = $theclass->fees[1];
+          $eachstudent[] = ['student'=>$student, 'fee'=>$schoolFee, 'class'=>$theclass->name];
+        }
+        return view('accounts.list', compact('eachstudent'));
     }
 
     /**

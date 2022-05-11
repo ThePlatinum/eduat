@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ItemsController;
@@ -28,7 +29,7 @@ Route::GET('/', function () {
 Auth::routes();
 // Menus
 Route::GET('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-Route::GET('/accounts', [App\Http\Controllers\HomeController::class, 'index']);
+Route::GET('/accounts', [AccountsController::class, 'index'])->name('accounts');
 Route::GET('/items', [ItemsController::class, 'items'])->name('items');
 Route::GET('/classes', [ClassesController::class, 'index'])->name('classes');
 Route::GET('/reports', [App\Http\Controllers\HomeController::class, 'index']);
