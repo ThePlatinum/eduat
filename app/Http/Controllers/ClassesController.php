@@ -32,7 +32,7 @@ class ClassesController extends Controller
 
     $class = Classes::create([
       'name' => $request->name,
-      'fees' => "[$request->fee1, $request->fee2, $request->fee3]",
+      'fees' => [$request->fee1, $request->fee2, $request->fee3],
     ]);
     
     if($request->teacher){
@@ -57,12 +57,10 @@ class ClassesController extends Controller
   }
 
   public function editclass(Request $request){
-
     $class = Classes::find($request->class);
-    
     if($class){
       $class->name = $request->name;
-      $class->fees = "[$request->fee1, $request->fee2, $request->fee3]";
+      $class->fees = [$request->fee1, $request->fee2, $request->fee3];
       $class->save();
     }
     
