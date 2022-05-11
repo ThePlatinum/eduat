@@ -17,11 +17,11 @@ class ItemsController extends Controller
 
   public function create(Request $request)
   {
-    $classfor = '"[';
+    $classfor = '"';
     foreach ($request->classfor as $for) {
       $classfor .= $for.',';
     }
-    $classfor .= ']"' ;
+    $classfor .= '"' ;
     Items::create([
       'name' => $request->name,
       'description' => $request->desc,
@@ -47,11 +47,11 @@ class ItemsController extends Controller
 
   public function edit(Request $request)
   {
-    $classfor = '"[';
+    $classfor = '"';
     foreach ($request->classfor as $for) {
       $classfor .= $for.',';
     }
-    $classfor .= ']"' ;
+    $classfor .= '"' ;
     $item = Items::find($request->item_id);
     $item->name = $request->name;
     $item->description = $request->desc;
@@ -60,6 +60,12 @@ class ItemsController extends Controller
     $item->save();
 
     return back()->with('message', 'Item updated successfully');
+  }
+
+  public function deleteitem($item_id)
+  {
+    Items::where('id',$item_id)->delete();
+    return back()->with('message', 'Item deleted successfully');
   }
 
 }
