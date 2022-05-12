@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@role('Accountant')
 <div class="container-fluid">
   <div class="row header bg-light p-3">
     <h5>Students Accounts</h5>
@@ -57,4 +58,6 @@
     </div>
   </div>
 </div>
+@endrole
+
 @endsection

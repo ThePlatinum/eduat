@@ -6,9 +6,13 @@ use App\Models\Classes;
 use App\Models\Items;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Traits\HasRoles;
 
 class AccountsController extends Controller
 {
+
+  use HasRoles;
     /**
      * Display a listing of the resource.
      *
@@ -19,18 +23,24 @@ class AccountsController extends Controller
         //
         // $items = Items::all()->count();
         // return view('components.dashboard', compact('items'));
-        $students = User::with('class')->whereHas("roles", function($q) {
-          $q->where("name", "Student");
-        })->get();
+        
+        if ( Auth()->user()->roles[0]->name == 'Accountant' ) {
+          $students = User::with('class')->whereHas("roles", function($q) {
+            $q->where("name", "Student");
+          })->get();
 
-        $eachstudent = [];
-        foreach ($students as $student) {
-          $current = $student->class[0];
-          $theclass = Classes::find($current->class_id);
-          $schoolFee = $theclass->fees[1];
-          $eachstudent[] = ['student'=>$student, 'fee'=>$schoolFee, 'class'=>$theclass->name];
+          $eachstudent = [];
+          foreach ($students as $student) {
+            $current = $student->class[0];
+            $theclass = Classes::find($current->class_id);
+            $schoolFee = $theclass->fees[1];
+            $eachstudent[] = ['student'=>$student, 'fee'=>$schoolFee, 'class'=>$theclass->name];
+          }
+          return view('accounts.list', compact('eachstudent'));
         }
-        return view('accounts.list', compact('eachstudent'));
+        else{
+          return view('accounts.student');
+        }
     }
 
     /**
