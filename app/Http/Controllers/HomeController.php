@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Classes;
 use App\Models\Items;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -27,18 +25,21 @@ class HomeController extends Controller
    */
   public function index()
   {
-    $students = User::whereHas("roles", function($q) {
+    $students = User::whereHas("roles", function ($q) {
       $q->where("name", "Student");
     })->count();
-    $teachers = User::whereHas("roles", function($q) {
+    $teachers = User::whereHas("roles", function ($q) {
       $q->where("name", "Teacher");
     })->count();
     $classes = Classes::all()->count();
     $items = Items::all()->count();
-    $counts = ['students'=>$students, 'teachers'=>$teachers, 'classes'=>$classes, 'items'=>$items];
-    // if ( Auth()->user()->hasRole('Accountant') )
-    //   (new AccountsController)->index();
-    // else
+    $counts = ['students' => $students, 'teachers' => $teachers, 'classes' => $classes, 'items' => $items];
+
+    if (Auth()->user()->roles[0]->name == 'Student') {
+      $student = User::with('class')->find(Auth()->user()->id);
+      $curentclass = Classes::with('subjects', 'teacher')->find($student->class[0]->class_id);
+      return view('components.dashboard', compact('student', 'curentclass'));
+    } else
       return view('components.dashboard', compact('counts'));
   }
 }
