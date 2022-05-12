@@ -58,3 +58,12 @@ body::-webkit-scrollbar {
   padding: 10px 15px;
   border-radius: 0px 10px 10px 0px;
 }
+
+.pill{
+  border-radius: 10px;
+  font-size: x-small;
+  color: red;
+  border: 1px solid red;
+  height: fit-content;
+  padding: 2px 20px;
+}

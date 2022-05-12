@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Classes;
 use App\Models\Items;
+use App\Models\Studentitems;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,99 +14,55 @@ class AccountsController extends Controller
 {
 
   use HasRoles;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-        // $items = Items::all()->count();
-        // return view('components.dashboard', compact('items'));
-        
-        if ( Auth()->user()->roles[0]->name == 'Accountant' ) {
-          $students = User::with('class')->whereHas("roles", function($q) {
-            $q->where("name", "Student");
-          })->get();
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function index()
+  {
+    //
+    // $items = Items::all()->count();
+    // return view('components.dashboard', compact('items'));
 
-          $eachstudent = [];
-          foreach ($students as $student) {
-            $current = $student->class[0];
-            $theclass = Classes::find($current->class_id);
-            $schoolFee = $theclass->fees[1];
-            $eachstudent[] = ['student'=>$student, 'fee'=>$schoolFee, 'class'=>$theclass->name];
-          }
-          return view('accounts.list', compact('eachstudent'));
-        }
-        else{
-          return view('accounts.student');
-        }
-    }
+    if (Auth()->user()->roles[0]->name == 'Accountant') {
+      $students = User::with('class')->whereHas("roles", function ($q) {
+        $q->where("name", "Student");
+      })->get();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+      $eachstudent = [];
+      foreach ($students as $student) {
+        $current = $student->class[0];
+        $theclass = Classes::find($current->class_id);
+        $schoolFee = $theclass->fees[1];
+        $eachstudent[] = ['student' => $student, 'fee' => $schoolFee, 'class' => $theclass->name];
+      }
+      return view('accounts.list', compact('eachstudent'));
+    } else {
+      $per_classes = $this->studentAccount(Auth()->user()->id);
+      return view('accounts.student', compact('per_classes'));
     }
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+  public function studentAccount($student_id)
+  {
+    //
+    $student = User::with('class')->find($student_id);
+    $fee_per_classes = [];
+    $tution = 0;
+    foreach ($student->class as $c) {
+      $items = Studentitems::where('student_id', $student_id)->where('class_id',$c->class_id)->get();
+      $theItems = [];
+      $itemtotal = 0;
+      foreach ($items as $item) {
+        $it = Items::find($item->item_id);
+        $theItems[] = $it;
+        $itemtotal = $itemtotal + $it->price;
+      }
+      $classes = Classes::find($c->class_id);
+      $tution = $tution + array_sum($classes->fees);
+      $fee_per_classes[] = ['items'=>$theItems, 'class'=>$classes, 'itemtotal'=>$itemtotal, 'tution'=>$tution];
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    return $fee_per_classes;
+  }
 }
