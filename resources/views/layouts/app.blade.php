@@ -51,16 +51,14 @@
             </a>
           </li>
 
-          @hasrole('Accountant')
+          @hasrole('Student|Accountant')
           <li class="nav-link">
             <a href="/items">
               <i class='bx bx-list-ul icon'></i>
               <span class="text nav-text">Items</span>
             </a>
           </li>
-          @endhasrole
-
-          @hasrole('Student|Accountant')
+          
           <li class="nav-link">
             <a href="/accounts">
               <i class='bx bx-bar-chart-alt-2 icon'></i>

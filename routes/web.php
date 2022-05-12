@@ -66,3 +66,5 @@ Route::POST('/item/create', [ItemsController::class, 'create'])->name('create');
 Route::POST('/item/update', [ItemsController::class, 'edit'])->name('edititem');
 Route::GET('/item/edit/{item_id}', [ItemsController::class, 'edititem'])->name('updateitem');
 Route::GET('/item/delete/{item_id}', [ItemsController::class, 'deleteitem'])->name('deleteitem');
+
+Route::POST('/studentitem/create', [ItemsController::class, 'createstudentitem'])->name('createstudentitem');

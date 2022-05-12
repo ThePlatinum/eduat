@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Classes;
 use App\Models\Items;
+use App\Models\Studentitems;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ItemsController extends Controller
 {
@@ -12,7 +15,10 @@ class ItemsController extends Controller
   public function items()
   {
     $items = Items::all();
-    return view('components.items', compact('items'));
+    if ( Auth()->user()->roles[0]->name == 'Accountant' )
+      return view('components.items', compact('items'));
+    else
+      return view('items.students', compact('items'));
   }
 
   public function create(Request $request)
@@ -68,4 +74,16 @@ class ItemsController extends Controller
     return back()->with('message', 'Item deleted successfully');
   }
 
+
+  public function createstudentitem(Request $request){
+    $student_id = Auth()->user()->id;
+    $student = User::where('id',$student_id)->with('class')->get();
+    $class = $student[0]->class[0];
+    Studentitems::updateOrCreate([
+      'student_id' => $student_id,
+      'item_id' => $request->item_id,
+      'class_id' => $class->class_id,
+    ]);
+    return back()->with('message', 'Item added to your list successfully');
+  }
 }

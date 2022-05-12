@@ -9,7 +9,6 @@ class Items extends Model
 {
   use HasFactory;
 
-
   protected $casts = [
     'class_for' => 'array'
   ];
