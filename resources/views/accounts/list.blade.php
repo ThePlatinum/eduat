@@ -39,7 +39,7 @@
             <td> {{$student['class'] ?? ''}} </td>
             <td> &#8358; {{$student['fee'] ?? ''}} </td>
             <td>
-              <a href="#" class="btn btn-primary btn-sm">
+              <a href="{{route('getaccounts',$student['student']->id)}}" class="btn btn-primary btn-sm">
                 <i class='bx bx-show'></i>
               </a>
               <a href="tel://{{$student['student']->phone}}" class="btn btn-outline-danger btn-sm">

@@ -17,9 +17,10 @@ class CreatePaymentsTable extends Migration
       $table->id();
       $table->unsignedBigInteger('student_id');
       $table->unsignedBigInteger('class_id');
-      $table->integer('receipt_number')->nullable();
+      $table->integer('receipt_number')->nullable()->unique();
       $table->string('ammount');
       $table->string('note')->nullable();
+      $table->timestamp('paydate');
       $table->timestamps();
       $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
       $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');

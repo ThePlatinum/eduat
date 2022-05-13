@@ -38,11 +38,11 @@ Route::GET('/students', [StudentsController::class, 'students'])->name('students
 Route::GET('/profile',  [UserController::class, 'profile'])->name('profile');
 Route::GET('/settings',  [SettingsController::class, 'settings'])->name('settings');
 
-// Profile routes
+// Profile
 Route::GET('/profile/edit',  [UserController::class, 'editprofile'])->name('editprofile');
 Route::GET('/profile/view/{user_id}',  [UserController::class, 'viewprofile'])->name('viewprofile');
 
-// Class routes
+// Class
 Route::GET('/classes/add', [ClassesController::class, 'addclass'])->name('addclass');
 Route::POST('/createclass', [ClassesController::class, 'create'])->name('createclass');
 Route::GET('/classes/edit/{class_id}', [ClassesController::class, 'edit'])->name('edit');
@@ -51,12 +51,12 @@ Route::GET('/classes/view/{class_id}', [ClassesController::class, 'viewclass'])-
 Route::POST('/classes/subject/createsubject', [ClassesController::class, 'createsubject'])->name('createsubject');
 Route::POST('/classes/subject/editsubject', [ClassesController::class, 'editsubject'])->name('editsubject');
 
-// Students routes
+// Students
 Route::GET('/students/admission', [StudentsController::class, 'newstudent'])->name('newstudent');
 Route::POST('/admission', [StudentsController::class, 'admission'])->name('admission');
 // Route::GET('/students/view/{user_id}', [StudentsController::class, 'viewstudent'])->name('viewstudent');
 
-// Teachers routes
+// Teachers
 Route::GET('/teachers/new', [TeachersController::class, 'newteacher'])->name('newteacher');
 Route::POST('/employ', [TeachersController::class, 'employ'])->name('employ');
 
@@ -68,3 +68,7 @@ Route::GET('/item/edit/{item_id}', [ItemsController::class, 'edititem'])->name('
 Route::GET('/item/delete/{item_id}', [ItemsController::class, 'deleteitem'])->name('deleteitem');
 
 Route::POST('/studentitem/create', [ItemsController::class, 'createstudentitem'])->name('createstudentitem');
+
+// Accounts
+Route::GET('/accounts/{student_id}', [AccountsController::class, 'getaccounts'])->name('getaccounts');
+Route::POST('/addpayment', [AccountsController::class, 'storepayment'])->name('addpayment');
