@@ -55,7 +55,7 @@
 
             <div class="col-md-6 py-2">
               <label for="gender" class="col-md-4 col-form-label ">{{ __('Gender') }}</label>
-              <select id="gender" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" autofocus autocomplete="gender" >
+              <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" autofocus autocomplete="gender" >
                 <option value="Male" > Male </option>
                 <option value="Female" > Female </option>
               </select>
