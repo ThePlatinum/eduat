@@ -3,7 +3,7 @@
 @section('content')
   <div class="justify-content-center d-flex">
     <div class="col-md-5">
-      <div class="card p-3 authcard">
+      <div class="card p-3 ">
         <div class="text-center pt-3">
           <h5>{{ __('Login') }}</h5>
         </div>
@@ -24,7 +24,6 @@
 
             <div class="col py-2">
               <label for="password" class="col-md-4 col-form-label ">{{ __('Password') }}</label>
-
               <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
               @error('password')
@@ -35,8 +34,8 @@
             </div>
 
             <div class="col py-2">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+              <div class="form-check" hidden>
+                <input class="form-check-input" type="checkbox" name="remember" id="remember" checked>
                 <label class="form-check-label" for="remember">
                   {{ __('Remember Me') }}
                 </label>
@@ -50,12 +49,12 @@
             </div>
 
             <div class="d-flex justify-content-between">
-              <a class="btn btn-link" href="{{ route('register') }}">
+              <!-- <a class="btn btn-link" href="{{ route('register') }}">
                 {{ __('Register') }}
-              </a>
+              </a> -->
 
               @if (Route::has('password.request'))
-              <a class="btn btn-link" href="{{ route('password.request') }}">
+              <a class="btn btn-link p-0 py-3" href="{{ route('password.request') }}">
                 {{ __('Forgot Your Password?') }}
               </a>
               @endif
