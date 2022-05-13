@@ -67,3 +67,8 @@ body::-webkit-scrollbar {
   height: fit-content;
   padding: 2px 20px;
 }
+
+.round-logo img{
+  width: 30vh;
+  border-radius: 15px;
+}

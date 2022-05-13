@@ -29,7 +29,7 @@
     <header>
       <div class="image-text">
         <span class="image">
-          <img src="{{ asset('images/logo.png') }}" alt="">
+          <img src="{{ asset('images/logo.png') }}" alt="School Logo">
         </span>
 
         <div class="text logo-text">
