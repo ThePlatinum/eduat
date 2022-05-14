@@ -7,6 +7,13 @@
   </div>
 
   <div class="page p-3 flex-grow-1">
+
+    @if(session()->has('success'))
+    <div class="alert alert-success">
+      {{ session()->get('success') }}
+    </div>
+    @endif
+
     <div class="row">
       <div class="col-md-6">
         <div class="card card-body">
@@ -45,17 +52,20 @@
         <div class="card card-body">
           Migrate classes
           <hr>
-          <form action="" method="post" class="d-flex flex-column align-items-center p-2">
+          <form action="{{route('migrateclass')}}" method="POST" class="d-flex flex-column align-items-center p-2">
+            @csrf
             <div class="card col-md-9 p-3">
               @forelse ($classes as $class)
               @if ($class->id != 1)
               <div class="d-flex justify-content-between align-items-center p-2">
                 <label for="{{$class->name}}" class="form-control">{{$class->name}}</label>
                 <div class="px-3"> => </div>
-                <select name="{{$class->name}}" class="form-control " name="{{$class->name}}">
+                <select name="{{$class->name}}" class="form-control " name="{{$class->name}}" required>
                   <option value="">Select Class</option>
-                  @foreach ($classes as $class)
-                  <option value="{{$class->id}}">{{$class->name}}</option>
+                  @foreach ($classes as $classto)
+                  @if ($class->id != $classto->id)
+                  <option value="{{$classto->id}}">{{$classto->name}}</option>
+                  @endif
                   @endforeach
                 </select>
               </div>
@@ -64,6 +74,13 @@
               <div class="text-center"> No classes created yet. </div>
               @endforelse
             </div>
+
+            @if(session()->has('formerror'))
+            <div class="alert alert-error">
+              {{ session()->get('formerror') }}
+            </div>
+            @endif
+
             <div class="d-flex gap-3 justify-content-center p-3">
               <button type="reset" class="btn btn-outline-secondary">Reset</button>
               <button type="submit" class="btn btn-danger">Migrate Classes</button>

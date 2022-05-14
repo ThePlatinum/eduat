@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Classes;
 use App\Models\ClassTeacher;
 use App\Models\Settings;
+use App\Models\StudentClasses;
 use App\Models\Subjects;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,7 +15,21 @@ class ClassesController extends Controller
     //
   public function index()
   {
-    $classes = Classes::with('students')->with('subjects')->get();
+    $allclass = Classes::with('subjects')->get();
+    $group = StudentClasses::all()->groupBy('student_id');
+    foreach ($group as $student ) {
+      $currentclasses[] = $student->last();
+    }
+    $classes = [];
+    foreach ($allclass as $class) {
+      $inclass = [];
+      foreach ($currentclasses as $current) {
+        if ($current->class_id == $class->id) {
+          $inclass[] = User::find($current->student_id);
+        }
+      }
+      $classes[] = ['class' => $class, 'student'=>$inclass];
+    }
     return view('components.classes', compact('classes'));
   }
 
