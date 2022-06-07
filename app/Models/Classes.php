@@ -19,7 +19,7 @@ class Classes extends Model
 
   public function students()
   {
-    return $this->hasMany(StudentClasses::class, 'class_id');
+    return $this->hasMany(User::class, 'current_class');
   }
 
   public function subjects()
@@ -29,6 +29,7 @@ class Classes extends Model
 
   public function teacher()
   {
-    return $this->hasOne(ClassTeacher::class, 'class_id');
+    return $this->hasOneThrough(User::class, ClassTeacher::class, 'class_id', 'id', 'id', 'teacher_id');
   }
+  
 }

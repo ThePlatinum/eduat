@@ -1,13 +1,6 @@
 @extends('classes.class')
 
 @section('class')
-<div class="page p-3 flex-grow-1">
-  @if(session()->has('message'))
-  <div class="alert alert-success">
-    {{ session()->get('message') }}
-  </div>
-  @endif
-
   <div class="text-end">
     <a href=" {{ route('classes') }} " class="btn btn-secondary btn-sm">
       <i class='bx bx-arrow-back'></i> <span>BACK</span>
@@ -18,17 +11,16 @@
     <div class="col-md-6 bg-light p-3 ">
 
       <div class="row header text-center p-3">
-        <h5>Add New Class</h5>
+        <h5>{{ isset($class) ? 'Update Class' : 'Add New Class'}}</h5>
       </div>
 
       <form method="POST" action="{{ isset($class)  ?  route('editclass') : route('createclass') }}" class=" p-3">
         @csrf
-
-        <input id="class" type="class" value=" {{ $class->id ?? '' }} " name="class" hidden>
+        <input id="class" type="class" value="{{$class->id ?? ''}}" name="class" hidden>
 
         <div class="col py-2">
           <label for="name" class="col-md-4 col-form-label">{{ __('Class Name') }}</label>
-          <input id="name" type="name" value=" {{ $class->name ?? '' }} " class="form-control @error('name') is-invalid @enderror" name="name" required autofocus>
+          <input id="name" type="name" value="{{$class->name ?? ''}}" class="form-control @error('name') is-invalid @enderror" name="name" required autofocus>
           @error('name')
           <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -41,9 +33,9 @@
 
           <div class="row px-1">
             @foreach(range( 1, $session ) as $fee)
-            <div class="col-md-2">
+            <div class="col-md-4">
               {{$fee}}:
-              <input id="{{ $fee }}" type="number" value=" {{ $class->fee['$loop->index + 1'] ?? '' }} " class="form-control @error('fee') is-invalid @enderror" name="fee{{$loop->index+1}}" required>
+              <input id="{{ $fee }}" type="number" value=" {{$class->fee['$loop->index + 1'] ?? ''}} " class="form-control @error('fee') is-invalid @enderror" name="fee{{$loop->index+1}}" required>
               @error('fee')
               <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -59,7 +51,7 @@
           <select id="teacher" value="{{ $class->teacher->id ?? '' }}" class="form-control @error('teacher') is-invalid @enderror" name="teacher">
             <option value="">Select Teacher</option>
             @foreach($teachers as $teacher)
-            <option value="{{ $teacher->id }}"> {{$teacher->lastname}} {{$teacher->firstname}} {{$teacher->othername ?? ''}} </option>
+            <option value="{{ $teacher->id }}">{{$teacher->lastname}} {{$teacher->firstname}} {{$teacher->othername ?? ''}}</option>
             @endforeach
           </select>
 
@@ -81,7 +73,5 @@
       </form>
     </div>
   </div>
-</div>
-
 </div>
 @endsection

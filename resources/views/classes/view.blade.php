@@ -20,7 +20,7 @@
 
     <div class="col-md-6">
       <h2> {{$class->name}} </h2>
-      Class Teacher: <span> {{$classteacher->lastname ?? $classteacher}} {{$classteacher->firstname ?? '' }} {{$classteacher->othername ?? ''}} </span>
+      Class Teacher: <span> {{$class['teacher']->lastname ?? "No teacher Assigned"}} {{$class['teacher']->firstname ?? '' }} {{$class['teacher']->othername ?? ''}} </span>
 
       <div class="py-3">
         <a href=" {{ route('edit', $class->id) }} " class="btn btn-primary">Edit Class</a>
@@ -31,7 +31,7 @@
       Subjects
       <hr>
       <div class="row">
-        @forelse($subjects as $subject)
+        @forelse($class['subjects'] as $subject)
         <div class="col-md-6 py-2">
           <div class="subjectlist d-flex">
             <div class="flex-grow-1 d-flex align-items-center px-3">{{$subject->name}}</div>
@@ -113,10 +113,7 @@
           </tr>
           </thead>
           <tbody>
-            @forelse($class->students as $toget)
-            @php
-            $student = App\Models\User::Where('id', $toget->student_id)->first()
-            @endphp
+            @forelse($class->students as $student)
             <tr>
               <td>{{ $loop->index + 1 }}</td>
               <td> {{$student->lastname}} {{$student->firstname}} {{$student->othername ?? ''}} </td>

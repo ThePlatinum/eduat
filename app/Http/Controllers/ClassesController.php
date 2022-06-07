@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Classes;
 use App\Models\ClassTeacher;
 use App\Models\Settings;
-use App\Models\StudentClasses;
 use App\Models\Subjects;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,12 +14,7 @@ class ClassesController extends Controller
     //
   public function index()
   {
-    $allclass = Classes::with('subjects')->get();
-    $classes = [];
-    foreach ($allclass as $class) {
-      $inclass = User::where('current_class', $class->id)->get();
-      $classes[] = ['class' => $class, 'student'=>$inclass];
-    }
+    $classes = Classes::with('subjects', 'teacher', 'students')->get();
     return view('classes.index', compact('classes'));
   }
 
@@ -38,7 +32,7 @@ class ClassesController extends Controller
 
     $class = Classes::create([
       'name' => $request->name,
-      'fees' => [$request->fee1, $request->fee2, $request->fee3],
+      'fees' => explode(',', $request->fee1.','.$request->fee2.','.$request->fee3),
     ]);
     
     if($request->teacher){
@@ -66,7 +60,7 @@ class ClassesController extends Controller
     $class = Classes::find($request->class);
     if($class){
       $class->name = $request->name;
-      $class->fees = [$request->fee1, $request->fee2, $request->fee3];
+      $class->fees = explode(',', $request->fee1.','.$request->fee2.','.$request->fee3);
       $class->save();
     }
     
@@ -89,14 +83,9 @@ class ClassesController extends Controller
     $teachers = User::whereHas("roles", function($q) {
       $q->where("name", "Teacher");
     })->get();
-    $class = Classes::with('teacher')->with('students')->find($class_id);
-    if ($class->teacher != null)
-      $classteacher = User::where('id', $class->teacher->teacher_id)->first();
-    else
-      $classteacher = 'No teacher assigned';
-    $subjects = Subjects::with('teacher')->where("class_id", $class_id)->get();
+    $class = Classes::with('teacher','students','subjects')->find($class_id);
 
-    return view('classes.view', compact('class', 'teachers', 'subjects', 'classteacher'));
+    return view('classes.view', compact('class', 'teachers'));
   }
 
   public function createsubject(Request $request){
