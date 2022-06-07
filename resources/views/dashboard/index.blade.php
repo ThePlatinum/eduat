@@ -9,12 +9,12 @@
     <h5>Accounts</h5>
     @endunlessrole
   </div>
-
+  
+  <div class="page p-3 flex-grow-1">
   @role('Admin')
   @include('dashboard.admin')
   @endrole
 
-  <!-- Accountants Dashboard is the accounts page -->
   @role('Accountant')
   @include('accounts.accountant')
   @endrole
@@ -26,6 +26,7 @@
   @role('Student')
   @include('dashboard.student')
   @endrole
+  </div>
 
 </div>
 @endsection

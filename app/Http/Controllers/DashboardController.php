@@ -6,7 +6,7 @@ use App\Models\Classes;
 use App\Models\Items;
 use App\Models\User;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
   /**
    * Create a new controller instance.
@@ -36,10 +36,9 @@ class HomeController extends Controller
     $counts = ['students' => $students, 'teachers' => $teachers, 'classes' => $classes, 'items' => $items];
 
     if (Auth()->user()->roles[0]->name == 'Student') {
-      $student = User::with('class')->find(Auth()->user()->id);
-      $curentclass = Classes::with('subjects', 'teacher')->find($student->class[0]->class_id);
-      return view('components.dashboard', compact('student', 'curentclass'));
+      $curentclass = Classes::with('subjects', 'teacher')->find(Auth()->user()->current_class);
+      return view('dashboard.index', compact('student', 'curentclass'));
     } else
-      return view('components.dashboard', compact('counts'));
+      return view('dashboard.index', compact('counts'));
   }
 }
