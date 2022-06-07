@@ -17,14 +17,9 @@ class CreateClassesTable extends Migration
     Schema::create('classes', function (Blueprint $table) {
       $table->id();
       $table->string('name')->unique();
-      $table->json('fees');
+      $table->string('fees');
       $table->timestamps();
     });
-
-    // Create the graduated student's class
-    DB::table('classes')->insert(array(
-      'name'=> 'Graduated', 'fees'=> "[0,0,0]"),
-    );
   }
 
   /**

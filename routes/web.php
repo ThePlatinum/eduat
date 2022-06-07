@@ -74,4 +74,4 @@ Route::GET('accounts/{student_id}', [AccountsController::class, 'getaccounts'])-
 Route::POST('addpayment', [AccountsController::class, 'storepayment'])->name('addpayment');
 
 // Seetings
-Route::POST('migrateclass', [SettingsController::class, 'migrateclass'])->name('migrateclass');
+// Route::POST('migrateclass', [SettingsController::class, 'migrateclass'])->name('migrateclass');

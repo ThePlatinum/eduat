@@ -29,6 +29,7 @@ class SettingsController extends Controller
       $c = str_replace(' ', '_', $class->name);
       $all[] = $request->$c;
     }
+    dd($all);
     foreach ($all as $c) {
       if ($c != '1' && $this->count_in_array($c, $all) != 1) {
         return back()->with('formerror', 'Trying to migrate two classes to one?');

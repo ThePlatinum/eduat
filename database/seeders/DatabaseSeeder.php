@@ -18,7 +18,10 @@ class DatabaseSeeder extends Seeder
   {
     // \App\Models\User::factory(10)->create();
 
-    $this->call(RolesAndPermissionsSeeder::class);
+    $this->call([
+      RolesAndPermissionsSeeder::class,
+      ClassSeeder::class,
+    ]);
 
     // Create super admin
     $user = User::create([
@@ -31,7 +34,6 @@ class DatabaseSeeder extends Seeder
     ]);
 
     $user->assignRole('Admin');
-
 
     // Create accountant
     $user = User::create([
