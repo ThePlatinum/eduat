@@ -21,4 +21,8 @@ class Subjects extends Model
     public function class(){
       return $this->belongsTo(Klass::class, 'class_id');
     }
+
+    public function assessments(){
+      return $this->hasMany(Assessment::class, 'subject_id');
+    }
 }
