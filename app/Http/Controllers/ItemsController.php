@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classes;
+use App\Models\Klass;
 use App\Models\Items;
 use App\Models\Studentitems;
 use App\Models\User;
@@ -40,14 +40,14 @@ class ItemsController extends Controller
 
   public function additem()
   {
-    $classes = Classes::where('id', '!=', '1')->get();
+    $classes = Klass::where('id', '!=', '1')->get();
     return view('items.add', compact('classes'));
   }
 
   public function edititem($item_id)
   {
     $item = Items::find($item_id);
-    $classes = Classes::where('id', '!=', '1')->get();
+    $classes = Klass::where('id', '!=', '1')->get();
     return view('items.add', compact('item', 'classes'));
   }
 

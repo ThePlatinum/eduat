@@ -7,10 +7,7 @@
           <h3 class="p-2"> {{$curentclass->name}} | Term 2 </h3>
           <div class="row p-2">
             <div class="col-md-8">
-              @php
-              $teacher = App\Models\User::find($curentclass->teacher->teacher_id)
-              @endphp
-              Class Teacher: <br> <span>{{$teacher->firstname ?? 'Not set'}} {{$teacher->lastname ?? ''}} {{$teacher->othername ?? ''}}</span>
+              Class Teacher: <br> <span>{{$curentclass->teacher->firstname ?? 'Not set'}} {{$curentclass->teacher->lastname ?? ''}} {{$curentclass->teacher->othername ?? ''}}</span>
             </div>
             <div class="col-md-4 text-end d-flex flex-column justify-content-center">
               Contact:
@@ -69,10 +66,7 @@
               <h6> {{$subject->name}} </h6>
               <p>
                 Teacher: <br>
-                @php
-                $teacher = App\Models\User::find($subject->teacher_id)
-                @endphp
-                {{$teacher->firstname ?? 'Not set'}} {{$teacher->lastname}} {{$teacher->othername ?? ''}}
+                {{$subject->teacher->firstname ?? 'Not set'}} {{$subject->teacher->lastname}} {{$subject->teacher->othername ?? ''}}
               </p>
             </div>
           </div>

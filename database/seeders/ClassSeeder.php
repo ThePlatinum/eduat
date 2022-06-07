@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Classes;
+use App\Models\Klass;
 use Illuminate\Database\Seeder;
 
 class ClassSeeder extends Seeder
@@ -22,10 +22,12 @@ class ClassSeeder extends Seeder
         ],
         [
           'name' => 'JSS 1',
+          'next_klass' => 2,
           'fees' => explode(',', "22300, 23000, 25000")
         ],
         [
           'name' => 'JSS 2',
+          'next_klass' => 3,
           'fees' => explode(',', "15300, 18000, 15000")
         ],
         [
@@ -42,8 +44,8 @@ class ClassSeeder extends Seeder
         ]
       ];
 
-      foreach ($classes as $class) {
-        Classes::create($class);
+      foreach ($classes as $c) {
+        Klass::create($c);
       }
     }
 }

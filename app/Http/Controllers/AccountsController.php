@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classes;
+use App\Models\Klass;
 use App\Models\Items;
 use App\Models\Payments;
+use App\Models\StudentClasses;
 use App\Models\Studentitems;
 use App\Models\User;
 use Illuminate\Auth\Events\Validated;
@@ -35,7 +36,7 @@ class AccountsController extends Controller
       $eachstudent = [];
       foreach ($students as $student) {
         $current = $student->class[0];
-        $theclass = Classes::find($current->class_id);
+        $theclass = Klass::find($current->class_id);
         $schoolFee = $theclass->fees[1];
         $eachstudent[] = ['student' => $student, 'fee' => $schoolFee, 'class' => $theclass->name];
       }
@@ -51,7 +52,7 @@ class AccountsController extends Controller
   {
     $student = User::with('class')->find($student_id);
     $student_id = $student->id;
-    $class_id = Classes::find($student->class[0]->class_id)->id;
+    $class_id = Klass::find($student->class[0]->class_id)->id;
     $student_name = $student->firstname . $student->lastname . $student->othername;
     $per_classes = $this->studentAccount($student_id);
 
@@ -62,11 +63,14 @@ class AccountsController extends Controller
   public function studentAccount($student_id)
   {
     //
-    $student = User::with('class')->find($student_id);
+    // $student = User::find($student_id);
+    $studentClasses = StudentClasses::where('student_id',$student_id)->get();
     $fee_per_classes = [];
     $tution = 0;
-    foreach ($student->class as $c) {
-      $items = Studentitems::where('student_id', $student_id)->where('class_id',$c->class_id)->get();
+    foreach ($studentClasses as $student) {
+      $items = Studentitems::where('student_id', $student_id)
+        ->where('class_id', $student->class_id)
+        ->get();
       $theItems = [];
       $itemtotal = 0;
       foreach ($items as $item) {
@@ -74,7 +78,7 @@ class AccountsController extends Controller
         $theItems[] = $it;
         $itemtotal = $itemtotal + $it->price;
       }
-      $classes = Classes::find($c->class_id);
+      $classes = Klass::find($student->class_id);
       $tution = $tution + array_sum($classes->fees);
       $fee_per_classes[] = ['items'=>$theItems, 'class'=>$classes, 'itemtotal'=>$itemtotal, 'tution'=>$tution];
     }
@@ -92,7 +96,5 @@ class AccountsController extends Controller
     ]);
     if ($paid)
       return back()->with('message', 'Payment record added successfully');
-    // else
-    //   return with('error', 'Duplicate receipt');
   }
 }

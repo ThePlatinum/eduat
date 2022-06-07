@@ -1,18 +1,10 @@
-@extends('layouts.app')
+@extends('students.student')
 
-@section('content')
+@section('student')
 <div class="d-flex flex-column">
   <div class="header bg-light p-3">
     <h5>New Student Admission</h5>
   </div>
-
-  <div class="page p-3 flex-grow-1">
-
-    @if(session()->has('message'))
-    <div class="alert alert-success">
-      {{ session()->get('message') }}
-    </div>
-    @endif
 
     <div class="text-end">
       <a href=" {{ route('students') }} " class="btn btn-secondary btn-sm">
@@ -130,6 +122,5 @@
         </form>
       </div>
     </div>
-  </div>
 </div>
 @endsection

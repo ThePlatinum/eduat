@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Classes extends Model
+class Klass extends Model
 {
   use HasFactory;
 
@@ -19,7 +19,7 @@ class Classes extends Model
 
   public function students()
   {
-    return $this->hasMany(User::class, 'current_class');
+    return $this->hasMany(User::class, 'klass_id');
   }
 
   public function subjects()

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classes;
+use App\Models\Klass;
 use App\Models\StudentClasses;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,12 +16,12 @@ class StudentsController extends Controller
     $students = User::whereHas("roles", function($q) {
       $q->where("name", "Student");
     })->get();
-    return view('components.students', compact("students"));
+    return view('students.index', compact("students"));
   }
 
   public function newstudent()
   {
-    $classes = Classes::all();
+    $classes = Klass::all();
     return view('students.admission', compact('classes'));
   }
 
@@ -34,6 +34,7 @@ class StudentsController extends Controller
       'phone' => $request->phone,
       'gender' => $request->gender,
       'dob' => $request->dob,
+      'klass_id' => $request->class,
       'password' => Hash::make($request->firstname),
     ]);
     $user->assignRole('Student');

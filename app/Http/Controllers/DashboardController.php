@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classes;
+use App\Models\Klass;
 use App\Models\Items;
 use App\Models\User;
 
@@ -31,13 +31,13 @@ class DashboardController extends Controller
     $teachers = User::whereHas("roles", function ($q) {
       $q->where("name", "Teacher");
     })->count();
-    $classes = Classes::all()->count();
+    $classes = Klass::all()->count();
     $items = Items::all()->count();
     $counts = ['students' => $students, 'teachers' => $teachers, 'classes' => $classes, 'items' => $items];
 
     if (Auth()->user()->roles[0]->name == 'Student') {
-      $curentclass = Classes::with('subjects', 'teacher')->find(Auth()->user()->current_class);
-      return view('dashboard.index', compact('student', 'curentclass'));
+      $curentclass = Klass::with('subjects', 'teacher')->find(Auth()->user()->klass_id);
+      return view('dashboard.index', compact('curentclass'));
     } else
       return view('dashboard.index', compact('counts'));
   }

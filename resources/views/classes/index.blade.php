@@ -27,7 +27,7 @@
           <div class="col-md-6 text-end d-flex flex-column justify-content-center">
 
             <div class="py-1">
-              <h5 class="role text-center"> {{ sizeof($class['students']) }} Students</h5>
+              <h5 class="role text-center"> {{ $class->students->count() }} Students</h5>
             </div>
             <a href="{{ route('viewclass', $class->id ) }}" class="btn btn-danger btn-sm">View</a>
           </div>

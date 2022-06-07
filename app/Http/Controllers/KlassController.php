@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classes;
+use App\Models\Klass;
 use App\Models\ClassTeacher;
 use App\Models\Settings;
 use App\Models\Subjects;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class ClassesController extends Controller
+class KlassController extends Controller
 {
     //
   public function index()
   {
-    $classes = Classes::with('subjects', 'teacher', 'students')->get();
+    $classes = Klass::with('subjects', 'teacher', 'students')->get();
     return view('classes.index', compact('classes'));
   }
 
@@ -30,7 +30,7 @@ class ClassesController extends Controller
   
   public function create(Request $request){
 
-    $class = Classes::create([
+    $class = Klass::create([
       'name' => $request->name,
       'fees' => explode(',', $request->fee1.','.$request->fee2.','.$request->fee3),
     ]);
@@ -51,13 +51,13 @@ class ClassesController extends Controller
       $q->where("name", "Teacher");
     })->get();
 
-    $class = Classes::find($class_id);
+    $class = Klass::find($class_id);
     $session = Settings::where("name", "sessions")->first()->value;
     return view('classes.add', compact("session", "class", "teachers"));
   }
 
   public function editclass(Request $request){
-    $class = Classes::find($request->class);
+    $class = Klass::find($request->class);
     if($class){
       $class->name = $request->name;
       $class->fees = explode(',', $request->fee1.','.$request->fee2.','.$request->fee3);
@@ -83,7 +83,7 @@ class ClassesController extends Controller
     $teachers = User::whereHas("roles", function($q) {
       $q->where("name", "Teacher");
     })->get();
-    $class = Classes::with('teacher','students','subjects')->find($class_id);
+    $class = Klass::with('teacher','students','subjects')->find($class_id);
 
     return view('classes.view', compact('class', 'teachers'));
   }

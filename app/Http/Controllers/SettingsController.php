@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Classes;
-use App\Models\StudentClasses;
+use App\Models\Klass;
+use App\Models\StudentKlass;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,7 +12,7 @@ class SettingsController extends Controller
   //
   public function settings()
   {
-    $classes = Classes::all();
+    $classes = Klass::all();
     $supers = User::whereHas("roles", function($q) {
       $q->where("name", "Admin");
     })->get();
@@ -24,7 +24,7 @@ class SettingsController extends Controller
   }
 
   public function migrateclass(Request $request){
-    $allclasses = Classes::Where('id', '!=', 1)->get()->sortByDesc('id');
+    $allclasses = Klass::Where('id', '!=', 1)->get()->sortByDesc('id');
     foreach ($allclasses as $class) {
       $c = str_replace(' ', '_', $class->name);
       $all[] = $request->$c;
@@ -35,18 +35,18 @@ class SettingsController extends Controller
         return back()->with('formerror', 'Trying to migrate two classes to one?');
       }
       else{
-        foreach ($allclasses as $class) {
-          $cn = str_replace(' ', '_', $class->name);
-          if ($c = $request->$cn){
-            $inclass = StudentClasses::Where('class_id', $class->id)->get();
-            foreach ($inclass as $students) {
-              StudentClasses::create([
-                'class_id'=>$c,
-                'student_id'=>$students->student_id,
-              ]);
-            }
-          }
-        }
+        // foreach ($allclasses as $class) {
+        //   $cn = str_replace(' ', '_', $class->name);
+        //   if ($c = $request->$cn){
+        //     $inclass = StudentKlass::Where('class_id', $class->id)->get();
+        //     foreach ($inclass as $students) {
+        //       StudentKlass::create([
+        //         'class_id'=>$c,
+        //         'student_id'=>$students->student_id,
+        //       ]);
+        //     }
+        //   }
+        // }
         return back()->with('success','Migrations successful');
       }
     }

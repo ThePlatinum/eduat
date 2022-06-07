@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountsController;
-use App\Http\Controllers\ClassesController;
+use App\Http\Controllers\KlassController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\SettingsController;
@@ -31,7 +31,7 @@ Auth::routes();
 Route::GET('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::GET('accounts', [AccountsController::class, 'index'])->name('accounts');
 Route::GET('items', [ItemsController::class, 'items'])->name('items');
-Route::GET('classes', [ClassesController::class, 'index'])->name('classes');
+Route::GET('classes', [KlassController::class, 'index'])->name('classes');
 Route::GET('reports', [DashboardController::class, 'index'])->name('reports');
 Route::GET('teachers', [TeachersController::class, 'teachers']);
 Route::GET('students', [StudentsController::class, 'students'])->name('students');
@@ -43,13 +43,13 @@ Route::GET('profile/edit',  [UserController::class, 'editprofile'])->name('editp
 Route::GET('profile/view/{user_id}',  [UserController::class, 'viewprofile'])->name('viewprofile');
 
 // Class
-Route::GET('classes/add', [ClassesController::class, 'addclass'])->name('addclass');
-Route::POST('createclass', [ClassesController::class, 'create'])->name('createclass');
-Route::GET('classes/edit/{class_id}', [ClassesController::class, 'edit'])->name('edit');
-Route::POST('editclass', [ClassesController::class, 'editclass'])->name('editclass');
-Route::GET('classes/view/{class_id}', [ClassesController::class, 'viewclass'])->name('viewclass');
-Route::POST('classes/subject/createsubject', [ClassesController::class, 'createsubject'])->name('createsubject');
-Route::POST('classes/subject/editsubject', [ClassesController::class, 'editsubject'])->name('editsubject');
+Route::GET('classes/add', [KlassController::class, 'addclass'])->name('addclass');
+Route::POST('createclass', [KlassController::class, 'create'])->name('createclass');
+Route::GET('classes/edit/{class_id}', [KlassController::class, 'edit'])->name('edit');
+Route::POST('editclass', [KlassController::class, 'editclass'])->name('editclass');
+Route::GET('classes/view/{class_id}', [KlassController::class, 'viewclass'])->name('viewclass');
+Route::POST('classes/subject/createsubject', [KlassController::class, 'createsubject'])->name('createsubject');
+Route::POST('classes/subject/editsubject', [KlassController::class, 'editsubject'])->name('editsubject');
 
 // Students
 Route::GET('students/admission', [StudentsController::class, 'newstudent'])->name('newstudent');
@@ -74,4 +74,4 @@ Route::GET('accounts/{student_id}', [AccountsController::class, 'getaccounts'])-
 Route::POST('addpayment', [AccountsController::class, 'storepayment'])->name('addpayment');
 
 // Seetings
-// Route::POST('migrateclass', [SettingsController::class, 'migrateclass'])->name('migrateclass');
+Route::POST('migrateclass', [SettingsController::class, 'migrateclass'])->name('migrateclass');

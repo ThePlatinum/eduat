@@ -27,9 +27,7 @@ class CreateUsersTable extends Migration
       $table->string('image')->default('avater.png');
       $table->string('bio')->default('No profile details');
       $table->timestamp('dob')->nullable();
-
-      $table->unsignedBigInteger('current_class')->nullable();
-
+      $table->unsignedBigInteger('klass_id')->nullable();
       $table->timestamp('email_verified_at')->nullable();
       $table->string('password');
       $table->rememberToken();

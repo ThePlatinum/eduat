@@ -12,16 +12,16 @@ class UserController extends Controller
   public function profile()
   {
     $user = auth()->user();
-    return view('components.profile', compact('user'));
+    return view('profile.index', compact('user'));
   }
 
   public function viewprofile($user_id){
     $user = User::find($user_id);
-    return view('common.viewprofile', compact('user'));
+    return view('profile.viewprofile', compact('user'));
   }
 
   public function editprofile()
   {
-    return view('common.editprofile');
+    return view('profile.editprofile');
   }
 }
