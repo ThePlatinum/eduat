@@ -16,21 +16,12 @@ class ClassesController extends Controller
   public function index()
   {
     $allclass = Classes::with('subjects')->get();
-    $group = StudentClasses::all()->groupBy('student_id');
-    foreach ($group as $student ) {
-      $currentclasses[] = $student->last();
-    }
     $classes = [];
     foreach ($allclass as $class) {
-      $inclass = [];
-      foreach ($currentclasses as $current) {
-        if ($current->class_id == $class->id) {
-          $inclass[] = User::find($current->student_id);
-        }
-      }
+      $inclass = User::where('current_class', $class->id)->get();
       $classes[] = ['class' => $class, 'student'=>$inclass];
     }
-    return view('components.classes', compact('classes'));
+    return view('classes.index', compact('classes'));
   }
 
   public function addclass(){

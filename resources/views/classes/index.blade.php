@@ -1,12 +1,6 @@
-@extends('layouts.app')
+@extends('classes.class')
 
-@section('content')
-<div class="container-fluid">
-  <div class="row header bg-light p-3">
-    <h5>Classes</h5>
-  </div>
-
-  <div class="page p-3 flex-grow-1">
+@section('class')
     <div class="text-end">
       <a href=" {{ route('addclass') }} " class="btn btn-primary">
         <i class='bx bx-list-plus'></i> <span>New Class</span>
@@ -48,6 +42,4 @@
       <p class="text-center p-5">No Subjects Registered yet.</p>
       @endforelse
     </div>
-  </div>
-</div>
 @endsection
