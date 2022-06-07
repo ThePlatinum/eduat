@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\StudentsController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::GET('/', function () {
+    return view('auth.login');
+})->middleware('guest');
+Route::GET('/login', function () {
     return view('auth.login');
 })->middleware('guest');
 
@@ -59,6 +63,7 @@ Route::POST('admission', [StudentsController::class, 'admission'])->name('admiss
 // Teachers
 Route::GET('teachers/new', [TeachersController::class, 'newteacher'])->name('newteacher');
 Route::POST('employ', [TeachersController::class, 'employ'])->name('employ');
+Route::GET('/subject/{subjects_id}', [SubjectController::class, 'teacher_view'])->name('teacher_view');
 
 // Items
 Route::GET('item/add', [ItemsController::class, 'additem'])->name('additem');
