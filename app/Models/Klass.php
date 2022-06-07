@@ -32,4 +32,11 @@ class Klass extends Model
     return $this->hasOneThrough(User::class, ClassTeacher::class, 'class_id', 'id', 'id', 'teacher_id');
   }
   
+  public function getStudentCountAttribute() {
+    return $this->students()->count();
+  }
+
+  protected $appends = [
+    'student_count'
+  ];
 }
