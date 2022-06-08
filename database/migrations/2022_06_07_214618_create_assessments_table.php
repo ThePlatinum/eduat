@@ -20,8 +20,8 @@ class CreateAssessmentsTable extends Migration
       $table->unsignedBigInteger('term_id');
       $table->integer('grade_point');
       $table->string('type');
-      $table->string('title')->nullable();
-      $table->timestamp('assessed_at')->nullable();
+      $table->string('title')->nullable()->default('Assessment');
+      $table->timestamp('assessed_at')->nullable()->default(now());
       $table->timestamps();
     });
   }
