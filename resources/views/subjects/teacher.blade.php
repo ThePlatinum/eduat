@@ -22,6 +22,7 @@
           <tr class="bg-light">
             <th scope="col"></th>
             <th scope="col">Date</th>
+            <th scope="col">Title</th>
             <th scope="col">Grade Point</th>
             <th scope="col">Highest</th>
             <th scope="col">Lowest</th>
@@ -33,6 +34,7 @@
             <tr>
               <td>{{ $loop->index + 1 }}</td>
               <td> 23rd June, 2022 </td>
+              <td> Test 1 </td>
               <td> 20 </td>
               <td> 18 </td>
               <td> 10 </td>
@@ -43,7 +45,7 @@
             </tr>
             @empty
             <tr>
-              <td colspan="5" class="text-center p-5">No assessments created yet.</td>
+              <td colspan="6" class="text-center p-5">No assessments created yet.</td>
             </tr>
             @endforelse
           </tbody>
