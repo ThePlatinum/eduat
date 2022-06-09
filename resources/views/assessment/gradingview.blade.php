@@ -122,15 +122,27 @@
             </thead>
             <tbody>
               @foreach ($assessment->subject->class->students as $student)
+              @php
+              $grade = $assessment->scores->where('user_id', $student->id)->first();
+              if ($grade) {
+                $score = $grade->score;
+                $remark = $grade->remarks;
+              }
+              else {
+                $score = 0;
+                $remark = '';
+              }
+              @endphp
               <tr>
                 <td>{{$student->fullname}}</td>
                 <td>
-                  <a href="" class="update_score" data-name="score" data-type="number" data-pk="{{$student->id}}" data-title="">{{ $student->name }}</a>
+                  <a href="" class="update_score" data-name="score" data-type="number" data-pk="{{$student->id}}">{{ $score }}</a>
                 </td>
                 <td>
-                  <a href="" class="update_remark" data-name="remark" data-type="textarea" data-pk="{{$student->id}}" data-title="">{{ $student->name }}</a>
+                  <a href="" class="update_remark" data-name="remark" data-type="textarea" data-pk="{{$student->id}}">{{ $remark }}</a>
                 </td>
-                @endforeach
+              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
@@ -151,15 +163,13 @@
   $('.update_score').editable({
     url: "{{ route('addscore',$assessment->id) }}",
     type: 'number',
-    name: 'score',
-    title: ''
+    name: 'score'
   });
 
   $('.update_remark').editable({
     url: "{{ route('addscore',$assessment->id) }}",
     type: 'textarea',
-    name: 'review',
-    title: ''
+    name: 'review'
   });
 </script>
 
