@@ -29,7 +29,7 @@ Welcome {{ Auth()->user()->firstname }}
         <h6 class="pt-2"> Class: {{$subject->class->name}} </h6>
         <h6> Students: {{$subject->class->student_count}} </h6>
         <div class="text-end">
-          <a href="{{route('teacher_view',$subject->id)}}" class="btn btn-outline-primary">View</a>
+          <a href="{{route('teacherview',$subject->id)}}" class="btn btn-outline-primary">View</a>
         </div>
       </div>
     </div>
