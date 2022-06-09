@@ -66,14 +66,14 @@
           </li>
           @endhasrole
 
-          @hasrole('Teacher')
+          <!-- @hasrole('Teacher')
           <li class="nav-link">
             <a href="/assessments">
               <i class='bx bx-dumbbell icon'></i>
               <span class="text nav-text">Assessments</span>
             </a>
           </li>
-          @endhasrole
+          @endhasrole -->
 
           @hasrole('Student')
           <li class="nav-link">
