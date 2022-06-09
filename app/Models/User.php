@@ -51,4 +51,8 @@ class User extends Authenticatable
     'fullname'
   ];
 
+  public function class(){
+    return $this->belongsTo(Klass::class, 'klass_id');
+  }
+
 }
