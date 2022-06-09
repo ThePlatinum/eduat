@@ -44,10 +44,15 @@ class DashboardController extends Controller
     }
     else if (Auth()->user()->roles[0]->name == 'Teacher') {
       $teaches = Subjects::with('class')->where('teacher_id', $_id)->get();
-      $all_students = 0 ;
-      foreach ($teaches as $subject) {
-        $all_students += $subject->class->student_count;
+      // $allstudents = [];
+      foreach ($teaches as $teach) {
+        $allstudents[] = $teach->class->students;
       }
+      $all_students = sizeof($allstudents) ;
+      // dd($allstudents);
+      // foreach ($teaches as $subject) {
+      //   $all_students += $subject->class->student_count;
+      // }
       return view('dashboard.index', compact('teaches', 'all_students'));
     }
     else if (Auth()->user()->roles[0]->name == 'Accountant'){
