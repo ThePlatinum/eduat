@@ -19,6 +19,6 @@ class Payments extends Model
   ];
 
   public function class(){
-    return $this->hasOne(Classes::class, 'id', 'class_id');
+    return $this->hasOne(Klass::class, 'id', 'class_id');
   }
 }
