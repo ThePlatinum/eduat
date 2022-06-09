@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\KlassController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemsController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\UserController;
+use App\Models\Assessment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -63,7 +65,10 @@ Route::POST('admission', [StudentsController::class, 'admission'])->name('admiss
 // Teachers
 Route::GET('teachers/new', [TeachersController::class, 'newteacher'])->name('newteacher');
 Route::POST('employ', [TeachersController::class, 'employ'])->name('employ');
-Route::GET('/subject/{subjects_id}', [SubjectController::class, 'teacher_view'])->name('teacher_view');
+Route::GET('/subject/{subjects_id}', [SubjectController::class, 'teacherview'])->name('teacherview');
+Route::POST('/assessment/make', [AssessmentController::class, 'create'])->name('makeassessment');
+Route::GET('/assessment/{assessment_id}', [AssessmentController::class, 'gradingview'])->name('gradingview');
+Route::POST('/assessment/addscore/{assessment_id}', [AssessmentController::class, 'addscore'])->name('addscore');
 
 // Items
 Route::GET('item/add', [ItemsController::class, 'additem'])->name('additem');
