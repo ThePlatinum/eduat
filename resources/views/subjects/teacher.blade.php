@@ -1,6 +1,12 @@
 @extends('subjects.subject')
 
 @section('subject')
+<div class="text-end">
+  <a href=" {{ url()->previous() }} " class="btn btn-secondary btn-sm">
+    <i class='bx bx-arrow-back'></i> <span>BACK</span>
+  </a>
+</div>
+
 <div class="row">
   <div class="col-md-6">
     <div class="card card-body">

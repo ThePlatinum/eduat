@@ -17,6 +17,13 @@
     <h5>Subject</h5>
   </div>
   <div class="page p-3 flex-grow-1">
+
+    <div class="text-end">
+      <a href=" {{ url()->previous() }} " class="btn btn-secondary btn-sm">
+        <i class='bx bx-arrow-back'></i> <span>BACK</span>
+      </a>
+    </div>
+
     <div class="card card-body">
       <div class="row">
         <div class="col-md-6">
@@ -127,8 +134,7 @@
               if ($grade) {
                 $score = $grade->score;
                 $remark = $grade->remarks;
-              }
-              else {
+              } else {
                 $score = 0;
                 $remark = '';
               }
