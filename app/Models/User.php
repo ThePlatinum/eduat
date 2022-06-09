@@ -43,4 +43,12 @@ class User extends Authenticatable
     'email_verified_at' => 'datetime',
   ];
 
+  public function getFullnameAttribute(){
+    return $this->firstname .' '. $this->lastname .' '. $this->othername;
+  }
+
+  protected $appends = [
+    'fullname'
+  ];
+
 }
