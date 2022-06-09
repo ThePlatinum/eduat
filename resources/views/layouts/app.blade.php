@@ -75,7 +75,7 @@
           </li>
           @endhasrole
 
-          @hasrole('Student|Teacher')
+          @hasrole('Student')
           <li class="nav-link">
             <a href="/reports">
               <i class='bx bx-pie-chart-alt icon'></i>
