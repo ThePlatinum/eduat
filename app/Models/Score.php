@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Score extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'assessment_id', 'user_id', 'score', 'remarks'
+    ];
 }
