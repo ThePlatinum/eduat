@@ -111,12 +111,13 @@
               <td> {{ date_format($assessments->assessed_at, 'd, D M, Y') }} </td>
               <td> {{$assessments->title}} </td>
               <td> {{$assessments->grade_point}} </td>
-              <td> 18 </td>
-              <td> 18 </td>
-              <td> 10 </td>
+              <td> {{$assessments->highest_score}} </td>
+              <td> {{$assessments->average_score}}  </td>
+              <td> {{$assessments->lowest_score}} </td>
               <td>
                 <a href="{{ route('gradingview', $assessments->id ) }}" class="btn btn-primary btn-sm">
-                  <i class='bx bx-show'></i></a>
+                  <i class='bx bx-show'></i>
+                </a>
               </td>
             </tr>
             @empty
@@ -146,7 +147,7 @@
           @forelse($subject->class->students as $student)
           <tr>
             <td>{{ $loop->index + 1 }}</td>
-            <td> {{$student->lastname}} {{$student->firstname}} {{$student->othername ?? ''}} </td>
+            <td> {{$student->fullname }} </td>
             <td> {{$student->email ?? ''}} </td>
             <td> {{$student->phone ?? ''}} </td>
             <td>
