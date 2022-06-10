@@ -5,6 +5,7 @@ use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\KlassController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\SubjectController;
@@ -37,7 +38,7 @@ Route::GET('dashboard', [DashboardController::class, 'index'])->name('dashboard'
 Route::GET('accounts', [AccountsController::class, 'index'])->name('accounts');
 Route::GET('items', [ItemsController::class, 'items'])->name('items');
 Route::GET('classes', [KlassController::class, 'index'])->name('classes');
-Route::GET('reports', [DashboardController::class, 'index'])->name('reports');
+Route::GET('reports', [ReportsController::class, 'index'])->name('reports');
 Route::GET('teachers', [TeachersController::class, 'teachers']);
 Route::GET('students', [StudentsController::class, 'students'])->name('students');
 Route::GET('profile',  [UserController::class, 'profile'])->name('profile');
@@ -59,7 +60,7 @@ Route::POST('classes/subject/editsubject', [KlassController::class, 'editsubject
 // Students
 Route::GET('students/admission', [StudentsController::class, 'newstudent'])->name('newstudent');
 Route::POST('admission', [StudentsController::class, 'admission'])->name('admission');
-// Route::GET('students/view/{user_id}', [StudentsController::class, 'viewstudent'])->name('viewstudent');
+Route::GET('report/view/{subject_id}', [ReportsController::class, 'subjectreport'])->name('subjectreport');
 
 // Teachers
 Route::GET('teachers/new', [TeachersController::class, 'newteacher'])->name('newteacher');
