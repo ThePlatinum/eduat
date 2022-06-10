@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\ClassTeacher;
+use App\Models\Klass;
 use App\Models\Settings;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -21,6 +23,7 @@ class DatabaseSeeder extends Seeder
     $this->call([
       RolesAndPermissionsSeeder::class,
       ClassSeeder::class,
+      StudentSeeder::class,
     ]);
 
     // Create super admin
@@ -47,6 +50,45 @@ class DatabaseSeeder extends Seeder
 
     $user->assignRole('Accountant');
 
+    // Create Teacher
+    $user = User::create([
+      'firstname' => 'Eduat',
+      'lastname'  => 'Teacher',
+      'othername' => 'User',
+      'email'     => 'teacher@eduat.com',
+      'phone'     => '07085781787',
+      'password'  => Hash::make('12345678'),
+      'created_at'=> now(),
+    ]);
+
+    $user->assignRole('Teacher');
+
+    // Create Student
+    $user = User::create([
+      'firstname' => 'Eduat',
+      'lastname'  => 'Student',
+      'othername' => 'User',
+      'email'     => 'student@eduat.com',
+      'phone'     => '+2347098765432',
+      'klass_id'  => Klass::all()->random()->id,
+      'password'  => Hash::make('12345678'),
+      'created_at'=> now(),
+    ]);
+
+    $user->assignRole('Student');
+
+    // Assign Class Teachers
+    $teachers = User::role('Teacher')->get();
+    $classes = Klass::where('id', '>', 1)->get();
+    foreach ($classes as $class ) {
+      $i = 1;
+      ClassTeacher::create([
+        'class_id' => $class->id,
+        'teacher_id' => $teachers[$i]->id,
+      ]);
+      $i++;
+    }
+
     // Set School name
     Settings::create([
       'name' => 'school_name',
@@ -57,6 +99,12 @@ class DatabaseSeeder extends Seeder
     Settings::create([
       'name' => 'sessions',
       'value' => 3
+    ]);
+
+    $this->call([
+      SubjectsSeeder::class,
+      AssessmentsSeeder::class,
+      ScoreSeeder::class,
     ]);
   }
 }
