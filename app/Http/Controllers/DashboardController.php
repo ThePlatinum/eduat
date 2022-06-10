@@ -44,19 +44,17 @@ class DashboardController extends Controller
     } else if (Auth()->user()->roles[0]->name == 'Teacher') {
       $teaches = Subjects::with('class')->where('teacher_id', $_id)->get();
       $all_students = 0;
-      // foreach ($teaches as $teach) {
-      //   $allstudents[] = $teach->class->students;
-      // }
-      // // $allstudents = array_unique($allstudents);
-      // $flatten_array = array();
-      // foreach ($allstudents as $value) {
-      //   array_push($flatten_array, $value);
-      // }
-      // // dd($allstudents);
-      // $all_students = sizeof($flatten_array);
-      foreach ($teaches as $subject) {
-        $all_students += $subject->class->student_count;
+      foreach ($teaches as $teach) {
+        $allstudents[] = $teach->class->students;
       }
+      $allstudents = array_unique($allstudents);
+      $flatten_array = [];
+      foreach ($allstudents as $value) {
+        foreach ($value as $val ) {
+          $flatten_array[] = $val;
+        }
+      }
+      $all_students = sizeof($flatten_array);
       return view('dashboard.index', compact('teaches', 'all_students'));
     } else if (Auth()->user()->roles[0]->name == 'Accountant') {
       return view('dashboard.index', compact('counts'));
