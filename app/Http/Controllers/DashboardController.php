@@ -41,24 +41,26 @@ class DashboardController extends Controller
     if (Auth()->user()->roles[0]->name == 'Student') {
       $curentclass = Klass::with('subjects', 'teacher')->find(Auth()->user()->klass_id);
       return view('dashboard.index', compact('curentclass'));
-    }
-    else if (Auth()->user()->roles[0]->name == 'Teacher') {
+    } else if (Auth()->user()->roles[0]->name == 'Teacher') {
       $teaches = Subjects::with('class')->where('teacher_id', $_id)->get();
-      // $allstudents = [];
-      foreach ($teaches as $teach) {
-        $allstudents[] = $teach->class->students;
-      }
-      $all_students = sizeof($allstudents) ;
-      // dd($allstudents);
-      // foreach ($teaches as $subject) {
-      //   $all_students += $subject->class->student_count;
+      $all_students = 0;
+      // foreach ($teaches as $teach) {
+      //   $allstudents[] = $teach->class->students;
       // }
+      // // $allstudents = array_unique($allstudents);
+      // $flatten_array = array();
+      // foreach ($allstudents as $value) {
+      //   array_push($flatten_array, $value);
+      // }
+      // // dd($allstudents);
+      // $all_students = sizeof($flatten_array);
+      foreach ($teaches as $subject) {
+        $all_students += $subject->class->student_count;
+      }
       return view('dashboard.index', compact('teaches', 'all_students'));
-    }
-    else if (Auth()->user()->roles[0]->name == 'Accountant'){
+    } else if (Auth()->user()->roles[0]->name == 'Accountant') {
       return view('dashboard.index', compact('counts'));
-    }
-    else
+    } else
       return view('dashboard.index', compact('counts'));
   }
 }

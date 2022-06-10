@@ -10,8 +10,7 @@ class Assessment extends Model
   use HasFactory;
 
   protected $fillable = [
-    'subject_id', 'class_id',
-    'type', 'cesion_id', 'term_id',
+    'subject_id', 'type', 'cesion_id', 'term_id',
     'title', 'grade_point', 'assessed_at'
   ];
 
