@@ -13,7 +13,7 @@
 <div class="table-responsive pt-2">
   <table class="table">
     <tr class="bg-light">
-      <th scope="col">Id</th>
+      <th scope="col"></th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
@@ -24,11 +24,11 @@
     <tbody>
       @forelse($students as $student)
       <tr>
-        <td></td>
-        <td class="name">{{$student->lastname}} {{$student->firstname}} {{$student->othername ?? ''}} </td>
+        <td> {{$loop->index + 1}} </td>
+        <td class="name">{{$student->fullname}}</td>
         <td> {{$student->email ?? ''}} </td>
         <td> {{$student->phone ?? ''}} </td>
-        <td> JSS 1 </td>
+        <td> {{$student->class->name ?? ''}}  </td>
         <td>
           <a href="{{ route('viewprofile', $student->id ) }}" class="btn btn-primary btn-sm">
             <i class='bx bx-show'></i></a>

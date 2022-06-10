@@ -9,7 +9,7 @@
         <span class="role my-3">{{$user->gender ?? 'Not Provided'}}</span>
         <span class="role my-3">{{$user->roles->pluck('name')[0]}}</span>
       </div>
-      <h4> {{$user->lastname}} {{$user->firstname}} {{$user->othername ?? 'Not Provided'}} </h4>
+      <h4> {{$user->fullname}}</h4>
       <div class="d-flex gap-2">
         <a href=" {{ route('editprofile') }} " class="btn btn-primary btn-sm"> Edit Profile </a>
         <input type="button" value="Change Avater" class="btn btn-primary btn-sm">
@@ -27,12 +27,9 @@
 
       <p>Address</p>
       {{$user->address ?? 'Not Provided'}}
-      <!-- No.3 Valley View Estate, Akute. Ogba, Lagos -->
 
       <p>Bio</p>
       {{$user->bio ?? 'Not Provided'}}
-      <!-- I don't really have a lot to say about myself for now,
-          just know that I love Efunckule Oluwaseyin, "EWA mi". -->
 
     </div>
   </div>
