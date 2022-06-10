@@ -16,7 +16,7 @@
       <input id="class" type="class" value="{{$class->id ?? ''}}" name="class" hidden>
 
       <div class="col py-2">
-        <label for="name" class="col-md-4 col-form-label">{{ __('Class Name') }}</label>
+        <label for="name" class="col-form-label">{{ __('Class Name') }}</label>
         <input id="name" type="name" value="{{$class->name ?? ''}}" class="form-control @error('name') is-invalid @enderror" name="name" required autofocus>
         @error('name')
         <span class="invalid-feedback" role="alert">
@@ -26,7 +26,7 @@
       </div>
 
       <div class="col py-2">
-        <label for="fee" class="col-md-4 col-form-label ">{{ __('Fees') }}</label>
+        <label for="fee" class="col-form-label ">{{ __('Fees') }}</label>
 
         <div class="row px-1">
           @foreach(range( 1, $session ) as $fee)
@@ -44,7 +44,7 @@
       </div>
 
       <div class="col py-2">
-        <label for="teacher" class="col-md-4 col-form-label ">{{ __('Class Teacher') }}</label>
+        <label for="teacher" class="col-form-label ">{{ __('Class Teacher') }}</label>
         <select id="teacher" value="{{ $class->teacher->id ?? '' }}" class="form-control @error('teacher') is-invalid @enderror" name="teacher">
           <option value="">Select Teacher</option>
           @foreach($teachers as $teacher)

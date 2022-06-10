@@ -54,7 +54,7 @@
                       <input id="subject" type="subject" class="form-control" value=" {{ $subject->id }} " name="subject" hidden>
 
                       <div class="col-12 py-2">
-                        <label for="name" class="col-md-4 col-form-label ">{{ __('Subject Name') }}</label>
+                        <label for="name" class="col-form-label ">{{ __('Subject Name') }}</label>
                         <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name" required autofocus autocomplete="name" value=" {{$subject->name}} ">
                         @error('name')
                         <span class="invalid-feedback" role="alert">
@@ -64,7 +64,7 @@
                       </div>
 
                       <div class="col-12 py-2">
-                        <label for="teacher" class="col-md-4 col-form-label ">{{ __('Assign Teacher') }}</label>
+                        <label for="teacher" class="col-form-label ">{{ __('Assign Teacher') }}</label>
                         <select id="teacher" type="teacher" class="form-control @error('teacher') is-invalid @enderror" name="teacher" autofocus autocomplete="teacher" value="{{ $subject->teacher->id }}">
                           @foreach ($teachers as $teacher)
                           <option value="{{ $teacher->id }}"> {{$teacher->lastname}} {{$teacher->firstname}} {{$teacher->othername ?? ''}} </option>
@@ -150,7 +150,7 @@
           <input id="class" type="class" class="form-control" value=" {{ $class->id }} " name="class" hidden>
 
           <div class="col-12 py-2">
-            <label for="name" class="col-md-4 col-form-label ">{{ __('Subject Name') }}</label>
+            <label for="name" class="col-form-label ">{{ __('Subject Name') }}</label>
             <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name" required autofocus autocomplete="name">
             @error('name')
             <span class="invalid-feedback" role="alert">
@@ -160,7 +160,7 @@
           </div>
 
           <div class="col-12 py-2">
-            <label for="teacher" class="col-md-4 col-form-label ">{{ __('Assign Teacher') }}</label>
+            <label for="teacher" class="col-form-label ">{{ __('Assign Teacher') }}</label>
             <select id="teacher" type="teacher" class="form-control @error('teacher') is-invalid @enderror" name="teacher" autofocus autocomplete="teacher">
               <option value=""> Select Teacher </option>
               @foreach ($teachers as $teacher)

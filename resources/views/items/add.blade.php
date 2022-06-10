@@ -27,7 +27,7 @@
           <input id="item" type="class" value="{{$item->id ?? ''}}" name="item_id" hidden>
 
           <div class="col py-2">
-            <label for="name" class="col-md-4 col-form-label">{{ __('Item Name') }}</label>
+            <label for="name" class="col-form-label">{{ __('Item Name') }}</label>
             <input id="name" type="name" value="{{$item->name ?? '' }}" class="form-control @error('name') is-invalid @enderror" name="name" required autofocus>
             @error('name')
             <span class="invalid-feedback" role="alert">
@@ -37,7 +37,7 @@
           </div>
 
           <div class="col py-2">
-            <label for="price" class="col-md-4 col-form-label">{{ __('Price') }}</label>
+            <label for="price" class="col-form-label">{{ __('Price') }}</label>
             <div class="d-flex">
               <a class="btn"> N </a>
               <input id="price" type="number" value="{{$item->price ?? '' }}" class="flex-grow-1 form-control @error('price') is-invalid @enderror" name="price" required autofocus>
@@ -50,7 +50,7 @@
           </div>
 
           <div class="col py-2">
-            <label for="" class="col-md-4 col-form-label ">{{ __('Classes item is compulsory for:') }}</label>
+            <label for="" class="col-form-label ">{{ __('Classes item is compulsory for:') }}</label>
             <div class="row px-3">
               @foreach($classes as $class)
               <div class="col-md-3">
@@ -67,7 +67,7 @@
           </div>
 
           <div class="col py-2">
-            <label for="desc" class="col-md-4 col-form-label">{{ __('Description') }}</label>
+            <label for="desc" class="col-form-label">{{ __('Description') }}</label>
             <textarea id="desc" class="flex-grow-1 form-control @error('desc') is-invalid @enderror" name="desc" autofocus>{{$item->description ?? '' }}</textarea>
             @error('desc')
             <span class="invalid-feedback" role="alert">

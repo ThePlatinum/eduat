@@ -34,6 +34,7 @@
 
         <div class="col-md-6">
           <h3>{{$assessment->title}}</h3>
+          <h5>Grade Point: {{$assessment->grade_point}}</h5>
           <h6>{{$assessment->type}} | {{$assessment->assessed_at}}</h6>
           <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit_assessment">Edit Assessment</a>
 
@@ -50,7 +51,7 @@
                     @csrf
                     <input value="{{$assessment->id ?? ''}}" name="assessment_id" hidden>
                     <div class="col-12 py-2">
-                      <label for="title" class="col-md-4 col-form-label ">{{ __('Title') }}</label>
+                      <label for="title" class="col-form-label ">{{ __('Title') }}</label>
                       <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{$assessment->title}}" autofocus placeholder="e.g Test on Topic 1">
                       @error('title')
                       <span class="invalid-feedback" role="alert">
@@ -60,7 +61,7 @@
                     </div>
                     <div class="row">
                       <div class="col-6 py-2">
-                        <label for="grade_point" class="col-md-4 col-form-label ">{{ __('Grade Point') }}</label>
+                        <label for="grade_point" class="col-form-label ">{{ __('Grade Point') }}</label>
                         <input id="grade_point" type="text" class="form-control @error('grade_point') is-invalid @enderror" name="grade_point" value="{{$assessment->grade_point}}" autofocus>
                         @error('grade_point')
                         <span class="invalid-feedback" role="alert">
@@ -69,7 +70,7 @@
                         @enderror
                       </div>
                       <div class="col-6 py-2">
-                        <label for="assessed_at" class="col-md-4 col-form-label ">{{ __('Assessed At') }}</label>
+                        <label for="assessed_at" class="col-form-label ">{{ __('Assessed At') }}</label>
                         <input id="assessed_at" type="date" class="form-control @error('assessed_at') is-invalid @enderror" name="assessed_at" value="{{$assessment->assessed_at}}" autofocus>
                         @error('assessed_at')
                         <span class="invalid-feedback" role="alert">
@@ -79,7 +80,7 @@
                       </div>
                     </div>
                     <div class="col-12 py-2">
-                      <label for="type" class="col-md-4 col-form-label ">{{ __('Type') }}</label>
+                      <label for="type" class="col-form-label ">{{ __('Type') }}</label>
                       <select id="type" class="form-control @error('type') is-invalid @enderror" name="type" value="{{$assessment->type}}" autofocus>
                         <option value="">Select Type</option>
                         <option value="quiz">Quiz</option>

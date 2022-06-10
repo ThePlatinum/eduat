@@ -103,7 +103,7 @@
                 <input value="{{$student_id ?? ''}}" name="student_id" hidden>
 
                 <div class="col-12 py-2">
-                  <label for="receipt_number" class="col-md-4 col-form-label ">{{ __('Receipt Number') }}</label>
+                  <label for="receipt_number" class="col-form-label ">{{ __('Receipt Number') }}</label>
                   <input id="receipt_number" type="text" class="form-control @error('receipt_number') is-invalid @enderror" name="receipt_number" autofocus>
                   @error('receipt_number')
                   <span class="invalid-feedback" role="alert">
@@ -113,7 +113,7 @@
                 </div>
 
                 <div class="col-12 py-2">
-                  <label for="ammount" class="col-md-4 col-form-label ">{{ __('Ammount') }}</label>
+                  <label for="ammount" class="col-form-label ">{{ __('Ammount') }}</label>
                   <input id="ammount" type="number" class="form-control @error('ammount') is-invalid @enderror" name="ammount" required autofocus>
                   @error('ammount')
                   <span class="invalid-feedback" role="alert">
@@ -123,7 +123,7 @@
                 </div>
 
                 <div class="col-12 py-2">
-                  <label for="paydate" class="col-md-4 col-form-label ">{{ __('Paid on') }}</label>
+                  <label for="paydate" class="col-form-label ">{{ __('Paid on') }}</label>
                   <input id="paydate" type="date" class="form-control @error('paydate') is-invalid @enderror" name="paydate" required autofocus>
                   @error('paydate')
                   <span class="invalid-feedback" role="alert">
@@ -133,7 +133,7 @@
                 </div>
 
                 <div class="col-12 py-2">
-                  <label for="note" class="col-md-4 col-form-label ">{{ __('Note') }}</label>
+                  <label for="note" class="col-form-label ">{{ __('Note') }}</label>
                   <input id="note" type="text" class="form-control @error('note') is-invalid @enderror" name="note" autofocus>
                   @error('note')
                   <span class="invalid-feedback" role="alert">

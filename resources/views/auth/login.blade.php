@@ -12,7 +12,7 @@
           <form method="POST" action="{{ route('login') }}" class=" p-3">
             @csrf
             <div class="col py-2">
-              <label for="email" class="col-md-4 col-form-label">{{ __('Email Address') }}</label>
+              <label for="email" class="col-form-label">{{ __('Email Address') }}</label>
               <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
               @error('email')
@@ -23,7 +23,7 @@
             </div>
 
             <div class="col py-2">
-              <label for="password" class="col-md-4 col-form-label ">{{ __('Password') }}</label>
+              <label for="password" class="col-form-label ">{{ __('Password') }}</label>
               <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
               @error('password')

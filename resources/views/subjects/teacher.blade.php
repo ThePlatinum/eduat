@@ -36,7 +36,7 @@
                   <input value="{{$subject->id ?? ''}}" name="subject_id" hidden>
 
                   <div class="col-12 py-2">
-                    <label for="title" class="col-md-4 col-form-label ">{{ __('Title') }}</label>
+                    <label for="title" class="col-form-label ">{{ __('Title') }}</label>
                     <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" autofocus placeholder="e.g Test on Topic 1">
                     @error('title')
                     <span class="invalid-feedback" role="alert">
@@ -47,7 +47,7 @@
 
                   <div class="row">
                     <div class="col-6 py-2">
-                      <label for="grade_point" class="col-md-4 col-form-label ">{{ __('Grade Point') }}</label>
+                      <label for="grade_point" class="col-form-label ">{{ __('Grade Point') }}</label>
                       <input id="grade_point" type="text" class="form-control @error('grade_point') is-invalid @enderror" name="grade_point" autofocus>
                       @error('grade_point')
                       <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="col-6 py-2">
-                      <label for="assessed_at" class="col-md-4 col-form-label ">{{ __('Assessment Date') }}</label>
+                      <label for="assessed_at" class="col-form-label ">{{ __('Assessment Date') }}</label>
                       <input id="assessed_at" type="date" class="form-control @error('assessed_at') is-invalid @enderror" name="assessed_at" autofocus>
                       @error('assessed_at')
                       <span class="invalid-feedback" role="alert">
@@ -68,7 +68,7 @@
                   </div>
 
                   <div class="col-12 py-2">
-                    <label for="type" class="col-md-4 col-form-label ">{{ __('Assessment Type') }}</label>
+                    <label for="type" class="col-form-label ">{{ __('Assessment Type') }}</label>
                     <select id="type" class="form-control @error('type') is-invalid @enderror" name="type" autofocus>
                       <option value="">Select Type</option>
                       <option value="quiz">Quiz</option>
