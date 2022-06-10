@@ -16,6 +16,8 @@
   <script src="{{asset('bootstrap5.1.3/bootstrap.bundle.min.js')}}"></script>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href="{{ asset('css/components.css') }}" rel="stylesheet">
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body>
