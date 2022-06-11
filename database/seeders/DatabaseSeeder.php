@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder
       'othername' => 'User',
       'email'     => 'student@eduat.com',
       'phone'     => '+2347098765432',
-      'klass_id'  => Klass::all()->random()->id,
+      'klass_id'  => Klass::all()->random()->id +1,
       'password'  => Hash::make('12345678'),
       'created_at'=> now(),
     ]);
@@ -105,6 +105,7 @@ class DatabaseSeeder extends Seeder
       SubjectsSeeder::class,
       AssessmentsSeeder::class,
       ScoreSeeder::class,
+      ItemsSeeder::class,
     ]);
   }
 }
