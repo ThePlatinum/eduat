@@ -48,7 +48,7 @@
         <select id="teacher" value="{{ $class->teacher->id ?? '' }}" class="form-control @error('teacher') is-invalid @enderror" name="teacher">
           <option value="">Select Teacher</option>
           @foreach($teachers as $teacher)
-          <option value="{{ $teacher->id }}">{{$teacher->lastname}} {{$teacher->firstname}} {{$teacher->othername ?? ''}}</option>
+          <option value="{{ $teacher->id }}">{{$teacher->fullname ?? ''}}</option>
           @endforeach
         </select>
 
