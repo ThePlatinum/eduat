@@ -1,32 +1,43 @@
 Welcome {{ Auth()->user()->firstname }}
 
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawVisualization);
+<script type="text/javascript">
+  google.charts.load('current', {
+    'packages': ['corechart']
+  });
+  google.charts.setOnLoadCallback(drawVisualization);
 
-      function drawVisualization() {
-        var data = google.visualization.arrayToDataTable([
-          ['Subject', 'Your Score', 'Possible Score', 'Average'],
-          <?php echo $subject_performance; ?>
-        ]);
+  function drawVisualization() {
+    var data = google.visualization.arrayToDataTable([
+      ['Subject', 'Your Score', 'Possible Score', 'Average'],
+      <?php echo $subject_performance; ?>
+    ]);
 
-        var options = {
-          title : 'Your Performance in each subjects',
-          vAxis: {title: 'Score'},
-          hAxis: {title: 'Subjects'},
-          seriesType: 'bars',
-          series: {2: {type: 'line'}},
-          animation: {
-            easing: 'linear',
-            duration: 2000,
-          }
-        };
+    var options = {
+      title: 'Your Performance in each subjects',
+      vAxis: {
+        title: 'Score'
+      },
+      hAxis: {
+        title: 'Subjects'
+      },
+      seriesType: 'bars',
+      series: {
+        2: {
+          type: 'line'
+        }
+      },
+      animation: {
+        duration: 1500,
+        easing: 'out',
+        startup: true
+      },
+      colors: ['#ee8100', '#9575cd', '#CECEA7'],
+    };
 
-        var chart = new google.visualization.ComboChart(document.getElementById('subjects_chart'));
-        chart.draw(data, options);
-      }
-    </script>
-
+    var chart = new google.visualization.ComboChart(document.getElementById('subjects_chart'));
+    chart.draw(data, options);
+  }
+</script>
 
 <div class="row py-3">
   <div class="col-md-4">
@@ -81,5 +92,5 @@ Welcome {{ Auth()->user()->firstname }}
 </div>
 
 <div class="row pt-3">
-  <div id="subjects_chart" style="width: 100%; height: 90vh;" ></div>
+  <div id="subjects_chart" style="width: 100%; height: 90vh;"></div>
 </div>
