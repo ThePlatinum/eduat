@@ -16,23 +16,18 @@ class ItemsController extends Controller
   {
     $items = Items::all();
     if ( Auth()->user()->roles[0]->name == 'Accountant' )
-      return view('components.items', compact('items'));
+      return view('items.accountant', compact('items'));
     else
       return view('items.students', compact('items'));
   }
 
   public function create(Request $request)
   {
-    $classfor = '"';
-    foreach ($request->classfor as $for) {
-      $classfor .= $for.',';
-    }
-    $classfor .= '"' ;
     Items::create([
       'name' => $request->name,
       'description' => $request->desc,
       'price' => $request->price,
-      'class_for' => $classfor
+      'class_for' => $request->classfor
     ]);
 
     return back()->with('message', 'Item added successfully');
@@ -53,11 +48,6 @@ class ItemsController extends Controller
 
   public function edit(Request $request)
   {
-    $classfor = '"';
-    foreach ($request->classfor as $for) {
-      $classfor .= $for.',';
-    }
-    $classfor .= '"' ;
     $item = Items::find($request->item_id);
     $item->name = $request->name;
     $item->description = $request->desc;
@@ -73,7 +63,6 @@ class ItemsController extends Controller
     Items::where('id',$item_id)->delete();
     return back()->with('message', 'Item deleted successfully');
   }
-
 
   public function createstudentitem(Request $request){
     $student_id = Auth()->user()->id;
