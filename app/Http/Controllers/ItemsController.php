@@ -66,12 +66,12 @@ class ItemsController extends Controller
 
   public function createstudentitem(Request $request){
     $student_id = Auth()->user()->id;
-    $student = User::where('id',$student_id)->with('class')->get();
-    $class = $student[0]->class[0];
+    $class = User::where('id',$student_id)->with('class')->first()->class;
+    
     Studentitems::updateOrCreate([
       'student_id' => $student_id,
       'item_id' => $request->item_id,
-      'class_id' => $class->class_id,
+      'class_id' => $class->id,
     ]);
     return back()->with('message', 'Item added to your list successfully');
   }
