@@ -15,11 +15,11 @@
       <div>
       <div class="d-flex justify-content-between">
         <p>{{$item->description}}</p>
-        <p class="text-end"><span class="price btn-danger"> &#8358;{{$item->price}} </span></p>
+        <h6 class="text-end"><span class="price btn-danger"> &#8358;{{$item->price}} </span></h6>
       </div>
-      For Class<small>(s)</small>:
-        <br>
         <p>
+          For Class<small>(s)</small>:
+          <br>
         @if (is_array($item->class_for))
           @foreach ($item->class_for as $c)
             @php

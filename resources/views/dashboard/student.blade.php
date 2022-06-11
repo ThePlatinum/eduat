@@ -47,7 +47,7 @@ Welcome {{ Auth()->user()->firstname }}
       <h3 class="p-2"> {{$curentclass->name}} | Term 2 </h3>
       <div class="row p-2">
         <div class="col-md-8">
-          Class Teacher: <br> <span>{{$curentclass->teacher->fullname}}</span>
+          Class Teacher: <br> <span>{{$curentclass->teacher->fullname ?? 'Class Teacher not Set'}}</span>
         </div>
         <div class="col-md-4 text-end d-flex flex-column justify-content-center">
           Contact:
