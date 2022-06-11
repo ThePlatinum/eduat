@@ -30,6 +30,11 @@
 
     body {
       height: 100vh !important;
+      background-color: #131827;
+    }
+
+    .footer {
+      color: #FFFFFF;
     }
 
     .authcard {
@@ -44,7 +49,7 @@
     <div style="padding-top: 5%;">
       @yield('content')
     </div>
-    <div class="p-3">
+    <div class="footer p-3">
       <hr>
       <div class="d-flex justify-content-between credit">
         EduAT
