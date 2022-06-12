@@ -66,7 +66,7 @@ Welcome {{ Auth()->user()->firstname }}
       <hr />
       <div class="row px-2">
         <div class="col-md-7">
-          <h5 class="text-center dashboardcounts"> {{ $curentclass->subjects->count() }} </h5>
+          <h5 class="text-center dashboardcounts">{{$curentclass->subjects->count()}}</h5>
         </div>
         <div class="col-md-5 text-end d-flex flex-column justify-content-center">
           <a href="{{route('reports')}}" class="btn btn-danger btn-sm">Reports</a>
@@ -84,7 +84,7 @@ Welcome {{ Auth()->user()->firstname }}
           <h3> &#8358;{{Auth()->user()->should_pay}} </h3>
         </div>
         <div class="col-md-5 text-end d-flex flex-column justify-content-center">
-          <a href="#" class="btn btn-danger btn-sm">Accounts</a>
+          <a href="{{route('accounts')}}"" class="btn btn-danger btn-sm">Accounts</a>
         </div>
       </div>
     </div>
@@ -92,5 +92,11 @@ Welcome {{ Auth()->user()->firstname }}
 </div>
 
 <div class="row pt-3">
+  @if (str_word_count($subject_performance) < 1)
+    <div class="text-center p-5 bg-light">
+      No data to display
+    </div>
+  @else
   <div id="subjects_chart" style="width: 100%; height: 90vh;"></div>
+  @endif
 </div>
