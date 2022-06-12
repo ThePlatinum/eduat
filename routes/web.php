@@ -41,12 +41,13 @@ Route::GET('classes', [KlassController::class, 'index'])->name('classes');
 Route::GET('reports', [ReportsController::class, 'index'])->name('reports');
 Route::GET('teachers', [TeachersController::class, 'teachers']);
 Route::GET('students', [StudentsController::class, 'students'])->name('students');
-Route::GET('profile',  [UserController::class, 'profile'])->name('profile');
+Route::GET('profile',  [UserController::class, 'viewprofile'])->name('profile');
 Route::GET('settings',  [SettingsController::class, 'settings'])->name('settings');
 
 // Profile
-Route::GET('profile/edit',  [UserController::class, 'editprofile'])->name('editprofile');
+Route::GET('profile/edit/{user_id}',  [UserController::class, 'editprofile'])->name('editprofile');
 Route::GET('profile/view/{user_id}',  [UserController::class, 'viewprofile'])->name('viewprofile');
+Route::POST('profile/edit',  [UserController::class, 'update'])->name('profileedit');
 
 // Class
 Route::GET('classes/add', [KlassController::class, 'addclass'])->name('addclass');

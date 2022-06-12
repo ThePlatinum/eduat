@@ -7,6 +7,11 @@
   </div>
 
   <div class="page p-3 flex-grow-1">
+    @if(session()->has('message'))
+    <div class="alert alert-success">
+      {{ session()->get('message') }}
+    </div>
+    @endif
     @yield('profile')
   </div>
 </div>

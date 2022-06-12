@@ -17,7 +17,7 @@
     </div>
     <div class="col-md-6 profile p-3">
       <p>Date of Birth</p>
-      {{date_format($user->dob, 'd, D M, Y') ?? 'Not Provided'}}
+      {{$user->dob ? date_format($user->dob, 'd, D M, Y') : 'Not Provided'}}
 
       <p>Phone</p>
       {{$user->phone ?? 'Not Provided'}}
