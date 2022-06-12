@@ -129,7 +129,7 @@
 
                 <div class="col-12 py-2">
                   <label for="ammount" class="col-form-label ">{{ __('Ammount') }}</label>
-                  <input id="ammount" type="number" class="form-control @error('ammount') is-invalid @enderror" name="ammount" required autofocus>
+                  <input id="ammount" type="number"  min='0'class="form-control @error('ammount') is-invalid @enderror" name="ammount" required autofocus>
                   @error('ammount')
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

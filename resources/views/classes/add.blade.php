@@ -32,7 +32,7 @@
           @foreach(range( 1, $session ) as $fee)
           <div class="col-md-4">
             {{$fee}}:
-            <input id="{{$fee}}" type="number" value="{{intval($class->fees[$fee-1])}}" class="form-control @error('fee') is-invalid @enderror" name="fee{{$loop->index+1}}" required>
+            <input id="{{$fee}}" type="number" min='0' value="{{intval($class->fees[$fee-1] ?? '' )}}" class="form-control @error('fee') is-invalid @enderror" name="fee{{$loop->index+1}}" required>
             @error('fee')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>

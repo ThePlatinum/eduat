@@ -33,7 +33,7 @@
           </p>
           <div class="d-flex gap-3">
             <form action="{{route('createstudentitem')}}" method="POST">
-              <input type="number" name="item_id" value="{{$item->id}}" hidden />
+              <input type="number"  min='0'name="item_id" value="{{$item->id}}" hidden />
               @csrf
               <button type="submit" class="btn btn-secondary m-0">Add to my List</button>
             </form>

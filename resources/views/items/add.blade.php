@@ -27,7 +27,7 @@
         <label for="price" class="col-form-label">{{ __('Price') }}</label>
         <div class="d-flex">
           <a class="btn"> &#8358; </a>
-          <input id="price" type="number" value="{{$item->price ?? '' }}" class="flex-grow-1 form-control @error('price') is-invalid @enderror" name="price" required autofocus>
+          <input id="price" type="number"  min='0'value="{{$item->price ?? '' }}" class="flex-grow-1 form-control @error('price') is-invalid @enderror" name="price" required autofocus>
         </div>
         @error('price')
         <span class="invalid-feedback" role="alert">

@@ -65,7 +65,7 @@
 
         <div class="col-md-6 py-2">
           <label for="phone" class="col-form-label ">{{ __('Phone Number')}} <small>(Students/Parents)</small> </label>
-          <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" required autofocus autocomplete="phone">
+          <input id="phone" type="number"  min='0'class="form-control @error('phone') is-invalid @enderror" name="phone" required autofocus autocomplete="phone">
           @error('phone')
           <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>

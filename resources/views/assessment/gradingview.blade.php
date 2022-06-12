@@ -143,7 +143,7 @@
               <tr>
                 <td>{{$student->fullname}}</td>
                 <td>
-                  <a href="" class="update_score" data-name="score" data-type="number" data-pk="{{$student->id}}">{{ $score }}</a>
+                  <a href="" class="update_score" data-name="score" data-type="number"  min='0'data-pk="{{$student->id}}">{{ $score }}</a>
                 </td>
                 <td>
                   <a href="" class="update_remark" data-name="remark" data-type="textarea" data-pk="{{$student->id}}">{{ $remark }}</a>
