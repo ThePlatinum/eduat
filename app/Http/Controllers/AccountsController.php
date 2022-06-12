@@ -32,8 +32,9 @@ class AccountsController extends Controller
       return view('accounts.list', compact('students'));
     } else {
       $payments = Payments::with('class')->where('student_id', Auth()->user()->id)->get();
+      $student = Auth()->user();
       $per_classes = $this->studentAccount(Auth()->user()->id);
-      return view('accounts.student', compact('per_classes','payments'));
+      return view('accounts.student', compact('student', 'per_classes','payments'));
     }
   }
 
@@ -42,6 +43,18 @@ class AccountsController extends Controller
     $student = User::with('studentclasses')->find($student_id);
     $classes = $student->studentclasses;
 
+    $per_classes = $this->studentAccount($student_id);
+
+    $payments = Payments::with('class')->where('student_id', $student_id)->get();
+    return view('accounts.student', compact('student', 'per_classes', 'payments'));
+  }
+
+  public function studentAccount($student_id)
+  {
+
+    $student = User::with('studentclasses')->find($student_id);
+    $classes = $student->studentclasses;
+    
     $per_classes = [];
     foreach ($classes as $klass) {
       $clss = Klass::where('id', $klass->class_id)->first();
@@ -61,32 +74,7 @@ class AccountsController extends Controller
         'items_total' => $cost,
       ];
     }
-
-    $payments = Payments::with('class')->where('student_id', $student_id)->get();
-    return view('accounts.student', compact('student', 'per_classes', 'payments'));
-  }
-
-  public function studentAccount($student_id)
-  {
-    $studentClasses = StudentClasses::where('student_id',$student_id)->get();
-    $fee_per_classes = [];
-    $tution = 0;
-    foreach ($studentClasses as $student) {
-      $items = Studentitems::where('student_id', $student_id)
-        ->where('class_id', $student->class_id)
-        ->get();
-      $theItems = [];
-      $itemtotal = 0;
-      foreach ($items as $item) {
-        $it = Items::find($item->item_id);
-        $theItems[] = $it;
-        $itemtotal = $itemtotal + $it->price;
-      }
-      $classes = Klass::find($student->class_id);
-      $tution = $tution + array_sum($classes->fees);
-      $fee_per_classes[] = ['items'=>$theItems, 'class'=>$classes, 'itemtotal'=>$itemtotal, 'tution'=>$tution];
-    }
-    return $fee_per_classes;
+    return $per_classes;
   }
 
   public function storepayment(Request $request){
