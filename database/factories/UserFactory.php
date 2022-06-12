@@ -24,8 +24,9 @@ class UserFactory extends Factory
       'phone' => $this->faker->phoneNumber(),
       'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
       'remember_token' => Str::random(10),
-      'gender' => $this->faker->randomElement(['m','f']),
+      'gender' => $this->faker->randomElement(['Male','Female']),
       'dob' => $this->faker->dateTimeBetween('-20 years', '-3 years'),
+      'address' => $this->faker->streetAddress(),
       'klass_id' => Klass::all()->random()->id
     ];
   }
