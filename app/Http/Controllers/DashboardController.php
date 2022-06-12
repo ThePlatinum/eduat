@@ -49,7 +49,9 @@ class DashboardController extends Controller
           $grade_point += $assessment->grade_point;
           $user_score += $assessment->scores()->where('user_id', $_id)->first()->score;
         }
-        $subject_performance .= "['".$subject->name."',".$user_score.",".$grade_point.",".(($user_score / $grade_point) * 100)."],";
+        if ($grade_point == 0) $subject_performance = "";
+        else
+          $subject_performance .= "['".$subject->name."',".$user_score.",".$grade_point.",".(($user_score / $grade_point) * 100)."],";
       }
       
       return view('dashboard.index', compact('curentclass', 'subject_performance'));
