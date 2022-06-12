@@ -36,7 +36,12 @@ class Klass extends Model
     return $this->students()->count();
   }
 
+  public function getFeesSumAttribute()
+  {
+    return array_sum($this->fees); 
+  }
+
   protected $appends = [
-    'student_count'
+    'student_count', 'fees_sum'
   ];
 }

@@ -81,7 +81,7 @@ Welcome {{ Auth()->user()->firstname }}
       <hr />
       <div class="row p-2">
         <div class="col-md-7">
-          <h3> &#8358; 23,456</h3>
+          <h3> &#8358;{{Auth()->user()->should_pay}} </h3>
         </div>
         <div class="col-md-5 text-end d-flex flex-column justify-content-center">
           <a href="#" class="btn btn-danger btn-sm">Accounts</a>

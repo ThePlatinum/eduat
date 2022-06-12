@@ -47,12 +47,56 @@ class User extends Authenticatable
     return $this->firstname .' '. $this->lastname .' '. $this->othername;
   }
 
-  protected $appends = [
-    'fullname'
-  ];
-
   public function class(){
     return $this->belongsTo(Klass::class, 'klass_id');
   }
+
+  public function payments(){
+    return $this->hasMany(Payments::class, 'student_id');
+  }
+
+  public function items(){
+// projects user->id
+//  id - integer, name - string
+// environments studentitems->student_id
+//  id - integer, project_id - integer, name - string
+// deployments items->item_id
+//  id - integer, environment_id - integer, commit_hash - string
+// $this->hasManyThrough(
+//   Deployment::class,
+//   Environment::class,
+//   'project_id', // Foreign key on the environments table...
+//   'environment_id', // Foreign key on the deployments table...
+//   'id', 'id' 
+    return $this->hasManyThrough(Items::class, Studentitems::class, 'student_id', 'id', 'id', 'item_id');
+  }
+
+  public function getPaidAttribute(){
+    return $this->payments()->sum('ammount');
+  }
+
+  public function studentclasses(){
+    return $this->hasMany(StudentClasses::class, 'student_id');
+  }
+
+  public function sums(){
+    $classes = $this->studentclasses()->get();
+    $fees_sum = 0;
+    foreach ($classes as $class ) {
+      $c = Klass::find($class->class_id);
+      $fees_sum += $c->fees_sum;
+    }
+    return $fees_sum;
+  }
+
+  public function getShouldPayAttribute(){
+    $items_costs = $this->items()->sum('price');
+    $class_cost = $this->sums();
+    return ($items_costs + $class_cost) - $this->paid;
+  }
+
+  protected $appends = [
+    'fullname', 'paid', 'should_pay'
+  ];
 
 }
