@@ -11,13 +11,6 @@
 
   <div class="row mt-3 p-4 bg-light ">
 
-    @if(session()->has('message'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      {{ session()->get('message') }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    @endif
-
     <div class="col-md-6">
       <h2> {{$class->name}} </h2>
       Class Teacher: <span> {{$class['teacher']->lastname ?? "No teacher Assigned"}} {{$class['teacher']->firstname ?? '' }} {{$class['teacher']->othername ?? ''}} </span>
