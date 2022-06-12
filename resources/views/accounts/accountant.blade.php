@@ -27,6 +27,8 @@
         Total Outstandings
         <hr />
         <div class="text-center dashboardcounts">
+          {{$outstanding['balance']}}
+          <h6> {{$outstanding['defaulters']}} Defaulters </h6>
         </div>
       </div>
     </div>

@@ -24,10 +24,6 @@ class AccountsController extends Controller
    */
   public function index()
   {
-    //
-    // $items = Items::all()->count();
-    // return view('components.dashboard', compact('items'));
-
     if (Auth()->user()->roles[0]->name == 'Accountant') {
       $students = User::with('class')->whereHas("roles", function ($q) {
         $q->where("name", "Student");

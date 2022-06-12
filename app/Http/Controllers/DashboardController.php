@@ -71,7 +71,20 @@ class DashboardController extends Controller
       return view('dashboard.index', compact('teaches', 'all_students'));
     }
     else if (Auth()->user()->roles[0]->name == 'Accountant') {
-      return view('dashboard.index', compact('counts'));
+      $all_students = User::whereHas("roles", function ($q) {
+        $q->where("name", "Student");
+      })->get();
+      $outstanding = [];
+      $balance = 0;
+      $defaulters = 0;
+      foreach ($all_students as $student) {
+        if ($student->should_pay > 0) {
+          $defaulters += 1;
+        }
+        $balance += $student->should_pay;
+      }
+      $outstanding = ['balance' => $balance, 'defaulters' => $defaulters];
+      return view('dashboard.index', compact('counts', 'outstanding'));
     }
     else
       return view('dashboard.index', compact('counts'));
