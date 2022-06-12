@@ -28,15 +28,8 @@ class AccountsController extends Controller
       $students = User::with('class')->whereHas("roles", function ($q) {
         $q->where("name", "Student");
       })->get();
-
-      $eachstudent = [];
-      foreach ($students as $student) {
-        $current = $student->class[0];
-        $theclass = Klass::find($current->class_id);
-        $schoolFee = $theclass->fees[1];
-        $eachstudent[] = ['student' => $student, 'fee' => $schoolFee, 'class' => $theclass->name];
-      }
-      return view('accounts.list', compact('eachstudent'));
+      
+      return view('accounts.list', compact('students'));
     } else {
       $payments = Payments::with('class')->where('student_id', Auth()->user()->id)->get();
       $per_classes = $this->studentAccount(Auth()->user()->id);

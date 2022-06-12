@@ -22,36 +22,34 @@
         <tr class="bg-light">
           <th scope="col"></th>
           <th scope="col">Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Phone</th>
-          <th scope="col">Class</th>
+          <th scope="col">Current Class</th>
           <th scope="col">Outstanding</th>
           <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
-          @forelse($eachstudent as $student)
+          @forelse($students as $student)
           <tr>
             <td>{{ $loop->index + 1 }}</td>
-            <td> {{$student['student']->lastname}} {{$student['student']->firstname}} {{$student['student']->othername ?? ''}} </td>
-            <td> {{$student['student']->email ?? ''}} </td>
-            <td> {{$student['student']->phone ?? ''}} </td>
-            <td> {{$student['class'] ?? ''}} </td>
-            <td> &#8358; {{$student['fee'] ?? ''}} </td>
+            <td> {{$student->fullname}} </td>
+            <td> {{$student->class->name ?? ''}} </td>
+            <td> &#8358; {{$student->should_pay ?? ''}} </td>
             <td>
-              <a href="{{route('getaccounts',$student['student']->id)}}" class="btn btn-primary btn-sm">
-                <i class='bx bx-show'></i>
+              <a href="{{route('getaccounts',$student->id)}}" class="btn btn-primary btn-sm">
+                <i class='bx bx-show'></i> &nbsp; View Payments
               </a>
-              <a href="tel://{{$student['student']->phone}}" class="btn btn-outline-danger btn-sm">
+              <a href="tel://{{$student->phone}}" class="btn btn-outline-danger btn-sm">
                 <i class='bx bx-phone-call'></i>
               </a>
-              <a href="mailto://{{$student['student']->email}}" class="btn btn-outline-danger btn-sm">
+              <a href="mailto://{{$student->email}}" class="btn btn-outline-danger btn-sm">
                 <i class='bx bx-envelope'></i>
               </a>
             </td>
           </tr>
           @empty
-          <p class="text-center p-5">No students registered yet.</p>
+          <tr>
+            <td colspan="6" class="text-center">No Students found</td>
+          </tr>
           @endforelse
         </tbody>
       </table>
