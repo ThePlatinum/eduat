@@ -61,9 +61,9 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>{{ $loop->index + 1 }}</td>
+                  <td>{{ 1 }}</td>
                   <td> <strong>Tution Fee (all terms)</strong> </td>
-                  <td> &#8358;<strong class="text-end"> {{$per_class['class']->fees_sum}} </strong> </td>
+                  <td class="d-flex justify-content-between">&#8358;<span class="money"> <strong> {{$per_class['class']->fees_sum}} </strong> </span> </td>
                   <td>
                 </tr>
                 <tr>
@@ -73,7 +73,7 @@
                 <tr>
                   <td>{{ $loop->index + 2 }}</td>
                   <td> {{$item->name ?? ''}} </td>
-                  <td> &#8358;{{$item->price ?? ''}} </td>
+                  <td class="d-flex justify-content-between"> &#8358;<span class="money">{{$item->price ?? ''}}</span> </td>
                   <td>
                 </tr>
                 @empty
@@ -85,7 +85,7 @@
                 <tr>
                   <td></td>
                   <td> <strong>TOTAL</strong> </td>
-                  <td> <strong>&#8358;{{$per_class['items_total'] + $per_class['class']->fees_sum}} </strong> </td>
+                  <td class="d-flex justify-content-between">&#8358;<span class="money"> <strong>{{$per_class['items_total'] + $per_class['class']->fees_sum}} </strong> </span> </td>
                   <td>
                 </tr>
               </tbody>
@@ -188,7 +188,7 @@
               <td>{{ $loop->index + 1 }}</td>
               <td> {{date_format($payment->paydate, 'D., d M, Y')}} </td>
               <td> {{$payment->class->name ?? 'Not provided'}} </td>
-              <td> {{$payment->ammount ?? ''}} </td>
+              <td class="d-flex justify-content-between"> &#8358;<span class="money pr-3">{{$payment->ammount ?? ''}}</span> </td>
               <td> {{$payment->receipt_number ?? 'Not provided'}} </td>
               <td> {{$payment->note ?? 'Not provided'}} </td>
             </tr>

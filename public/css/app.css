@@ -237,6 +237,10 @@ small {
   font-size: 0.7rem;
 }
 
+.money {
+  letter-spacing: 0.1rem;
+}
+
 @media only screen and (max-width: 500px) {
   .sidebar ul {
     padding-left: 2vw;
