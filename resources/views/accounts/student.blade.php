@@ -14,13 +14,28 @@
     </div>
     @endif
 
-    @role('Accountant')
-    <div class="text-end">
-      <a href=" {{ route('accounts') }} " class="btn btn-secondary btn-sm">
-        <i class='bx bx-arrow-back'></i> <span>BACK</span>
-      </a>
+    <div class="row">
+      <div class="col-8">
+        <div class="card card-body">
+          @role('Accountant')
+          <h4>{{$student->fullname}}</h4>
+          @endrole
+          <h6 class="money">Total Dues: &#8358; {{$student->should_pay + $student->paid}}</h6>
+          <h6 class="money">Total Paid: &#8358; {{$student->paid}}</h6>
+          <h5 class="money">Outstanding: &#8358; {{$student->should_pay}}</h5>
+        </div>
+      </div>
+
+      <div class="col-4">
+        @role('Accountant')
+        <div class="text-end">
+          <a href=" {{ route('accounts') }} " class="btn btn-secondary btn-sm">
+            <i class='bx bx-arrow-back'></i> <span>BACK</span>
+          </a>
+        </div>
+        @endrole
+      </div>
     </div>
-    @endrole
 
     Fees
     <hr>
@@ -29,11 +44,11 @@
       <div class="col-md-4 pb-3 pr-3">
         <div class="card card-body">
           <div class="d-flex justify-content-between align-items-center">
-            @php
-            $currentclass = $loop->index + 1 == sizeof($per_classes)
-            @endphp
             <h4 class="m-0"> {{$per_class['class']->name}} </h4>
-            <span class="pill"> {{$currentclass ? 'Current Class' : '' }} </span>
+            @php
+            $currentclass = $student->klass_id == $per_class['class']->id;
+            if ($currentclass) echo '<span class="pill">Current Class</span>';
+            @endphp
           </div>
           <hr />
           <div class="table-responsive">
@@ -48,7 +63,7 @@
                 <tr>
                   <td>{{ $loop->index + 1 }}</td>
                   <td> <strong>Tution Fee (all terms)</strong> </td>
-                  <td> <strong> &#8358;{{$per_class['tution']}} </strong> </td>
+                  <td> &#8358;<strong class="text-end"> {{$per_class['class']->fees_sum}} </strong> </td>
                   <td>
                 </tr>
                 <tr>
@@ -62,13 +77,15 @@
                   <td>
                 </tr>
                 @empty
-                <p class="text-center p-5">No other items selected. <br> Go to the <b>Items</b> menu to select some. </p>
+                <tr>
+                  <td colspan="3" class="text-center">No other items selected while in this class</td>
+                </tr>
                 @endforelse
 
                 <tr>
                   <td></td>
                   <td> <strong>TOTAL</strong> </td>
-                  <td> <strong>&#8358;{{$per_class['itemtotal'] + $per_class['tution']}} </strong> </td>
+                  <td> <strong>&#8358;{{$per_class['items_total'] + $per_class['class']->fees_sum}} </strong> </td>
                   <td>
                 </tr>
               </tbody>
@@ -79,28 +96,26 @@
       @endforeach
     </div>
 
-
     <div class="d-flex justify-content-between align-items-center">
       Payments
       @role('Accountant')
       <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#addpayment">
         <i class='bx bx-add-list'></i> <span>New Payment</span>
       </a>
-
       <!-- Add Payment Modal -->
       <div class="modal fade" tabindex="-1" id="addpayment">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Add Payment for {{$student_name ?? ''}}</h5>
+              <h5 class="modal-title">Add Payment for {{$student->fullname ?? ''}}</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              
+
               <form action="{{ route('addpayment') }}" method="POST">
                 @csrf
-                <input value="{{$class_id ?? ''}}" name="class_id" hidden>
-                <input value="{{$student_id ?? ''}}" name="student_id" hidden>
+                <input value="{{$student->klass_id ?? ''}}" name="class_id" hidden>
+                <input value="{{$student->id ?? ''}}" name="student_id" hidden>
 
                 <div class="col-12 py-2">
                   <label for="receipt_number" class="col-form-label ">{{ __('Receipt Number') }}</label>
@@ -179,7 +194,7 @@
             </tr>
             @empty
             <tr>
-              <td colspan="5" class="text-center">
+              <td colspan="6" class="text-center">
                 No payments made yet.
               </td>
             </tr>

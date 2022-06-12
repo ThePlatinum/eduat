@@ -12,4 +12,9 @@ class Studentitems extends Model
   protected $fillable = [
     'item_id', 'student_id', 'class_id'
   ];
+
+  public function item()
+  {
+    return $this->belongsTo(Items::class, 'item_id');
+  }
 }

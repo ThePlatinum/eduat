@@ -39,20 +39,35 @@ class AccountsController extends Controller
 
   public function getaccounts($student_id)
   {
-    $student = User::with('class')->find($student_id);
-    $student_id = $student->id;
-    $class_id = Klass::find($student->class[0]->class_id)->id;
-    $student_name = $student->firstname . $student->lastname . $student->othername;
-    $per_classes = $this->studentAccount($student_id);
+    $student = User::with('studentclasses')->find($student_id);
+    $classes = $student->studentclasses;
+
+    $per_classes = [];
+    foreach ($classes as $klass) {
+      $clss = Klass::where('id', $klass->class_id)->first();
+
+      $items = Studentitems::where('student_id', $student_id)
+        ->where('class_id', $klass->class_id)->get()
+        ->pluck('item');
+
+      $cost = 0;
+      foreach ($items as $item) {
+        $cost += $item->price;
+      }
+      
+      $per_classes[] = [
+        'class' => $clss,
+        'items' => $items,
+        'items_total' => $cost,
+      ];
+    }
 
     $payments = Payments::with('class')->where('student_id', $student_id)->get();
-    return view('accounts.student', compact('per_classes','class_id','student_id','payments'));
+    return view('accounts.student', compact('student', 'per_classes', 'payments'));
   }
 
   public function studentAccount($student_id)
   {
-    //
-    // $student = User::find($student_id);
     $studentClasses = StudentClasses::where('student_id',$student_id)->get();
     $fee_per_classes = [];
     $tution = 0;
@@ -77,7 +92,8 @@ class AccountsController extends Controller
   public function storepayment(Request $request){
     $paid = Payments::create([
       'student_id' => $request->student_id,
-      'class_id' => $request->class_id,
+      'paid_in_class_id' => $request->class_id,
+      'paid_in_term_id' => 1,
       'receipt_number' => $request->receipt_number,
       'ammount' => $request->ammount,
       'paydate' => $request->paydate,

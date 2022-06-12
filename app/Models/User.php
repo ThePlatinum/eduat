@@ -56,18 +56,6 @@ class User extends Authenticatable
   }
 
   public function items(){
-// projects user->id
-//  id - integer, name - string
-// environments studentitems->student_id
-//  id - integer, project_id - integer, name - string
-// deployments items->item_id
-//  id - integer, environment_id - integer, commit_hash - string
-// $this->hasManyThrough(
-//   Deployment::class,
-//   Environment::class,
-//   'project_id', // Foreign key on the environments table...
-//   'environment_id', // Foreign key on the deployments table...
-//   'id', 'id' 
     return $this->hasManyThrough(Items::class, Studentitems::class, 'student_id', 'id', 'id', 'item_id');
   }
 
