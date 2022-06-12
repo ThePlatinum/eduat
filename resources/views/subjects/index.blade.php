@@ -61,7 +61,15 @@
       </div>
     </div>
   </div>
-<div id="subject_chart" style="width: 100% ; height: 65vh ;"></div>
+
+
+  @if (str_word_count($subject_assessments) < 1)
+    <div class="text-center p-5 bg-light">
+      No data to display
+    </div>
+  @else
+    <div id="subject_chart" style="width: 100% ; height: 65vh ;"></div>
+  @endif
 </div>
 
 <div class="col-md-5">
@@ -77,14 +85,18 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($score_table as $score)
+        @forelse ($score_table as $score)
         <tr>
           <td>{{$score['name']}}</td>
           <td>{{$score['score']}}</td>
           <td>{{$score['grade_point']}}</td>
           <td>{{$score['remark']}}</td>
         </tr>
-        @endforeach
+        @empty
+        <tr>
+          <td colspan="4" class="text-center">No data to display</td>
+        </tr>
+        @endforelse
       </tbody>
     </table>
   </div>
