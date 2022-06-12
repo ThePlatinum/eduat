@@ -15,10 +15,10 @@ class Payments extends Model
   ];
 
   protected $fillable = [
-    'student_id', 'class_id', 'receipt_number', 'ammount', 'note', 'paydate'
+    'student_id', 'paid_in_class_id', 'paid_in_term_id', 'receipt_number', 'ammount', 'note', 'paydate'
   ];
 
   public function class(){
-    return $this->hasOne(Klass::class, 'id', 'class_id');
+    return $this->hasOne(Klass::class, 'id', 'paid_in_class_id');
   }
 }
