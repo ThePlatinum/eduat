@@ -1,7 +1,16 @@
 .avater {
   width: 15vw;
-  border-radius: 50%;
+  height: 20vw;
+  border-radius: 15px;
   border: 2px solid red;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 500px) {
+  .avater {
+    width: 50vw;
+    height: 30vh;
+  }
 }
 
 .role{

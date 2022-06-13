@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -43,10 +44,21 @@ class UserController extends Controller
       'bio' => 'nullable|string|min:2',
       'old_password' => 'nullable|current_password',
       'new_password' => 'nullable|min:6|required_with:old_password',
+      'profile_image' => 'nullable|image|mimes:jpeg,png,jpg',
     ]);
 
     if ($validator->fails())
       return back()->withErrors($validator)->withInput();
+
+    if ($request->hasFile('profile_image')) {
+      if ($user->image != 'avater.png') {
+        Storage::delete('public/'.$user->image);
+      }
+      $image = $request->file('profile_image');
+      $name = 'profile'.$user->id.'.'.$image->getClientOriginalExtension();
+      $image->storeAs('public/profile', $name);
+      $user->image = 'profile/'.$name;
+    }
 
     $user->firstname = $request->firstname;
     $user->lastname = $request->lastname;

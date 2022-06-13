@@ -17,9 +17,22 @@ $is_me = Auth()->user()->id == $user->id;
       </a>
     </div>
 
-    <form method="POST" action="{{route('profileedit')}}" class="row p-3">
+    <form method="POST" action="{{route('profileedit')}}" class="row p-3" enctype="multipart/form-data">
       @csrf
       <input type="hidden" name="user_id" value="{{$user->id}}">
+
+      <div class="col-md-12">
+        <label for="profile_image" class="col-form-label">Profile Image <small>size MUST be less than 2mb</small> </label>
+        <input type="file" class="form-control"
+          id="profile_image" name="profile_image" accept=".jpeg,.jpg,.png"
+          class="form-control @error('profile_image') is-invalid @enderror">
+        @error('profile_image')
+        <span class="invalid-feedback" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+      </div>
+
       <div class="col-md-6 py-2">
         <label for="firstname" class="col-form-label">{{ __('First Name') }}</label>
         <input id="firstname" type="firstname" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{$user->firstname}}" required {{$is_admin ? '' : 'readonly'}} autofocus autocomplete="first name">
@@ -50,7 +63,7 @@ $is_me = Auth()->user()->id == $user->id;
 
       <div class="col-md-6 py-2">
         <label for="dob" class="col-form-label ">{{ __('Date of Birth') }}</label>
-        <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" value="{{$user->dob ? date_format($user->dob, 'mm/dd/yyyy') : ''}}" required {{$is_admin ? '' : 'readonly'}} autofocus autocomplete="date of birth">
+        <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" value="{{$user->dob ? date_format($user->dob, 'mm/dd/yyyy') : ''}}" {{$is_admin ? '' : 'readonly'}} autofocus autocomplete="date of birth">
         @error('dob')
         <span class="invalid-feedback" role="alert">
           <strong>{{ $message }}</strong>
@@ -74,7 +87,7 @@ $is_me = Auth()->user()->id == $user->id;
 
       <div class="col-md-6 py-2">
         <label for="phone" class="col-form-label ">{{ __('Phone Number') }}</label>
-        <input id="phone" type="number" min='0' class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{$user->phone}}" required {{$is_admin ? '' : 'readonly'}} autofocus autocomplete="phone">
+        <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{$user->phone}}" required {{$is_admin ? '' : 'readonly'}} autofocus autocomplete="phone">
         @error('phone')
         <span class="invalid-feedback" role="alert">
           <strong>{{ $message }}</strong>
@@ -84,7 +97,7 @@ $is_me = Auth()->user()->id == $user->id;
 
       <div class="col-md-6 py-2">
         <label for="email" class="col-form-label ">{{ __('Email') }}</label>
-        <input id="email" type="email" class="form-control @error('phone') is-invalid @enderror" name="email" value="{{$user->email}}" required {{$is_admin ? '' : 'readonly'}} autofocus autocomplete="email">
+        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$user->email}}" required {{$is_admin ? '' : 'readonly'}} autofocus autocomplete="email">
         @error('email')
         <span class="invalid-feedback" role="alert">
           <strong>{{ $message }}</strong>
