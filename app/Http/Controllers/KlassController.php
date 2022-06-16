@@ -14,7 +14,7 @@ class KlassController extends Controller
     //
   public function index()
   {
-    $classes = Klass::with('subjects', 'teacher', 'students')->get();
+    $classes = Klass::with('subjects', 'teacher', 'students')->orderBy('name', 'Asc')->get();
     return view('classes.index', compact('classes'));
   }
 
