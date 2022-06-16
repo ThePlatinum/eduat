@@ -2,12 +2,6 @@
 
 @section('class')
 <div class="page p-3 flex-grow-1">
-  <!-- <div class="d-flex header justify-content-between">
-    <h5>View Class</h5>
-    <a href=" {{ route('classes') }} " class="btn btn-secondary btn-sm">
-      <i class='bx bx-arrow-back'></i> <span>BACK</span>
-    </a>
-  </div> -->
 
   <div class="row">
     <div class="col-md-3 bg-light p-4">
@@ -57,7 +51,7 @@
                           <select id="teacher" type="teacher" class="form-control @error('teacher') is-invalid @enderror" name="teacher" autofocus autocomplete="teacher">
                             <option value=""> Select Teacher </option>
                             @foreach ($teachers as $teacher)
-                            <option value="{{ $teacher->id }}"> {{$teacher->fullname}} </option>
+                            <option value="{{ $teacher->id }} {{ ($subject->teacher_id == $teacher->id ? 'selected' : '') }}"> {{$teacher->fullname}} </option>
                             @endforeach
                           </select>
                           @error('teacher')
@@ -90,8 +84,14 @@
         </div>
       </div>
     </div>
+
     <div class="col-md-9 py-3">
-      Students
+      <div class="d-flex header justify-content-between">
+        Students
+        <a href=" {{ route('classes') }} " class="btn btn-secondary btn-sm">
+          <i class='bx bx-arrow-back'></i> <span>BACK</span>
+        </a>
+      </div>
       <hr />
       <div class="table-responsive pt-3">
         <table class="table">
@@ -173,6 +173,5 @@
       </div>
     </div>
   </div>
-</div>
 </div>
 @endsection
