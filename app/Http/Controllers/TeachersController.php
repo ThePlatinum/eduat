@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subjects;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -12,9 +13,18 @@ class TeachersController extends Controller
     //
   public function teachers()
   {
-    $teachers = User::whereHas("roles", function($q) {
-      $q->where("name", "Teacher");
+    $_teachers = User::whereHas("roles", function($q) {
+      $q->where("name", "teacher");
     })->get();
+
+    $teachers = [];
+    foreach ($_teachers as $teacher ) {
+      $teaches = Subjects::with('class')->where('teacher_id', $teacher->id)->get();
+      $teachers[] = [
+        'teacher' => $teacher,
+        'subjects' => $teaches,
+      ];
+    }
     return view('teachers.index', compact("teachers"));
   }
 
