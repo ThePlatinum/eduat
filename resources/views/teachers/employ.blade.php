@@ -5,7 +5,7 @@
   <div class="col-md-6 bg-light p-3 ">
     <div class="header d-flex justify-content-between align-items-center p-3">
       <h5>Add New Teacher</h5>
-      <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm">
+      <a href="{{route('teachers')}}" class="btn btn-secondary btn-sm">
         <i class='bx bx-arrow-back'></i> <span>BACK</span>
       </a>
     </div>
@@ -13,7 +13,10 @@
       @csrf
       <div class="col-12 py-2">
         <label for="firstname" class="col-form-label">{{ __('First Name') }}</label>
-        <input id="firstname" type="firstname" class="form-control @error('firstname') is-invalid @enderror" name="firstname" required autofocus autocomplete="first name">
+        <input id="firstname" type="firstname"
+          class="form-control @error('firstname') is-invalid @enderror"
+          name="firstname" required autofocus
+          value="{{old('firstname')}}" autocomplete="first name">
         @error('firstname')
         <span class="invalid-feedback" role="alert">
           <strong>{{ $message }}</strong>
@@ -22,7 +25,10 @@
       </div>
       <div class="col-md-6 py-2">
         <label for="lastname" class="col-form-label">{{ __('Last Name') }}</label>
-        <input id="lastname" type="lastname" class="form-control @error('lastname') is-invalid @enderror" name="lastname" required autofocus autocomplete="last name">
+        <input id="lastname" type="lastname"
+          class="form-control @error('lastname') is-invalid @enderror"
+          name="lastname" required autofocus
+          value="{{old('lastname')}}" autocomplete="last name">
         @error('lastname')
         <span class="invalid-feedback" role="alert">
           <strong>{{ $message }}</strong>
@@ -31,7 +37,10 @@
       </div>
       <div class="col-md-6 py-2">
         <label for="othernames" class="col-form-label">{{ __('Other Names') }}</label>
-        <input id="othernames" type="othernames" class="form-control @error('othernames') is-invalid @enderror" name="othernames" autofocus autocomplete="other name">
+        <input id="othernames" type="othernames"
+          class="form-control @error('othernames') is-invalid @enderror"
+          name="othernames" autofocus
+          value="{{old('othernames')}}" autocomplete="other name">
         @error('othernames')
         <span class="invalid-feedback" role="alert">
           <strong>{{ $message }}</strong>
@@ -41,9 +50,11 @@
 
       <div class="col-md-6 py-2">
         <label for="gender" class="col-form-label ">{{ __('Gender') }}</label>
-        <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" autofocus autocomplete="gender">
-          <option value="Male"> Male </option>
-          <option value="Female"> Female </option>
+        <select id="gender"
+          class="form-control @error('gender') is-invalid @enderror"
+          name="gender" autofocus autocomplete="gender">
+          <option value="Male" {{ (old('gender')=="Male" ? 'selected' : '' )}} > Male </option>
+          <option value="Female" {{ (old('gender')=="Female" ? 'selected' : '' )}} > Female </option>
         </select>
         @error('gender')
         <span class="invalid-feedback" role="alert">
@@ -54,7 +65,10 @@
 
       <div class="col-md-6 py-2">
         <label for="phone" class="col-form-label ">{{ __('Phone Number') }}</label>
-        <input id="phone" type="number" min='0' class="form-control @error('phone') is-invalid @enderror" name="phone" required autofocus autocomplete="phone">
+        <input id="phone" type="number" min='0'
+          class="form-control @error('phone') is-invalid @enderror"
+          name="phone" required autofocus
+          value="{{old('phone')}}" autocomplete="phone">
         @error('phone')
         <span class="invalid-feedback" role="alert">
           <strong>{{ $message }}</strong>
@@ -64,7 +78,10 @@
 
       <div class="col-12 py-2">
         <label for="email" class="col-form-label ">{{ __('Email') }}</label>
-        <input id="email" type="email" class="form-control @error('phone') is-invalid @enderror" name="email" required autofocus autocomplete="email">
+        <input id="email" type="email"
+          class="form-control @error('email') is-invalid @enderror"
+          name="email" required autofocus
+          value="{{old('email')}}" autocomplete="email">
         @error('email')
         <span class="invalid-feedback" role="alert">
           <strong>{{ $message }}</strong>

@@ -39,7 +39,7 @@ Route::GET('accounts', [AccountsController::class, 'index'])->name('accounts');
 Route::GET('items', [ItemsController::class, 'items'])->name('items');
 Route::GET('classes', [KlassController::class, 'index'])->name('classes');
 Route::GET('reports', [ReportsController::class, 'index'])->name('reports');
-Route::GET('teachers', [TeachersController::class, 'teachers']);
+Route::GET('teachers', [TeachersController::class, 'teachers'])->name('teachers');
 Route::GET('students', [StudentsController::class, 'students'])->name('students');
 Route::GET('profile',  [UserController::class, 'viewprofile'])->name('profile');
 Route::GET('settings',  [SettingsController::class, 'settings'])->name('settings');
