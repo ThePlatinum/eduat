@@ -17,7 +17,7 @@
           @forelse($class['subjects'] as $subject)
           <div class="col-12 py-2">
             <div class="subjectlist d-flex">
-              <div class="flex-grow-1 d-flex align-items-center px-3">{{$subject->fullname}}</div>
+              <div class="flex-grow-1 d-flex align-items-center px-3">{{$subject->name}}</div>
               <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editsubject{{$subject->id}}">
                 <i class='bx bx-edit'></i>
               </a>
