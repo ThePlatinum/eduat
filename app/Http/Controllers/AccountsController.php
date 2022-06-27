@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Traits\HasRoles;
 
 class AccountsController extends Controller
@@ -78,6 +79,18 @@ class AccountsController extends Controller
   }
 
   public function storepayment(Request $request){
+    $validator = Validator::make($request->all(),[
+      'student_id' => 'exists:users,id',
+      'paid_in_class_id' => 'exists:klasses,id',
+      'receipt_number' => 'required,unique:payments,receipt_number',
+      'ammount' => 'required',
+      'paydate' => 'required|date',
+      'note' => 'nullable|string',
+    ]);
+
+    if ($validator->fails())
+      return back()->withErrors($validator)->withInput();
+    
     $paid = Payments::create([
       'student_id' => $request->student_id,
       'paid_in_class_id' => $request->class_id,
