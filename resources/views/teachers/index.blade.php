@@ -16,7 +16,7 @@
     <div class="card card-body">
       <div class="row">
         <div class="col-md-5">
-          <h4>{{$teacher['teacher']->name ?? ''}}</h4>
+          <h4>{{$teacher['teacher']->fullname ?? ''}}</h4>
           <p> {{$teacher['teacher']->email}} <br> {{$teacher['teacher']->phone}} </p>
         </div>
         <div class="col-md-7">
