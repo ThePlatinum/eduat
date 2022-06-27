@@ -18,7 +18,7 @@ class CreatePaymentsTable extends Migration
       $table->unsignedBigInteger('student_id');
       $table->unsignedBigInteger('paid_in_class_id');
       $table->unsignedBigInteger('paid_in_term_id');
-      $table->integer('receipt_number')->nullable()->unique();
+      $table->string('receipt_number')->nullable()->unique();
       $table->string('ammount');
       $table->string('note')->nullable();
       $table->timestamp('paydate');
