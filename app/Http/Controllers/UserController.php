@@ -52,11 +52,11 @@ class UserController extends Controller
 
     if ($request->hasFile('profile_image')) {
       if ($user->image != 'avater.png') {
-        Storage::delete('public/'.$user->image);
+        Storage::delete($user->image);
       }
       $image = $request->file('profile_image');
       $name = 'profile'.$user->id.'.'.$image->getClientOriginalExtension();
-      $image->storeAs('public/profile', $name);
+      $image->storeAs('profile', $name);
       $user->image = 'profile/'.$name;
     }
 
