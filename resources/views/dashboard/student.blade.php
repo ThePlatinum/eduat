@@ -14,24 +14,23 @@ Welcome {{ Auth()->user()->firstname }}
 
     var options = {
       title: 'Your Performance in each subjects',
-      vAxis: {
-        title: 'Score'
-      },
-      hAxis: {
-        title: 'Subjects'
-      },
+      vAxis: { title: 'Score' },
+      hAxis: { title: 'Subjects' },
+      curveType: 'function',
       seriesType: 'bars',
-      series: {
-        2: {
-          type: 'line'
-        }
-      },
+      series: { 2: { type: 'line' } },
       animation: {
         duration: 1500,
         easing: 'out',
         startup: true
       },
-      colors: ['#ee8100', '#9575cd', '#CECEA7'],
+      colors: ['#EE8100', '#9575CD', '#CECEA7'],
+      chartArea: {
+        left:100,
+        right:100,
+        top:100,
+        bottom:100,
+      }
     };
 
     var chart = new google.visualization.ComboChart(document.getElementById('subjects_chart'));
