@@ -89,3 +89,8 @@ body::-webkit-scrollbar {
 .authcard {
   background: linear-gradient(45deg, rgba(00, 00, 00, 0) 75%, rgba(58, 73, 180, 1) 80%);
 }
+
+/* DataTable */
+.table.dataTable {
+  padding: 10px 0px;
+}
