@@ -23,9 +23,9 @@
           @forelse($students as $student)
           <tr>
             <td>{{ $loop->index + 1 }}</td>
-            <td> {{$student->fullname}} </td>
-            <td> {{$student->class->name ?? ''}} </td>
-            <td> &#8358; {{$student->should_pay ?? ''}} </td>
+            <td>{{$student->fullname}}</td>
+            <td>{{$student->class->name ?? ''}}</td>
+            <td> &#8358; {{$student->should_pay ?? ''}}</td>
             <td>
               <a href="{{route('getaccounts',$student->id)}}" class="btn btn-primary btn-sm">
                 <i class='fa fa-eye'></i> &nbsp; View Payments

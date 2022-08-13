@@ -5,9 +5,9 @@
 
   <div class="row">
     <div class="col-md-3 bg-light p-4">
-      <h2> {{$class->fullname}} </h2>
+      <h2>{{$class->fullname}}</h2>
       Class Teacher: <br>
-      <b> {{$class['teacher']->fullname ?? "No teacher Assigned"}} </b>
+      <b>{{$class['teacher']->fullname ?? "No teacher Assigned"}}</b>
       <div class="py-3">
         <a href=" {{ route('edit', $class->id) }} " class="btn btn-primary">Edit Class</a>
       </div>
@@ -54,7 +54,7 @@
                           <select id="teacher" type="teacher" class="form-control @error('teacher') is-invalid @enderror" name="teacher" autofocus autocomplete="teacher">
                             <option value=""> Select Teacher </option>
                             @foreach ($teachers as $teacher)
-                            <option value="{{ $teacher->id }}" {{ ($subject->teacher_id == $teacher->id ? 'selected' : '') }}> {{$teacher->fullname}} </option>
+                            <option value="{{ $teacher->id }}" {{ ($subject->teacher_id == $teacher->id ? 'selected' : '') }}>{{$teacher->fullname}}</option>
                             @endforeach
                           </select>
                           @error('teacher')
@@ -111,9 +111,9 @@
             @forelse($class->students as $student)
             <tr>
               <td>{{ $loop->index + 1 }}</td>
-              <td> {{$student->fullname}} </td>
-              <td> {{$student->email ?? ''}} </td>
-              <td> {{$student->phone ?? ''}} </td>
+              <td>{{$student->fullname}}</td>
+              <td>{{$student->email ?? ''}}</td>
+              <td>{{$student->phone ?? ''}}</td>
               <td>
                 <a href="{{ route('viewprofile', $student->id ) }}" class="btn btn-primary btn-sm">
                   <i class='fa fa-eye'></i></a>
@@ -159,7 +159,7 @@
             <select id="teacher" type="teacher" class="form-control @error('teacher') is-invalid @enderror" name="teacher" autofocus autocomplete="teacher">
               <option value=""> Select Teacher </option>
               @foreach ($teachers as $teacher)
-              <option value="{{ $teacher->id }}"> {{$teacher->fullname}} </option>
+              <option value="{{ $teacher->id }}">{{$teacher->fullname}}</option>
               @endforeach
             </select>
             @error('teacher')

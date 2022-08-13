@@ -110,10 +110,10 @@
           </thead>
           @foreach ($admins['super'] as $admin)
           <tr>
-            <td> {{$loop->index+1}} </td>
-            <td> {{$admin->lastname ?? '' }} {{$admin->firstname}} {{$admin->othername ?? ''}} </td>
-            <td> {{$admin->email ?? ''}} </td>
-            <td> {{$admin->roles[0]->name ?? ''}} </td>
+            <td>{{$loop->index+1}}</td>
+            <td>{{$admin->lastname ?? '' }} {{$admin->firstname}} {{$admin->othername ?? ''}}</td>
+            <td>{{$admin->email ?? ''}}</td>
+            <td>{{$admin->roles[0]->name ?? ''}}</td>
             <td class="text-end">
               @if (Auth()->user()->id != $admin->id)
               <a href="{{ route('viewprofile', $admin->id ) }}" class="btn btn-danger btn-sm">
@@ -125,10 +125,10 @@
           @endforeach
           @forelse ($admins['accountant'] as $admin)
           <tr>
-            <td> {{$loop->index + sizeof($admins['accountant']) + 1 }} </td>
-            <td> {{$admin->lastname ?? '' }} {{$admin->firstname}} {{$admin->othername ?? ''}} </td>
-            <td> {{$admin->email ?? ''}} </td>
-            <td> {{$admin->roles[0]->name ?? ''}} </td>
+            <td>{{$loop->index + sizeof($admins['accountant']) + 1 }}</td>
+            <td>{{$admin->lastname ?? '' }} {{$admin->firstname}} {{$admin->othername ?? ''}}</td>
+            <td>{{$admin->email ?? ''}}</td>
+            <td>{{$admin->roles[0]->name ?? ''}}</td>
             <td class="text-end">
               <a href="{{ route('viewprofile', $admin->id ) }}" class="btn btn-danger btn-sm">
                 <i class='fa fa-trash'></i> &nbsp; Delete

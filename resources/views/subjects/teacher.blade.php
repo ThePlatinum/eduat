@@ -10,10 +10,10 @@
 <div class="row">
   <div class="col-md-6">
     <div class="card card-body">
-      <h2> {{$subject->name}} </h2>
+      <h2>{{$subject->name}}</h2>
       <div class="">
-        <h3> Class: {{$subject->class->name}} </h3>
-        <h6>Number of Students: {{$subject->class->student_count}} </h6>
+        <h3> Class: {{$subject->class->name}}</h3>
+        <h6>Number of Students: {{$subject->class->student_count}}</h6>
       </div>
     </div>
 
@@ -115,12 +115,12 @@
             @forelse($subject->assessments as $assessments)
             <tr>
               <td>{{ $loop->index + 1 }}</td>
-              <td> {{ date_format($assessments->assessed_at, 'd, D M, Y') }} </td>
-              <td> {{$assessments->title}} </td>
-              <td> {{$assessments->grade_point}} </td>
-              <td> {{$assessments->highest_score}} </td>
-              <td> {{$assessments->average_score}} </td>
-              <td> {{$assessments->lowest_score}} </td>
+              <td>{{ date_format($assessments->assessed_at, 'd, D M, Y') }}</td>
+              <td>{{$assessments->title}}</td>
+              <td>{{$assessments->grade_point}}</td>
+              <td>{{$assessments->highest_score}}</td>
+              <td>{{$assessments->average_score}}</td>
+              <td>{{$assessments->lowest_score}}</td>
               <td>
                 <a href="{{ route('gradingview', $assessments->id ) }}" class="btn btn-primary btn-sm">
                   <i class='fa fa-eye'></i>
@@ -155,9 +155,9 @@
           @forelse($subject->class->students as $student)
           <tr>
             <td>{{ $loop->index + 1 }}</td>
-            <td> {{$student->fullname }} </td>
-            <td> {{$student->email ?? ''}} </td>
-            <td> {{$student->phone ?? ''}} </td>
+            <td>{{$student->fullname }}</td>
+            <td>{{$student->email ?? ''}}</td>
+            <td>{{$student->phone ?? ''}}</td>
             <td>
               <a href="{{ route('viewprofile', $student->id ) }}" class="btn btn-primary btn-sm">
                 <i class='fa fa-eye'></i></a>

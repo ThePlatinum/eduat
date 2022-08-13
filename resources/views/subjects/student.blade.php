@@ -11,7 +11,7 @@
           <h4>{{$loop->index+1}}</h4>
         </div>
         <div class="col-10">
-          <h6> {{$subject->name}} </h6>
+          <h6>{{$subject->name}}</h6>
           <p>
             Teacher: <br>
             {{$subject->teacher->fullname}}

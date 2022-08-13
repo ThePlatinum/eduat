@@ -13,7 +13,7 @@ $school_name = App\Models\Settings::Where('name', 'school_name')->first()->value
       </span>
 
       <div class="text logo-text">
-        <span class="name"> {{ $school_name }} </span>
+        <span class="name">{{ $school_name }}</span>
       </div>
     </div>
     <span class='fa fa-chevron-right toggle' id="toggle" style="font-size: small;"></span>

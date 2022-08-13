@@ -43,7 +43,7 @@ Welcome {{ Auth()->user()->firstname }}
     <div class="card card-body">
       Current Class
       <hr />
-      <h3 class="p-2"> {{$curentclass->name}} | Term 2 </h3>
+      <h3 class="p-2">{{$curentclass->name}} | Term 2 </h3>
       <div class="row p-2">
         <div class="col-md-8">
           Class Teacher: <br> <span>{{$curentclass->teacher->fullname ?? 'Class Teacher not Set'}}</span>
@@ -80,7 +80,7 @@ Welcome {{ Auth()->user()->firstname }}
       <hr />
       <div class="row p-2">
         <div class="col-md-7">
-          <h3> &#8358;{{Auth()->user()->should_pay}} </h3>
+          <h3> &#8358;{{Auth()->user()->should_pay}}</h3>
         </div>
         <div class="col-md-5 text-end d-flex flex-column justify-content-center">
           <a href="{{route('accounts')}}"" class="btn btn-danger btn-sm">Accounts</a>

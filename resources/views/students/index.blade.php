@@ -25,11 +25,11 @@
     <tbody>
       @forelse($students as $student)
       <tr>
-        <td> {{$loop->index + 1}} </td>
+        <td>{{$loop->index + 1}}</td>
         <td class="name">{{$student->fullname}}</td>
-        <td> {{$student->email ?? ''}} </td>
-        <td> {{$student->phone ?? ''}} </td>
-        <td> {{$student->class->name ?? ''}} </td>
+        <td>{{$student->email ?? ''}}</td>
+        <td>{{$student->phone ?? ''}}</td>
+        <td>{{$student->class->name ?? ''}}</td>
         <td>
           <a href="{{ route('viewprofile', $student->id ) }}" class="btn btn-primary btn-sm">
             <i class='fa fa-eye'></i></a>

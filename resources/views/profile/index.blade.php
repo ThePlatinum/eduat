@@ -14,7 +14,7 @@
         <span class="role my-3">{{$user->gender ?? 'Gender Not Provided'}}</span>
         <span class="role my-3">{{$user->roles->pluck('name')[0]}}</span>
       </div>
-      <h4> {{$user->fullname}}</h4>
+      <h4>{{$user->fullname}}</h4>
       <div class="d-flex gap-2">
         <a href=" {{ route('editprofile',$user->id) }} " class="btn btn-primary btn-sm"> Edit Profile </a>
       </div>

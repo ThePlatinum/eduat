@@ -4,7 +4,7 @@
 <div class="justify-content-center d-flex py-5">
   <div class="col-md-6 bg-light p-3">
     <div class="header d-flex justify-content-between align-items-center p-3">
-      <h5> {{ isset($item)  ? 'Update Item' : 'Create Item'}} </h5>
+      <h5>{{ isset($item)  ? 'Update Item' : 'Create Item'}}</h5>
       <a href=" {{ route('items') }} " class="btn btn-secondary">
         <i class='fa fa-arrow-left'></i> <span>BACK</span>
       </a>
@@ -45,7 +45,7 @@
           <div class="col-md-4 p-1">
             <div class="card card-body">
               <input type="checkbox" id="classfor{{$loop->index}}" name="classfor[]" value="{{ $class->id ?? '' }}" />
-              <label for="classfor{{$loop->index}}"> {{$class->name ?? ''}} </label>
+              <label for="classfor{{$loop->index}}">{{$class->name ?? ''}}</label>
               @error('classfor')
               <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

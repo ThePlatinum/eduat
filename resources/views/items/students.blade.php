@@ -11,10 +11,10 @@
       @forelse ($items as $item)
       <div class="col-4">
         <div class="card card-body">
-          <h5> {{$item->name}} </h5>
+          <h5>{{$item->name}}</h5>
           <div class="d-flex justify-content-between">
             <p>{{$item->description}}</p>
-            <p class="text-end"><span class="price btn-danger"> &#8358;{{$item->price}} </span></p>
+            <p class="text-end"><span class="price btn-danger"> &#8358;{{$item->price}}</span></p>
           </div>
           <p>For Class<small>(s)</small>:
           <br>

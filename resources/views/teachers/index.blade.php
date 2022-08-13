@@ -17,7 +17,7 @@
       <div class="row">
         <div class="col-md-5">
           <h4>{{$teacher['teacher']->fullname ?? ''}}</h4>
-          <p> {{$teacher['teacher']->email}} <br> {{$teacher['teacher']->phone}} </p>
+          <p>{{$teacher['teacher']->email}} <br>{{$teacher['teacher']->phone}}</p>
         </div>
         <div class="col-md-7">
           Subjects:

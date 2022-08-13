@@ -27,9 +27,9 @@
     <div class="card card-body">
       <div class="row">
         <div class="col-md-6">
-          <h4> {{$assessment->subject->name}} </h4>
-          <h5> Class: {{$assessment->subject->class->name}} </h5>
-          <h6> Number of Students: {{$assessment->subject->class->student_count}} </h6>
+          <h4>{{$assessment->subject->name}}</h4>
+          <h5> Class: {{$assessment->subject->class->name}}</h5>
+          <h6> Number of Students: {{$assessment->subject->class->student_count}}</h6>
         </div>
 
         <div class="col-md-6">

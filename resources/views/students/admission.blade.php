@@ -124,7 +124,7 @@
               name="class" autofocus>
               <option value=""> Select Class </option>
               @foreach ($classes as $class)
-              <option value="{{ $class->id }}" {{ (old('class')==$class->id ? 'selected' : '' )}} > {{ $class->name }} </option>
+              <option value="{{ $class->id }}" {{ (old('class')==$class->id ? 'selected' : '' )}} >{{ $class->name }}</option>
               @endforeach
             </select>
             @error('class')

@@ -44,7 +44,7 @@
       <div class="col-md-4 pb-3 pr-3">
         <div class="card card-body">
           <div class="d-flex justify-content-between align-items-center">
-            <h4 class="m-0"> {{$per_class['class']->name}} </h4>
+            <h4 class="m-0">{{$per_class['class']->name}}</h4>
             @php
             $currentclass = $student->klass_id == $per_class['class']->id;
             if ($currentclass) echo '<span class="pill">Current Class</span>';
@@ -64,7 +64,7 @@
                 <tr>
                   <td>{{ 1 }}</td>
                   <td> <strong>Tution Fee (all terms)</strong> </td>
-                  <td class="d-flex justify-content-between">&#8358;<span class="money"> <strong> {{$per_class['class']->fees_sum}} </strong> </span> </td>
+                  <td class="d-flex justify-content-between">&#8358;<span class="money"> <strong>{{$per_class['class']->fees_sum}}</strong> </span> </td>
                   <td>
                 </tr>
                 <tr>
@@ -73,7 +73,7 @@
                 @forelse($per_class['items'] as $item)
                 <tr>
                   <td>{{ $loop->index + 2 }}</td>
-                  <td> {{$item->name ?? ''}} </td>
+                  <td>{{$item->name ?? ''}}</td>
                   <td class="d-flex justify-content-between"> &#8358;<span class="money">{{$item->price ?? ''}}</span> </td>
                   <td>
                 </tr>
@@ -86,7 +86,7 @@
                 <tr>
                   <td></td>
                   <td> <strong>TOTAL</strong> </td>
-                  <td class="d-flex justify-content-between">&#8358;<span class="money"> <strong>{{$per_class['items_total'] + $per_class['class']->fees_sum}} </strong> </span> </td>
+                  <td class="d-flex justify-content-between">&#8358;<span class="money"> <strong>{{$per_class['items_total'] + $per_class['class']->fees_sum}}</strong> </span> </td>
                   <td>
                 </tr>
               </tbody>
@@ -188,11 +188,11 @@
             @forelse ($payments as $payment)
             <tr>
               <td>{{ $loop->index + 1 }}</td>
-              <td> {{date_format($payment->paydate, 'D., d M, Y')}} </td>
-              <td> {{$payment->class->name ?? 'Not provided'}} </td>
+              <td>{{date_format($payment->paydate, 'D., d M, Y')}}</td>
+              <td>{{$payment->class->name ?? 'Not provided'}}</td>
               <td class="d-flex justify-content-between"> &#8358;<span class="money pr-3">{{$payment->ammount ?? ''}}</span> </td>
-              <td> {{$payment->receipt_number ?? 'Not provided'}} </td>
-              <td> {{$payment->note ?? 'Not provided'}} </td>
+              <td>{{$payment->receipt_number ?? 'Not provided'}}</td>
+              <td>{{$payment->note ?? 'Not provided'}}</td>
             </tr>
             @empty
             <tr>
