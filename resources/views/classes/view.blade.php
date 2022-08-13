@@ -1,12 +1,13 @@
 @extends('classes.class')
 
 @section('class')
-<div class="page p-3 flex-grow-1">
+<div class="flex-grow-1">
 
   <div class="row">
     <div class="col-md-3 bg-light p-4">
       <h2> {{$class->fullname}} </h2>
-      Class Teacher: <span> {{$class['teacher']->fullname ?? "No teacher Assigned"}} </span>
+      Class Teacher: <br>
+      <b> {{$class['teacher']->fullname ?? "No teacher Assigned"}} </b>
       <div class="py-3">
         <a href=" {{ route('edit', $class->id) }} " class="btn btn-primary">Edit Class</a>
       </div>
@@ -30,7 +31,7 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      <form action=" {{ route('editsubject') }} " method="POST">
+                      <form action=" {{route('editsubject')}} " method="POST">
                         @csrf
 
                         <input id="class" type="class" class="form-control" value=" {{ $class->id }} " name="class" hidden>
@@ -38,7 +39,9 @@
 
                         <div class="col-12 py-2">
                           <label for="name" class="col-form-label ">{{ __('Subject Name') }}</label>
-                          <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name" required autofocus autocomplete="name" value=" {{$subject->fullname}} ">
+                          <input id="name" type="name" name="name"
+                            class="form-control @error('name') is-invalid @enderror" 
+                            required autofocus autocomplete="name" value="{{$subject->name}}">
                           @error('name')
                           <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -51,7 +54,7 @@
                           <select id="teacher" type="teacher" class="form-control @error('teacher') is-invalid @enderror" name="teacher" autofocus autocomplete="teacher">
                             <option value=""> Select Teacher </option>
                             @foreach ($teachers as $teacher)
-                            <option value="{{ $teacher->id }} {{ ($subject->teacher_id == $teacher->id ? 'selected' : '') }}"> {{$teacher->fullname}} </option>
+                            <option value="{{ $teacher->id }}" {{ ($subject->teacher_id == $teacher->id ? 'selected' : '') }}> {{$teacher->fullname}} </option>
                             @endforeach
                           </select>
                           @error('teacher')
@@ -85,11 +88,11 @@
       </div>
     </div>
 
-    <div class="col-md-9 py-3">
-      <div class="d-flex header justify-content-between">
-        Students
-        <a href=" {{ route('classes') }} " class="btn btn-secondary btn-sm">
-          <i class='fa fa-arrow-left'></i> <span>BACK</span>
+    <div class="col-md-9">
+      <div class="d-flex header justify-content-between align-items-center">
+        <b>Students</b>
+        <a href="{{ route('classes') }}" class="btn btn-secondary btn-sm">
+          <i class='fa fa-arrow-left'></i> &nbsp; <span>BACK</span>
         </a>
       </div>
       <hr />
