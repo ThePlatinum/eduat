@@ -67,6 +67,7 @@ Route::GET('/subject/{subjects_id}', [SubjectController::class, 'teacherview'])-
 Route::POST('/assessment/make', [AssessmentController::class, 'create'])->name('makeassessment');
 Route::GET('/assessment/{assessment_id}', [AssessmentController::class, 'gradingview'])->name('gradingview');
 Route::POST('/assessment/addscore/{assessment_id}', [AssessmentController::class, 'addscore'])->name('addscore');
+Route::POST('delete', [TeachersController::class, 'delete'])->name('delete_teacher');
 
 // Items
 Route::GET('item/add', [ItemsController::class, 'additem'])->name('additem');

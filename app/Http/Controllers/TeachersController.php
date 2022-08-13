@@ -61,4 +61,13 @@ class TeachersController extends Controller
 
     return back()->with('message', 'Teacher added successfully');
   }
+
+  public function delete(Request $request) {
+    $teacher = User::find($request->teacher_id);
+    if (!$teacher) return back()->withErrors('error', 'Invalid topic');
+    $teacher->delete();
+
+    \Illuminate\Support\Facades\Session::flash('message', 'Account deleted successfully');
+    return ;
+  }
 }
