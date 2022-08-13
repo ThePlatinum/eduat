@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AssessmentController;
+use App\Http\Controllers\BulkMailController;
 use App\Http\Controllers\KlassController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ItemsController;
@@ -18,11 +19,6 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
 Route::GET('/', function () {
@@ -33,6 +29,7 @@ Route::GET('/login', function () {
 })->middleware('guest');
 
 Auth::routes();
+Route::group(['middleware' => ['auth']], function () {
 // Menus
 Route::GET('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::GET('accounts', [AccountsController::class, 'index'])->name('accounts');
@@ -77,7 +74,6 @@ Route::POST('item/create', [ItemsController::class, 'create'])->name('create');
 Route::POST('item/update', [ItemsController::class, 'edit'])->name('edititem');
 Route::GET('item/edit/{item_id}', [ItemsController::class, 'edititem'])->name('updateitem');
 Route::GET('item/delete/{item_id}', [ItemsController::class, 'deleteitem'])->name('deleteitem');
-
 Route::POST('studentitem/create', [ItemsController::class, 'createstudentitem'])->name('createstudentitem');
 
 // Accounts
@@ -86,3 +82,8 @@ Route::POST('addpayment', [AccountsController::class, 'storepayment'])->name('ad
 
 // Seetings
 Route::POST('migrateclass', [SettingsController::class, 'migrateclass'])->name('migrateclass');
+
+// Bulk Mails
+Route::GET('bulkmails', [BulkMailController::class, 'index'])->name('bulkmail');
+Route::POST('bulkmails', [BulkMailController::class, 'sendmail'])->name('sendbulkmail');
+});

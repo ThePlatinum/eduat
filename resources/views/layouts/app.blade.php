@@ -78,14 +78,25 @@ $school_name = App\Models\Settings::Where('name', 'school_name')->first()->value
             <span class="text nav-text">Teachers</span>
           </a>
         </li>
+        @endhasrole
 
+        @unlessrole('Student')
         <li class="nav-link">
+          <a href="/bulkmails">
+            <i class="fas fa-mail-bulk icon"></i>
+            <span class="text nav-text">Mails</span>
+          </a>
+        </li>
+        @endunlessrole
+
+       @hasrole('Admin')
+       <li class="nav-link">
           <a href="/settings">
             <i class='fa fa-cog icon'></i>
             <span class="text nav-text">Settings</span>
           </a>
         </li>
-        @endhasrole
+       @endhasrole
 
       </ul>
     </div>

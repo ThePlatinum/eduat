@@ -69,6 +69,10 @@ class User extends Authenticatable
     return $this->hasMany(StudentClasses::class, 'student_id');
   }
 
+  public function sentmails() {
+    return $this->hasMany(BulkMail::class, 'user_id');
+  }
+
   public function sums(){
     $classes = $this->studentclasses()->get();
     $fees_sum = 0;
