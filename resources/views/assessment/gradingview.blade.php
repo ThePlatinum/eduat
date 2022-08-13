@@ -16,7 +16,7 @@
   <div class="header bg-light p-3">
     <h5>Subject</h5>
   </div>
-  <div class="page p-3 flex-grow-1">
+  <div class="flex-grow-1">
 
     <div class="text-end">
       <a href=" {{ url()->previous() }} " class="btn btn-secondary btn-sm">

@@ -12,23 +12,26 @@
 <hr />
 <div class="row">
   @forelse($teachers as $teacher)
-  <div class="col-md-6 ">
-    <div class="card card-body">
-      <div class="row">
-        <div class="col-md-5">
-          <h4>{{$teacher['teacher']->fullname ?? ''}}</h4>
-          <p>{{$teacher['teacher']->email}} <br>{{$teacher['teacher']->phone}}</p>
-        </div>
-        <div class="col-md-7">
-          Subjects:
-          <div class="d-flex flex-wrap gap-2">
-            @forelse($teacher['subjects'] as $subject)
-            <p class="px-1" style="margin-bottom: 0px;">{{$subject->class->name}}: {{$subject->name}}</p>
-            @empty
-            <div>No Subjects Assigned</div>
-            @endforelse
-          </div>
-        </div>
+  <div class="col-md-6">
+    <div class="card">
+    <div class="card-body">
+      <div>
+        <h4 class="mb-1">{{$teacher['teacher']->fullname ?? ''}}</h4>
+        <p class="mb-1">{{$teacher['teacher']->email}} <b>|</b> {{$teacher['teacher']->phone}}</p>
+      </div>
+      <div>
+        <p class='m-0'><b>Subjects:</b></p>
+        <p class="px-1 m-0" style="border-left: 1px solid blue;">
+          @forelse($teacher['subjects'] as $subject)
+          {{$subject->class->name}}: {{$subject->name}}@if (!$loop->last), @endif
+          @empty
+          No Subjects Assigned
+          @endforelse
+        </p>
+      </div>
+    </div>
+    <div class="card-footer text-end">
+        <a class="btn btn-outline-danger px-3 delete_teacher_btn" key_id="{{$teacher['teacher']->id}}">Delete Account</a>
       </div>
     </div>
   </div>

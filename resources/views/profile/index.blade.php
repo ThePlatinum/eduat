@@ -1,6 +1,13 @@
 @extends('profile.profile')
 
 @section('profile')
+@if ($user->id != Auth()->user()->id)
+<div class="text-end">
+  <a href=" {{ url()->back() }} " class="btn btn-secondary">
+    <i class='fa fa-arrow-left'></i> <span>BACK</span>
+  </a>
+</div>
+@endif
 <div class="card card-body">
   <div class="row p-3 ">
     <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">

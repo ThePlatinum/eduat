@@ -45,10 +45,10 @@
 
       <div class="col py-2">
         <label for="teacher" class="col-form-label ">{{ __('Class Teacher') }}</label>
-        <select id="teacher" value="{{ $class->teacher->id ?? '' }}" class="form-control @error('teacher') is-invalid @enderror" name="teacher">
+        <select id="teacher" class="form-control @error('teacher') is-invalid @enderror" name="teacher">
           <option value="">Select Teacher</option>
           @foreach($teachers as $teacher)
-          <option value="{{ $teacher->id }}">{{$teacher->fullname ?? ''}}</option>
+          <option value="{{ $teacher->id }}" {{ ($class->teacher->id == $teacher->id ? 'selected' : '') }}>{{$teacher->fullname ?? ''}}</option>
           @endforeach
         </select>
 

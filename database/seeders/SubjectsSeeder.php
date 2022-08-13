@@ -22,10 +22,10 @@ class SubjectsSeeder extends Seeder
         'Civics', 'Agriculture', 'Commerce', 'Home Science', 'Literature',
         'ICT', 'Music', 'Art', 'Physical Education', 'Computer Science',
         'Business Studies', 'Accounting', 'Sports', 'Games', 'Drama', 'Dance',
-        'Drawing', 'Painting', 'Singing', 'Photography', 'Film Making',
-        'Visual Arts', 'Handwriting', 'Paste Art', 'Sketching', 'Crafting',
-        'Cooking', 'Pastry', 'Dessert', 'Culinary Arts', 'Fashion', 'Jewellery',
-        'Fashion Design', 'Jewellery Design', 'Design', 'Craft', 'Crafting',
+        // 'Drawing', 'Painting', 'Singing', 'Photography', 'Film Making',
+        // 'Visual Arts', 'Handwriting', 'Paste Art', 'Sketching', 'Crafting',
+        // 'Cooking', 'Pastry', 'Dessert', 'Culinary Arts', 'Fashion', 'Jewellery',
+        // 'Fashion Design', 'Jewellery Design', 'Design', 'Craft', 'Crafting',
       ];
 
       $compulsory = ['Mathematics', 'English', 'Native Language'];

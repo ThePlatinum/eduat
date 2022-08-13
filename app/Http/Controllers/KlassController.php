@@ -8,6 +8,7 @@ use App\Models\Settings;
 use App\Models\Subjects;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class KlassController extends Controller
 {
@@ -29,6 +30,13 @@ class KlassController extends Controller
   }
   
   public function create(Request $request){
+    $validator = Validator::make($request->all(), [
+      'teacher' => 'required|exists:users,id',
+      'name' => 'required|string|max:255',
+      'fees' => 'required'
+    ]);
+    
+    if ($validator->fails()) return back()->withErrors($validator)->withInput();
 
     $class = Klass::create([
       'name' => $request->name,
@@ -57,6 +65,15 @@ class KlassController extends Controller
   }
 
   public function editclass(Request $request){
+
+    $validator = Validator::make($request->all(), [
+      'teacher' => 'required|exists:users,id',
+      'name' => 'required|string|max:255',
+      'fees' => 'required'
+    ]);
+    
+    if ($validator->fails()) return back()->withErrors($validator)->withInput();
+
     $class = Klass::find($request->class);
     if($class){
       $class->name = $request->name;

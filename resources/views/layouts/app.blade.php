@@ -89,6 +89,19 @@ $school_name = App\Models\Settings::Where('name', 'school_name')->first()->value
         </li>
         @endunlessrole
 
+      </ul>
+    </div>
+    <div class="bottom-content">
+      <hr />
+      @unlessrole('Admin|Accountant')
+      <li class="nav-link">
+        <a href="{{ route('profile') }}">
+          <i class='fa fa-user icon'></i>
+          <span class="text nav-text">Profile</span>
+        </a>
+      </li>
+      @endunlessrole
+
        @hasrole('Admin')
        <li class="nav-link">
           <a href="/settings">
@@ -97,17 +110,6 @@ $school_name = App\Models\Settings::Where('name', 'school_name')->first()->value
           </a>
         </li>
        @endhasrole
-
-      </ul>
-    </div>
-    <div class="bottom-content">
-      <hr />
-      <li class="nav-link">
-        <a href="{{ route('profile') }}">
-          <i class='fa fa-user icon'></i>
-          <span class="text nav-text">Profile</span>
-        </a>
-      </li>
 
       <li>
         <a class="logout" href="{{ route('logout') }}" onclick="event.preventDefault();
