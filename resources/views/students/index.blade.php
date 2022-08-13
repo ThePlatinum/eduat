@@ -12,14 +12,15 @@
 <hr />
 <div class="table-responsive pt-2">
   <table class="table">
-    <tr class="bg-light">
-      <th scope="col"></th>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Class</th>
-      <th scope="col"></th>
-    </tr>
+    <thead>
+      <tr class="bg-light">
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Class</th>
+        <th scope="col"></th>
+      </tr>
     </thead>
     <tbody>
       @forelse($students as $student)
@@ -28,7 +29,7 @@
         <td class="name">{{$student->fullname}}</td>
         <td> {{$student->email ?? ''}} </td>
         <td> {{$student->phone ?? ''}} </td>
-        <td> {{$student->class->name ?? ''}}  </td>
+        <td> {{$student->class->name ?? ''}} </td>
         <td>
           <a href="{{ route('viewprofile', $student->id ) }}" class="btn btn-primary btn-sm">
             <i class='fa fa-eye'></i></a>

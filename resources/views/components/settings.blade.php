@@ -99,13 +99,14 @@
       <hr>
       <div class="table-responsive">
         <table class="table">
-          <tr class="bg-light">
-            <th scope="col"></th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Role</th>
-            <th scope="col"></th>
-          </tr>
+          <thead>
+            <tr class="bg-light">
+              <th scope="col"></th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Role</th>
+              <th scope="col"></th>
+            </tr>
           </thead>
           @foreach ($admins['super'] as $admin)
           <tr>

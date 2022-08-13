@@ -95,13 +95,14 @@
       <hr />
       <div class="table-responsive pt-3">
         <table class="table">
-          <tr class="bg-light">
-            <th scope="col"></th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col"></th>
-          </tr>
+          <thead>
+            <tr class="bg-light">
+              <th scope="col"></th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col"></th>
+            </tr>
           </thead>
           <tbody>
             @forelse($class->students as $student)

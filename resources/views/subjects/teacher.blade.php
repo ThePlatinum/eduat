@@ -99,16 +99,17 @@
       <hr />
       <div class="table-responsive">
         <table class="table">
-          <tr class="bg-light">
-            <th scope="col"></th>
-            <th scope="col">Date</th>
-            <th scope="col">Title</th>
-            <th scope="col">Grade Point</th>
-            <th scope="col">Highest</th>
-            <th scope="col">Avg.</th>
-            <th scope="col">Lowest</th>
-            <th scope="col"></th>
-          </tr>
+          <thead>
+            <tr class="bg-light">
+              <th scope="col"></th>
+              <th scope="col">Date</th>
+              <th scope="col">Title</th>
+              <th scope="col">Grade Point</th>
+              <th scope="col">Highest</th>
+              <th scope="col">Avg.</th>
+              <th scope="col">Lowest</th>
+              <th scope="col"></th>
+            </tr>
           </thead>
           <tbody>
             @forelse($subject->assessments as $assessments)
@@ -118,7 +119,7 @@
               <td> {{$assessments->title}} </td>
               <td> {{$assessments->grade_point}} </td>
               <td> {{$assessments->highest_score}} </td>
-              <td> {{$assessments->average_score}}  </td>
+              <td> {{$assessments->average_score}} </td>
               <td> {{$assessments->lowest_score}} </td>
               <td>
                 <a href="{{ route('gradingview', $assessments->id ) }}" class="btn btn-primary btn-sm">
@@ -141,13 +142,14 @@
     Students
     <div class="table-responsive pt-3">
       <table class="table">
-        <tr class="bg-light">
-          <th scope="col"></th>
-          <th scope="col">Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Phone</th>
-          <th scope="col"></th>
-        </tr>
+        <thead>
+          <tr class="bg-light">
+            <th scope="col"></th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col"></th>
+          </tr>
         </thead>
         <tbody>
           @forelse($subject->class->students as $student)

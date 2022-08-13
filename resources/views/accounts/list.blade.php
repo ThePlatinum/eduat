@@ -11,13 +11,13 @@
     <div class="table-responsive">
       <table class="table">
         <thead>
-        <tr class="bg-light">
-          <th scope="col"></th>
-          <th scope="col">Name</th>
-          <th scope="col">Current Class</th>
-          <th scope="col">Outstanding</th>
-          <th scope="col">Actions</th>
-        </tr>
+          <tr class="bg-light">
+            <th scope="col"></th>
+            <th scope="col">Name</th>
+            <th scope="col">Current Class</th>
+            <th scope="col">Outstanding</th>
+            <th scope="col">Actions</th>
+          </tr>
         </thead>
         <tbody>
           @forelse($students as $student)

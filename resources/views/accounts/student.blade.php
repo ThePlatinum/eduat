@@ -53,11 +53,12 @@
           <hr />
           <div class="table-responsive">
             <table class="table">
-              <tr>
-                <th scope="col"></th>
-                <th scope="col">Description</th>
-                <th scope="col">Amount</th>
-              </tr>
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Amount</th>
+                </tr>
               </thead>
               <tbody>
                 <tr>
@@ -129,7 +130,7 @@
 
                 <div class="col-12 py-2">
                   <label for="ammount" class="col-form-label ">{{ __('Ammount') }}</label>
-                  <input id="ammount" type="number"  min='0'class="form-control @error('ammount') is-invalid @enderror" name="ammount" required autofocus>
+                  <input id="ammount" type="number" min='0' class="form-control @error('ammount') is-invalid @enderror" name="ammount" required autofocus>
                   @error('ammount')
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -173,14 +174,15 @@
     <div class="row">
       <div class="table-responsive">
         <table class="table">
-          <tr class="bg-light">
-            <th scope="col"></th>
-            <th scope="col">Paid on</th>
-            <th scope="col">While in class</th>
-            <th scope="col">Ammout</th>
-            <th scope="col">Receipt No.</th>
-            <th scope="col">Payment Note</th>
-          </tr>
+          <thead>
+            <tr class="bg-light">
+              <th scope="col"></th>
+              <th scope="col">Paid on</th>
+              <th scope="col">While in class</th>
+              <th scope="col">Ammout</th>
+              <th scope="col">Receipt No.</th>
+              <th scope="col">Payment Note</th>
+            </tr>
           </thead>
           <tbody>
             @forelse ($payments as $payment)
