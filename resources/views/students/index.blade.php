@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-between align-items-center">
   <div class="text-start">
     <a href=" {{ route('newstudent') }} " class="btn btn-danger btn-bg">
-      <i class='fa fa-square-plus bx-flip-horizontal'></i> <span>Student Admission</span>
+      <i class='fa fa-square-plus '></i> <span>Student Admission</span>
     </a>
   </div>
 </div>
@@ -31,7 +31,7 @@
         <td> {{$student->class->name ?? ''}}  </td>
         <td>
           <a href="{{ route('viewprofile', $student->id ) }}" class="btn btn-primary btn-sm">
-            <i class='bx bx-show'></i></a>
+            <i class='fa fa-eye'></i></a>
         </td>
       </tr>
       @empty

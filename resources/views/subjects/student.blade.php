@@ -18,7 +18,7 @@
           </p>
           <div class="text-end">
             <a href="{{route('subjectreport', $subject->id)}}" class="btn btn-outline-danger">
-              <i class='bx bx-arrow-back bx-flip-horizontal' ></i>
+              <i class='fa fa-arrow-left ' ></i>
             </a>
           </div>
         </div>

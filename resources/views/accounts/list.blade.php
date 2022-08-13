@@ -28,13 +28,13 @@
             <td> &#8358; {{$student->should_pay ?? ''}} </td>
             <td>
               <a href="{{route('getaccounts',$student->id)}}" class="btn btn-primary btn-sm">
-                <i class='bx bx-show'></i> &nbsp; View Payments
+                <i class='fa fa-eye'></i> &nbsp; View Payments
               </a>
               <a href="tel://{{$student->phone}}" class="btn btn-outline-danger btn-sm">
-                <i class='bx bx-phone-call'></i>
+                <i class='fa fa-phone'></i>
               </a>
               <a href="mailto://{{$student->email}}" class="btn btn-outline-danger btn-sm">
-                <i class='bx bx-envelope'></i>
+                <i class='fa fa-envelope'></i>
               </a>
             </td>
           </tr>

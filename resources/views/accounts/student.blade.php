@@ -30,7 +30,7 @@
         @role('Accountant')
         <div class="text-end">
           <a href=" {{ route('accounts') }} " class="btn btn-secondary btn-sm">
-            <i class='bx bx-arrow-back'></i> <span>BACK</span>
+            <i class='fa fa-arrow-left'></i> <span>BACK</span>
           </a>
         </div>
         @endrole
@@ -100,7 +100,7 @@
       Payments
       @role('Accountant')
       <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#addpayment">
-        <i class='bx bx-add-list'></i> <span>New Payment</span>
+        <i class='fa fa-add'></i> &nbsp; <span>New Payment</span>
       </a>
       <!-- Add Payment Modal -->
       <div class="modal fade" tabindex="-1" id="addpayment">

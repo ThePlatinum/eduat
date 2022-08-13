@@ -36,7 +36,7 @@
 </script>
 <!-- <div class="text-end">
   <a href=" {{ url()->previous() }} " class="btn btn-secondary btn-sm">
-    <i class='bx bx-arrow-back'></i> <span>BACK</span>
+    <i class='fa fa-arrow-left'></i> <span>BACK</span>
   </a>
 </div> -->
 <div class="row">

@@ -93,7 +93,7 @@
       <div class="d-flex justify-content-between align-items-center">
         Admins and Accountants
         <a href="/register" class="btn btn-primary my-2">
-          <i class="bx bx-user-plus"></i> &nbsp; Add New Admin
+          <i class="fa fa-user-plus"></i> &nbsp; Add New Admin
         </a>
       </div>
       <hr>
@@ -116,7 +116,7 @@
             <td class="text-end">
               @if (Auth()->user()->id != $admin->id)
               <a href="{{ route('viewprofile', $admin->id ) }}" class="btn btn-danger btn-sm">
-                <i class='bx bx-trash'></i> &nbsp; Delete
+                <i class='fa fa-trash'></i> &nbsp; Delete
               </a>
               @endif
             </td>
@@ -130,7 +130,7 @@
             <td> {{$admin->roles[0]->name ?? ''}} </td>
             <td class="text-end">
               <a href="{{ route('viewprofile', $admin->id ) }}" class="btn btn-danger btn-sm">
-                <i class='bx bx-trash'></i> &nbsp; Delete
+                <i class='fa fa-trash'></i> &nbsp; Delete
               </a>
             </td>
           </tr>

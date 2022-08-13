@@ -89,7 +89,7 @@
       <div class="d-flex header justify-content-between">
         Students
         <a href=" {{ route('classes') }} " class="btn btn-secondary btn-sm">
-          <i class='bx bx-arrow-back'></i> <span>BACK</span>
+          <i class='fa fa-arrow-left'></i> <span>BACK</span>
         </a>
       </div>
       <hr />
@@ -112,7 +112,7 @@
               <td> {{$student->phone ?? ''}} </td>
               <td>
                 <a href="{{ route('viewprofile', $student->id ) }}" class="btn btn-primary btn-sm">
-                  <i class='bx bx-show'></i></a>
+                  <i class='fa fa-eye'></i></a>
               </td>
             </tr>
             @empty

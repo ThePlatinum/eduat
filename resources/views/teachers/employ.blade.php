@@ -6,7 +6,7 @@
     <div class="header d-flex justify-content-between align-items-center p-3">
       <h5>Add New Teacher</h5>
       <a href="{{route('teachers')}}" class="btn btn-secondary btn-sm">
-        <i class='bx bx-arrow-back'></i> <span>BACK</span>
+        <i class='fa fa-arrow-left'></i> <span>BACK</span>
       </a>
     </div>
     <form action="{{ route('employ') }}" method="POST" class="row p-3">

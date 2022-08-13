@@ -6,7 +6,7 @@
     <div class="header d-flex justify-content-between align-items-center p-3">
       <h5> {{ isset($item)  ? 'Update Item' : 'Create Item'}} </h5>
       <a href=" {{ route('items') }} " class="btn btn-secondary">
-        <i class='bx bx-arrow-back'></i> <span>BACK</span>
+        <i class='fa fa-arrow-left'></i> <span>BACK</span>
       </a>
     </div>
     <form method="POST" action="{{ isset($item)  ?  route('edititem') : route('create') }}" class=" p-3">

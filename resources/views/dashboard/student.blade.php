@@ -51,8 +51,8 @@ Welcome {{ Auth()->user()->firstname }}
         <div class="col-md-4 text-end d-flex flex-column justify-content-center">
           Contact:
           <div class="d-flex text-end justify-content-end">
-            <a href="tel:{{$curentclass->teacher->phone ?? ''}}" class="btn btn-outline-danger btn-sm"> <i class='bx bxs-phone-call'></i></a>
-            <a href="mailto:{{$curentclass->teacher->email ?? ''}}" class="btn btn-danger btn-sm"> <i class='bx bxs-envelope'></i> </a>
+            <a href="tel:{{$curentclass->teacher->phone ?? ''}}" class="btn btn-outline-danger btn-sm"> <i class='fa fa-phone'></i></a>
+            <a href="mailto:{{$curentclass->teacher->email ?? ''}}" class="btn btn-danger btn-sm"> <i class='fa fa-envelope'></i> </a>
           </div>
         </div>
       </div>

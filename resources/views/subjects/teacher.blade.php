@@ -3,7 +3,7 @@
 @section('subject')
 <div class="text-end">
   <a href=" {{ url()->previous() }} " class="btn btn-secondary btn-sm">
-    <i class='bx bx-arrow-back'></i> <span>BACK</span>
+    <i class='fa fa-arrow-left'></i> <span>BACK</span>
   </a>
 </div>
 
@@ -122,7 +122,7 @@
               <td> {{$assessments->lowest_score}} </td>
               <td>
                 <a href="{{ route('gradingview', $assessments->id ) }}" class="btn btn-primary btn-sm">
-                  <i class='bx bx-show'></i>
+                  <i class='fa fa-eye'></i>
                 </a>
               </td>
             </tr>
@@ -158,7 +158,7 @@
             <td> {{$student->phone ?? ''}} </td>
             <td>
               <a href="{{ route('viewprofile', $student->id ) }}" class="btn btn-primary btn-sm">
-                <i class='bx bx-show'></i></a>
+                <i class='fa fa-eye'></i></a>
             </td>
           </tr>
           @empty

@@ -7,7 +7,7 @@
     <div class="header d-flex justify-content-between align-items-center p-3">
       <h5>{{ isset($class) ? 'Update Class' : 'Add New Class'}}</h5>
       <a href=" {{ route('classes') }} " class="btn btn-secondary">
-        <i class='bx bx-arrow-back'></i> <span>BACK</span>
+        <i class='fa fa-arrow-left'></i> <span>BACK</span>
       </a>
     </div>
 

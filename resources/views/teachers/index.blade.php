@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-between align-items-center">
   <div class="text-start">
     <a href=" {{ route('newteacher') }} " class="btn btn-danger btn-bg">
-      <i class='fa fa-square-plus bx-flip-horizontal'></i> <span>Add New Teacher</span>
+      <i class='fa fa-square-plus '></i> <span>Add New Teacher</span>
     </a>
   </div>
 </div>
