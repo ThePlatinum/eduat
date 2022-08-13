@@ -8,17 +8,9 @@
   </div>
 
   <div class="p-3">
-    <div class="search py-2">
-      <form action="" class="d-flex">
-        <input type="search" name="search" id="searchbox" placeholder="Search..." class="flex-grow-1 " />
-        <button type="submit" class="btn btn-danger" id="searchbtn">
-          <i class='bx bx-search'></i> Search
-        </button>
-      </form>
-    </div>
-    <hr />
     <div class="table-responsive">
       <table class="table">
+        <thead>
         <tr class="bg-light">
           <th scope="col"></th>
           <th scope="col">Name</th>

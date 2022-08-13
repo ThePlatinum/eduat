@@ -19,7 +19,7 @@
             <div class="subjectlist d-flex">
               <div class="flex-grow-1 d-flex align-items-center px-3">{{$subject->name}}</div>
               <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#editsubject{{$subject->id}}">
-                <i class='bx bx-edit'></i>
+                <i class='fa fa-pen-to-square'></i>
               </a>
               <!-- Edit Modal -->
               <div class="modal fade" tabindex="-1" id="editsubject{{$subject->id}}">

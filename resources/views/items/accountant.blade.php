@@ -3,7 +3,7 @@
 @section('item')
 <div class="text-end">
   <a href=" {{ route('additem') }} " class="btn btn-primary">
-    <i class='bx bx-list-plus'></i> <span>New Item</span>
+    <i class='fa fa-list'></i> <span>New Item</span>
   </a>
 </div>
 

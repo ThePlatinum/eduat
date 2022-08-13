@@ -81,3 +81,11 @@ body::-webkit-scrollbar {
   width: 30vh;
   border-radius: 15px;
 }
+
+.footer {
+  color: #FFFFFF;
+}
+
+.authcard {
+  background: linear-gradient(45deg, rgba(00, 00, 00, 0) 75%, rgba(58, 73, 180, 1) 80%);
+}

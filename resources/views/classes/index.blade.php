@@ -3,7 +3,7 @@
 @section('class')
 <div class="text-end">
   <a href=" {{ route('addclass') }} " class="btn btn-primary">
-    <i class='bx bx-list-plus'></i> <span>New Class</span>
+    <i class='fa fa-list'></i> <span>New Class</span>
   </a>
 </div>
 <div class="row pt-3">

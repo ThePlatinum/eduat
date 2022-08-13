@@ -28,7 +28,7 @@
               {{ $school_name }}
             </h2>
             <a href="#" class="btn btn-sm btn-outline-danger mb-2">
-              <i class="bx bx-edit"></i> &nbsp; Change school name
+              <i class="fa fa-pen-to-square"></i> &nbsp; Change school name
             </a>
           </div>
           <div class="round-logo">
@@ -36,7 +36,7 @@
             <div class="d-flex justify-content-between align-items-end">
               <img src="{{ asset('images/logo.png') }}" alt="School Logo">
               <a href="#" class="btn btn-sm btn-outline-danger mb-2">
-                <i class="bx bx-edit"></i> &nbsp; Change logo
+                <i class="fa fa-pen-to-square"></i> &nbsp; Change logo
               </a>
             </div>
           </div>
