@@ -20,10 +20,10 @@ class RolesAndPermissionsSeeder extends Seeder
     // create permissions
     // Permission::create(['name' => 'edit articles']);
 
-    $role = Role::create(['name' => 'Admin']);
-    $role = Role::create(['name' => 'Accountant']);
-    $role = Role::create(['name' => 'Teacher']);
-    $role = Role::create(['name' => 'Student']);
+    Role::create(['name' => 'Admin']);
+    Role::create(['name' => 'Accountant']);
+    Role::create(['name' => 'Teacher']);
+    Role::create(['name' => 'Student']);
 
     // $role->givePermissionTo('edit articles');
   }

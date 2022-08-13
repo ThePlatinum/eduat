@@ -41,6 +41,22 @@ class ClassSeeder extends Seeder
         [
           'name' => 'SSS 1 B (Arts)',
           'fees' => explode(',', "12300, 13000, 15000")
+        ],
+        [
+          'name' => 'SSS 2 A (Science)',
+          'fees' => explode(',', "12300, 13000, 15000")
+        ],
+        [
+          'name' => 'SSS 2 B (Arts)',
+          'fees' => explode(',', "12300, 13000, 15000")
+        ],
+        [
+          'name' => 'SSS 3 A (Science)',
+          'fees' => explode(',', "12300, 13000, 15000")
+        ],
+        [
+          'name' => 'SSS 3 B (Arts)',
+          'fees' => explode(',', "12300, 13000, 15000")
         ]
       ];
 

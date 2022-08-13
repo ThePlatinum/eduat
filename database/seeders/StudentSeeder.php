@@ -16,7 +16,7 @@ class StudentSeeder extends Seeder
   public function run()
   {
     // Create teacher
-    for ($i = 0; $i < 15; $i++) {
+    for ($i = 0; $i < 5; $i++) {
       $teacher = User::factory()->create();
       $teacher->assignRole('Teacher');
 
@@ -26,7 +26,7 @@ class StudentSeeder extends Seeder
     }
 
     // Create student
-    for ($i = 0; $i < 100; $i++) {
+    for ($i = 0; $i < 30; $i++) {
       $student = User::factory()->create();
       $student->assignRole('Student');
 
