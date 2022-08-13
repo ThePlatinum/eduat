@@ -28,15 +28,17 @@ class DashboardController extends Controller
   {
     $_id = Auth()->user()->id;
 
-    $students = User::whereHas("roles", function ($q) {
+    $all_students = User::whereHas("roles", function ($q) {
       $q->where("name", "Student");
-    })->count();
+    })->get();
+    $students = $all_students->count();
+    $grad_students = $all_students->where('klass_id', 1)->count();
     $teachers = User::whereHas("roles", function ($q) {
       $q->where("name", "Teacher");
     })->count();
     $classes = Klass::all()->count();
     $items = Items::all()->count();
-    $counts = ['students' => $students, 'teachers' => $teachers, 'classes' => $classes, 'items' => $items];
+    $counts = ['students' => $students, 'grad_students' => $grad_students, 'teachers' => $teachers, 'classes' => $classes, 'items' => $items];
 
     if (Auth()->user()->roles[0]->name == 'Student') {
       $curentclass = Klass::with('subjects', 'teacher')->find(Auth()->user()->klass_id);

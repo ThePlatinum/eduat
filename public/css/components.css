@@ -30,7 +30,7 @@
 }
 
 .card {
-  margin: 1.5vh 0px;
+  margin: 1vh 0px;
 }
 
 body::-webkit-scrollbar {
@@ -94,4 +94,22 @@ body::-webkit-scrollbar {
 /* DataTable */
 .table.dataTable {
   padding: 10px 0px;
+}
+
+
+.card hr{
+  margin-top: 0;
+}
+
+.l-red {
+  border-left: 2px solid red;
+}
+
+.l-blue {
+  border-left: 2px solid blue;
+}
+
+.l-blue h6, .l-red h6{
+  font-size: 2rem;
+  text-align: center;
 }
