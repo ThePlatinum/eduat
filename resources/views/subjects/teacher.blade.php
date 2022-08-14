@@ -60,11 +60,20 @@
 <hr class="mb-0 pb-0">
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-6 col-md-4">
     <div class="card card-body">
       <p>Class</p>
       <div class="text-end">
         <h2>{{$subject->class->name}}</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-6 col-md-4">
+    <div class="card card-body">
+      <p>Number of Students</p>
+      <div class="text-end">
+        <h2>{{$subject->class->student_count}}</h2>
       </div>
     </div>
   </div>
@@ -74,15 +83,6 @@
       <p>Subject</p>
       <div class="text-end">
         <h2>{{$subject->name}}</h2>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-4">
-    <div class="card card-body">
-      <p>Number of Students</p>
-      <div class="text-end">
-        <h2>{{$subject->class->student_count}}</h2>
       </div>
     </div>
   </div>
@@ -191,8 +191,8 @@
           <td>{{$assessments->average_score}}</td>
           <td>{{$assessments->lowest_score}}</td>
           <td>
-            <a href="{{ route('gradingview', $assessments->id ) }}" class="btn btn-primary d-flex align-items-center">
-              <i class='fa fa-eye'></i> &nbsp;&nbsp; <span>View</span>
+            <a href="{{route('gradingview', $assessments->id )}}" class="btn btn-primary d-flex align-items-center">
+              <i class='fa fa-eye'></i> &nbsp; <span>View</span>
             </a>
           </td>
         </tr>

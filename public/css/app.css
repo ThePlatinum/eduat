@@ -39,6 +39,11 @@ body {
   transition: var(--tran-03);
 }
 
+.row>* {
+  padding-right: calc(var(--bs-gutter-x) * .25) !important;
+  padding-left: calc(var(--bs-gutter-x) * .25) !important;
+}
+
 /* ===== Sidebar ===== */
 .sidebar {
   position: fixed;
