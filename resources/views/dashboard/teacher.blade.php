@@ -1,7 +1,7 @@
 Welcome {{ Auth()->user()->firstname }}
 <div class="page py-2 flex-grow-1">
   <div class="row">
-    <div class="col-4 px-2">
+    <div class="col-6 px-2">
       <div class="card card-body">
         Subjects
         <hr />
@@ -10,7 +10,7 @@ Welcome {{ Auth()->user()->firstname }}
         </div>
       </div>
     </div>
-    <div class="col-4 px-2">
+    <div class="col-6 px-2">
       <div class="card card-body">
         All Students
         <hr />
@@ -23,7 +23,7 @@ Welcome {{ Auth()->user()->firstname }}
   Subjects
   <div class="row">
   @foreach ($teaches as $subject)
-    <div class="col-3 px-2">
+    <div class="col-md-3 px-2">
       <div class="card card-body">
         <h5>{{$subject->name}}</h5>
         <h6 class="pt-2"> Class: {{$subject->class->name}}</h6>
