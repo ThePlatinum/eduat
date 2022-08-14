@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ItemsController extends Controller
 {
-  //
+
   public function items()
   {
     $items = Items::all();

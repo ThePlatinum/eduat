@@ -3,8 +3,8 @@
 @section('student')
 <div class="d-flex justify-content-between align-items-center">
   <div class="text-start">
-    <a href=" {{ route('newstudent') }} " class="btn btn-danger btn-bg">
-      <i class='fa fa-square-plus '></i> <span>Student Admission</span>
+    <a href="{{route('newstudent')}}" class="btn btn-danger px-4">
+      <i class='fa fa-square-plus '></i> &nbsp; <span>Student Admission</span>
     </a>
   </div>
 </div>
@@ -14,7 +14,7 @@
   <table class="table">
     <thead>
       <tr class="bg-light">
-        <th scope="col"></th>
+        <th scope="col">SN</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
         <th scope="col">Phone</th>
