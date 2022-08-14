@@ -14,7 +14,8 @@
           <h6>{{$subject->name}}</h6>
           <p>
             Teacher: <br>
-            {{$subject->teacher->fullname ?? 'Not Available'}}
+            {{$subject->teacher->fullname ?? 'Not Available'}} <br>
+            {{$subject->teacher->qualification ?? 'Not Available'}}
           </p>
           <div class="text-end">
             <a href="{{route('subjectreport', $subject->id)}}" class="btn btn-outline-danger">

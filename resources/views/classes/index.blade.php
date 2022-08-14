@@ -16,7 +16,8 @@
         </div>
         <div class="col-10">
           <h5>{{$class->name}}</h5>
-          Class Teacher: <span>{{$class['teacher']->lastname ?? "No teacher Assigned"}} {{$class['teacher']->firstname ?? '' }} {{$class['teacher']->othername ?? ''}}</span>
+          <small>Class Teacher:</small><br>
+          <b><span>{{$class['teacher']->qualification ?? 'NA'}} | {{$class['teacher']->fullname ?? "No teacher Assigned"}}</span></b>
         </div>
         <hr />
         <div class="row px-2">

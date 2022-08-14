@@ -60,6 +60,7 @@ class DatabaseSeeder extends Seeder
       'phone'     => '07085781787',
       'password'  => Hash::make('12345678'),
       'created_at'=> now(),
+      'qualification' => 'B. Tech',
     ]);
 
     $user->assignRole('Teacher');
@@ -72,9 +73,9 @@ class DatabaseSeeder extends Seeder
       'email'     => 'student@eduat.com',
       'phone'     => '+2347098765432',
       'klass_id'  => Klass::where('id','>',1)->get()->random()->id,
-      'gender' => 'Male',
-      'dob' => '2015-03-03',
-      'address' => 'No. 12, Oloyede Villa, Ogbomoso Str. Lagos State',
+      'gender'    => 'Male',
+      'dob'       => '2015-03-03',
+      'address'   => 'No. 12, Oloyede Villa, Ogbomoso Str. Lagos State',
       'password'  => Hash::make('12345678')
     ]);
     StudentClasses::create([

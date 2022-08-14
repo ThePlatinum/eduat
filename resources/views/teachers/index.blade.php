@@ -17,7 +17,7 @@
       <div class="card-body">
         <div>
           <h4 class="mb-1">{{$teacher['teacher']->fullname ?? ''}}</h4>
-          <p class="mb-1">{{$teacher['teacher']->email}} <b>|</b> {{$teacher['teacher']->phone}}</p>
+          <p class="mb-1">{{$teacher['teacher']->qualification}} <b>|</b> {{$teacher['teacher']->email}} <b>|</b> {{$teacher['teacher']->phone}}</p>
         </div>
         <div>
           <p class='m-0'><b>Subjects:</b></p>

@@ -41,7 +41,8 @@ class TeachersController extends Controller
       'othername' => 'nullable|string|max:255',
       'gender' => ['required',Rule::in(['Male', 'Female'])],
       'email' => 'required|string|email|max:255|unique:users',
-      'phone' => 'required|string|max:255'
+      'phone' => 'required|string|max:255',
+      'qualification' => 'required|string|max:255'
     ]);
 
     if ($validator->fails()) {
@@ -55,6 +56,7 @@ class TeachersController extends Controller
       'gender' => $request->gender,
       'email' => $request->email,
       'phone' => $request->phone,
+      'qualification' => $request->qualification,
       'password' => Hash::make($request->firstname),
     ]);
     $user->assignRole('Teacher');

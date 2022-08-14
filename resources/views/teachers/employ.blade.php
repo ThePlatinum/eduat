@@ -53,6 +53,7 @@
         <select id="gender"
           class="form-control @error('gender') is-invalid @enderror"
           name="gender" autofocus autocomplete="gender">
+          <option value=""> Select Gender </option>
           <option value="Male" {{ (old('gender')=="Male" ? 'selected' : '' )}} > Male </option>
           <option value="Female" {{ (old('gender')=="Female" ? 'selected' : '' )}} > Female </option>
         </select>
@@ -89,12 +90,29 @@
         @enderror
       </div>
 
+      <div class="col-12 py-2">
+        <label for="qualification" class="col-form-label ">{{ __('Academic Qualification') }}</label>
+        <input id="qualification" name="qualification" placeholder="E.g: B. Tech, B. Sc, OND, etc"
+          class="form-control @error('qualification') is-invalid @enderror"
+          required autofocus autocomplete="qualification">
+          <!-- <option value=""> Select Qualification </option>
+          <option value="Ph. D" {{ (old('qualification')=="Ph. D" ? 'selected' : '' )}}> Ph. D </option>
+          <option value="B. Sc" {{ (old('qualification')=="B. Sc" ? 'selected' : '' )}}> B. Sc </option>
+          <option value="B. Sc" {{ (old('qualification')=="B. Sc" ? 'selected' : '' )}}> B. Sc </option>
+        </select> -->
+        @error('qualification')
+        <span class="invalid-feedback" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+      </div>
+
       <div class="col-12 d-flex gap-3 py-3">
-        <button type="reset" class="btn btn-secondary block">
+        <button type="reset" class="btn btn-secondary px-3">
           {{ __('Reset') }}
         </button>
-        <button type="submit" class="btn btn-primary block">
-          {{ __('Save') }}
+        <button type="submit" class="btn btn-primary px-5">
+          {{ __('Add New Teacher') }}
         </button>
       </div>
     </form>

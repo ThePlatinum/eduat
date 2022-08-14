@@ -15,6 +15,7 @@ class StudentSeeder extends Seeder
    */
   public function run()
   {
+    $qs = ['OND', 'B.Sc', 'B. Tech', 'HND'];
     // Create teacher
     for ($i = 0; $i < 5; $i++) {
       $teacher = User::factory()->create();
@@ -22,6 +23,7 @@ class StudentSeeder extends Seeder
 
       // Remove Class
       $teacher->klass_id = null;
+      $teacher->qualification = $qs[random_int(0,3)];
       $teacher->save();
     }
 

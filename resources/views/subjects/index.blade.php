@@ -45,7 +45,8 @@
         <h4>{{$subject->name}}</h4>
         <p>
           Teacher: <br>
-          {{$subject->teacher->fullname ?? "Not Available"}}
+          {{$subject->teacher->fullname ?? "Not Available"}} <br>
+          {{$subject->teacher->qualification ?? "Not Available"}}
         </p>
       </div>
     </div>
