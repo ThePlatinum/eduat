@@ -21,12 +21,15 @@ class CreateUsersTable extends Migration
       $table->string('lastname');
       $table->string('othername')->nullable();
 
+      $table->string('qualification')->nullable();
+
       $table->string('phone')->nullable();
       $table->string('address')->nullable();
       $table->string('gender')->nullable();
       $table->string('image')->default('avater.png');
       $table->string('bio')->default('No profile details');
       $table->timestamp('dob')->nullable();
+      
       $table->unsignedBigInteger('klass_id')->nullable();
       $table->timestamp('email_verified_at')->nullable();
       $table->string('password');

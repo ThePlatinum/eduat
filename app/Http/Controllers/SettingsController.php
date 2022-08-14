@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Klass;
+use App\Models\Settings;
 use App\Models\StudentKlass;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -89,7 +90,7 @@ class SettingsController extends Controller
       $user->assignRole('Accountant');
     }
 
-    return back()->with('message', 'Teacher added successfully');
+    return back()->with('success', 'Teacher added successfully');
   }
 
   public function delete(Request $request) {
@@ -97,7 +98,21 @@ class SettingsController extends Controller
     if (!$admin) return back()->withErrors('error', 'Invalid User');
     $admin->delete();
 
-    \Illuminate\Support\Facades\Session::flash('message', 'Account deleted successfully');
+    \Illuminate\Support\Facades\Session::flash('success', 'Account deleted successfully');
+    return ;
+  }
+
+  public function edit_school_name(Request $request){
+    if (count_chars($request->new_name) < 2) {
+      \Illuminate\Support\Facades\Session::flash('error', "This is your school's name, make it valid");
+      return ;
+    }
+    $name = Settings::Where('name', 'school_name')->first();
+    $name->value = $request->new_name;
+    // dd(count_chars($request->new_name));
+    $name->save();
+
+    \Illuminate\Support\Facades\Session::flash('success', 'Change Successful!');
     return ;
   }
 }

@@ -13,42 +13,51 @@
       {{ session()->get('success') }}
     </div>
     @endif
+    @if(session()->has('error'))
+    <div class="alert alert-danger">
+      {{ session()->get('error') }}
+    </div>
+    @endif
 
     <div class="row">
       <div class="col-md-6">
-        <div class="card card-body">
+        <div class="card card-body profile">
           School details
           <hr>
-          <p>Name</p>
+          <p>School Name</p>
           <div class="d-flex justify-content-between align-items-end">
-            <h2>
+            <h2 id="name_field">
               @php
               $school_name = App\Models\Settings::Where('name', 'school_name')->first()->value;
               @endphp
               {{ $school_name }}
             </h2>
-            <a href="#" class="btn btn-sm btn-outline-danger mb-2">
-              <i class="fa fa-pen-to-square"></i> &nbsp; Change school name
+            <a class="btn btn-sm btn-outline-danger mb-2" id="edit_name">
+              <i class="fa fa-pen-to-square"></i>
+            </a>
+            <a class="btn btn-sm btn-outline-primary mb-2" id="save_name">
+              <i class="fa fa-check"></i>
             </a>
           </div>
           <div class="round-logo">
-            <p>Logo</p>
+            <p>School Logo</p>
             <div class="d-flex justify-content-between align-items-end">
               <img src="{{ asset('images/logo.png') }}" alt="School Logo">
               <a href="#" class="btn btn-sm btn-outline-danger mb-2">
-                <i class="fa fa-pen-to-square"></i> &nbsp; Change logo
+                <i class="fa fa-pen-to-square"></i>
               </a>
             </div>
           </div>
-          <h6 class="mt-3">
+          <!-- <h6 class="mt-3">
             @php
             $number_of_session = App\Models\Settings::Where('name', 'sessions')->first()->value;
             @endphp
             Number of sessions/terms: {{ $number_of_session }}
-          </h6>
+          </h6> -->
         </div>
       </div>
-      <div class="col-md-6">
+
+      <!-- <div class="col-md-6">
         <div class="card card-body">
           Migrate classes
           <hr>
@@ -87,12 +96,13 @@
             </div>
           </form>
         </div>
-      </div>
+      </div> -->
     </div>
+
     <div class="row p-3">
-      <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex justify-content-between align-items-center flex-column flex-md-row">
         Admins and Accountants
-        <a href="/register" class="btn btn-primary my-2" data-bs-toggle="modal" data-bs-target="#make_admin">
+        <a class="btn btn-primary my-2" data-bs-toggle="modal" data-bs-target="#make_admin">
           <i class="fa fa-user-plus"></i> &nbsp; Add New Admin
         </a>
         <!-- Start Make Admin Modal "-->
@@ -108,25 +118,25 @@
                 <div class="modal-body">
 
                   <div class="row">
-                  <div class="col-6 py-1">
-                    <label for="firstname" class="col-form-label">{{ __("Admin's First Name") }}</label>
-                    <input id="firstname" class="form-control @error('firstname') is-invalid @enderror" name="firstname" required autofocus value="{{old('firstname')}}" autocomplete="firstname">
-                    @error('firstname')
-                    <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                  </div>
+                    <div class="col-6 py-1">
+                      <label for="firstname" class="col-form-label">{{ __("Admin's First Name") }}</label>
+                      <input id="firstname" class="form-control @error('firstname') is-invalid @enderror" name="firstname" required autofocus value="{{old('firstname')}}" autocomplete="firstname">
+                      @error('firstname')
+                      <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                      </span>
+                      @enderror
+                    </div>
 
-                  <div class="col-6 py-1">
-                    <label for="lastname" class="col-form-label">{{ __("Admin's Last Name") }}</label>
-                    <input id="lastname" class="form-control @error('lastname') is-invalid @enderror" name="lastname" required autofocus value="{{old('lastname')}}" autocomplete="lastname">
-                    @error('lastname')
-                    <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                  </div>
+                    <div class="col-6 py-1">
+                      <label for="lastname" class="col-form-label">{{ __("Admin's Last Name") }}</label>
+                      <input id="lastname" class="form-control @error('lastname') is-invalid @enderror" name="lastname" required autofocus value="{{old('lastname')}}" autocomplete="lastname">
+                      @error('lastname')
+                      <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                      </span>
+                      @enderror
+                    </div>
                   </div>
 
                   <div class="col-12 py-1">
@@ -191,46 +201,46 @@
               <th scope="col"></th>
             </tr>
           </thead>
-          @foreach ($admins['super'] as $admin)
-          <tr>
-            <td>{{$loop->index+1}}</td>
-            <td>{{$admin->lastname ?? '' }} {{$admin->firstname}} {{$admin->othername ?? ''}}</td>
-            <td>{{$admin->email ?? ''}}</td>
-            <td>{{$admin->roles[0]->name ?? ''}}</td>
-            <td class="text-end">
-              @if (Auth()->user()->id != $admin->id)
-              <a class="btn btn-danger btn-sm px-3 delete_admin_btn" key_id="{{$admin->id}}">
-                <i class='fa fa-trash'></i> &nbsp; Delete Account
-              </a>
-              @endif
-            </td>
-          </tr>
-          
-          <div class='dialog' id="{{'dialog'.$admin->id}}" title="Delete Admin?">
-            <p class="m-0">Are sure you want to delete this Administor's Account?</p>
-            <p class="m-0"><b>Please remember that this action is irreversible</b></p>
-          </div>
-          @endforeach
-          @forelse ($admins['accountant'] as $admin)
-          <tr>
-            <td>{{$loop->index + sizeof($admins['accountant']) + 1 }}</td>
-            <td>{{$admin->lastname ?? '' }} {{$admin->firstname}} {{$admin->othername ?? ''}}</td>
-            <td>{{$admin->email ?? ''}}</td>
-            <td>{{$admin->roles[0]->name ?? ''}}</td>
-            <td class="text-end">
-              <a class="btn btn-danger btn-sm px-3 delete_admin_btn" key_id="{{$admin->id}}">
-                <i class='fa fa-trash'></i> &nbsp; Delete Account
-              </a>
-            </td>
-          </tr>
-
-          <div class='dialog' id="{{'dialog'.$admin->id}}" title="Delete Admin?">
-            <p class="m-0">Are sure you want to delete this Administor's Account?</p>
-            <p class="m-0"><b>Please remember that this action is irreversible</b></p>
-          </div>
-          @empty
-          @endforelse
           <tbody>
+            @foreach ($admins['super'] as $admin)
+            <tr>
+              <td>{{$loop->index+1}}</td>
+              <td>{{$admin->lastname ?? '' }} {{$admin->firstname}} {{$admin->othername ?? ''}}</td>
+              <td>{{$admin->email ?? ''}}</td>
+              <td>{{$admin->roles[0]->name ?? ''}}</td>
+              <td class="text-end">
+                @if (Auth()->user()->id != $admin->id)
+                <a class="btn btn-danger btn-sm px-3 delete_admin_btn" key_id="{{$admin->id}}">
+                  <i class='fa fa-trash'></i> &nbsp; Delete Account
+                </a>
+                @endif
+              </td>
+            </tr>
+
+            <div class='dialog' id="{{'dialog'.$admin->id}}" title="Delete Admin?">
+              <p class="m-0">Are sure you want to delete this Administor's Account?</p>
+              <p class="m-0"><b>Please remember that this action is irreversible</b></p>
+            </div>
+            @endforeach
+            @forelse ($admins['accountant'] as $admin)
+            <tr>
+              <td>{{$loop->index + sizeof($admins['accountant']) + 1 }}</td>
+              <td>{{$admin->lastname ?? '' }} {{$admin->firstname}} {{$admin->othername ?? ''}}</td>
+              <td>{{$admin->email ?? ''}}</td>
+              <td>{{$admin->roles[0]->name ?? ''}}</td>
+              <td class="text-end">
+                <a class="btn btn-danger btn-sm px-3 delete_admin_btn" key_id="{{$admin->id}}">
+                  <i class='fa fa-trash'></i> &nbsp; Delete Account
+                </a>
+              </td>
+            </tr>
+
+            <div class='dialog' id="{{'dialog'.$admin->id}}" title="Delete Admin?">
+              <p class="m-0">Are sure you want to delete this Administor's Account?</p>
+              <p class="m-0"><b>Please remember that this action is irreversible</b></p>
+            </div>
+            @empty
+            @endforelse
           </tbody>
         </table>
       </div>
@@ -238,17 +248,25 @@
   </div>
 </div>
 
+<style>
+  #name_field.active {
+    border-bottom: 1px solid grey;
+    padding-bottom: 5px;
+  }
+
+  #name_field:focus {
+    outline: none !important;
+  }
+</style>
+
 <script>
   $(function() {
     $(".dialog").hide()
-
+    $('#save_name').attr('style', 'display:none')
     let buttons = document.querySelectorAll(".delete_admin_btn");
-
     buttons.forEach(element => {
       element.addEventListener('click', e => {
-
         let admin_id = $(e.target).attr('key_id');
-
         $("#dialog" + admin_id).dialog({
           resizable: false,
           draggable: false,
@@ -264,7 +282,6 @@
           },
           buttons: {
             "Delete": function() {
-
               $.ajax({
                 url: "{{route('delete_admin')}}",
                 method: 'POST',
@@ -272,11 +289,10 @@
                   admin_id: admin_id,
                   _token: '{{csrf_token()}}'
                 },
-                success: ()=>{
+                success: () => {
                   window.location.href = "settings"
                 }
               })
-
               $(this).dialog("close");
             },
             Cancel: function() {
@@ -287,5 +303,32 @@
       })
     });
   });
+
+  $('#edit_name').click(() => {
+    $('#name_field').attr('contentEditable', 'true')
+    $('#name_field').focus()
+    $('#name_field').addClass('active')
+    $('#edit_name').attr('style', 'display:none')
+    $('#save_name').attr('style', 'display:block')
+  })
+
+  $('#save_name').click(() => {
+    $.ajax({
+      url: "{{route('edit_school_name')}}",
+      method: 'POST',
+      data: {
+        new_name: document.querySelector('#name_field').innerText,
+        _token: '{{csrf_token()}}'
+      },
+      success: () => {
+        window.location.href = "settings"
+        $('#name_field').attr('contentEditable', 'false')
+        $('#name_field').focus()
+        $('#name_field').removeClass('active')
+        $('#edit_name').attr('style', 'display:block')
+        $('#save_name').attr('style', 'display:none')
+      }
+    })
+  })
 </script>
 @endsection
