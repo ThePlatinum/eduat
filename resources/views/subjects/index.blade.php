@@ -34,21 +34,18 @@
     chart.draw(data, options);
   }
 </script>
-<!-- <div class="text-end">
-  <a href=" {{ url()->previous() }} " class="btn btn-secondary btn-sm">
-    <i class='fa fa-arrow-left'></i> <span>BACK</span>
+<div class="text-end">
+  <a href=" {{ url()->previous() }} " class="btn btn-secondary">
+    <i class='fa fa-arrow-left'></i> &nbsp; <span>BACK</span>
   </a>
-</div> -->
-<div class="row">
-
-<div class="col-md-7">
+</div>
   <div class="row">
     <div class="col-md-6">
       <div class="card card-body">
         <h4>{{$subject->name}}</h4>
         <p>
           Teacher: <br>
-          {{$subject->teacher->fullname}}
+          {{$subject->teacher->fullname ?? "Not Available"}}
         </p>
       </div>
     </div>
@@ -61,8 +58,7 @@
       </div>
     </div>
   </div>
-
-
+  
   @if (str_word_count($subject_assessments) < 1)
     <div class="text-center p-5 bg-light">
       No data to display
@@ -70,23 +66,24 @@
   @else
     <div id="subject_chart" style="width: 100% ; height: 65vh ;"></div>
   @endif
-</div>
-
-<div class="col-md-5">
+  
   <div class="card card-body">
-    <h4>Assessment</h4>
+    <h4>Assessments</h4>
+    <hr>
     <table class="table table-striped">
       <thead>
         <tr>
+          <th>SN</th>
           <th>Assessment</th>
-          <th>Score</th>
+          <th>Scored Point</th>
           <th>Grade Point</th>
-          <th>Remark</th>
+          <th>Teacher's Remark</th>
         </tr>
       </thead>
       <tbody>
         @forelse ($score_table as $score)
         <tr>
+          <td>{{ $loop->index + 1 }}</td>
           <td>{{$score['name']}}</td>
           <td>{{$score['score']}}</td>
           <td>{{$score['grade_point']}}</td>
@@ -100,7 +97,5 @@
       </tbody>
     </table>
   </div>
-</div>
-</div>
 
 @endsection

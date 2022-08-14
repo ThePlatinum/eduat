@@ -16,8 +16,7 @@
             <p>{{$item->description}}</p>
             <p class="text-end"><span class="price btn-danger"> &#8358;{{$item->price}}</span></p>
           </div>
-          <p>For Class<small>(s)</small>:
-          <br>
+          <p>
             @if (is_array($item->class_for))
             @foreach ($item->class_for as $c)
             @php
@@ -31,7 +30,7 @@
             <span class="btn btn-sm btn-outline-primary px-2"> <small>{{App\Models\Klass::find( str_replace(['"',','],'',$item->class_for) )->name}}</small> </span>
             @endif
           </p>
-          <div class="d-flex gap-3">
+          <div class="d-flex justify-content-end">
             <form action="{{route('createstudentitem')}}" method="POST">
               <input type="number"  min='0'name="item_id" value="{{$item->id}}" hidden />
               @csrf
