@@ -12,7 +12,7 @@
       <table class="table">
         <thead>
           <tr class="bg-light">
-            <th scope="col"></th>
+            <th scope="col">SN</th>
             <th scope="col">Name</th>
             <th scope="col">Current Class</th>
             <th scope="col">Outstanding</th>
@@ -28,7 +28,7 @@
             <td> &#8358; {{$student->should_pay ?? ''}}</td>
             <td>
               <a href="{{route('getaccounts',$student->id)}}" class="btn btn-primary btn-sm">
-                <i class='fa fa-eye'></i> &nbsp; View Payments
+                <i class='fa fa-eye'></i> &nbsp; Payments
               </a>
               <a href="tel://{{$student->phone}}" class="btn btn-outline-danger btn-sm">
                 <i class='fa fa-phone'></i>

@@ -32,7 +32,9 @@ class AccountsController extends Controller
       
       return view('accounts.list', compact('students'));
     } else {
-      $payments = Payments::with('class')->where('student_id', Auth()->user()->id)->get();
+      $payments = Payments::with('class')
+        ->where('student_id', Auth()->user()->id)
+        ->orderBy('created_at', 'desc')->get();
       $student = Auth()->user();
       $per_classes = $this->studentAccount(Auth()->user()->id);
       return view('accounts.student', compact('student', 'per_classes','payments'));
@@ -46,7 +48,9 @@ class AccountsController extends Controller
 
     $per_classes = $this->studentAccount($student_id);
 
-    $payments = Payments::with('class')->where('student_id', $student_id)->get();
+    $payments = Payments::with('class')
+      ->where('student_id', $student_id)
+      ->orderBy('created_at', 'desc')->get();
     return view('accounts.student', compact('student', 'per_classes', 'payments'));
   }
 
@@ -82,8 +86,8 @@ class AccountsController extends Controller
     $validator = Validator::make($request->all(),[
       'student_id' => 'exists:users,id',
       'paid_in_class_id' => 'exists:klasses,id',
-      'receipt_number' => 'required,unique:payments,receipt_number',
-      'ammount' => 'required',
+      'receipt_number' => 'required|unique:payments,receipt_number',
+      'ammount' => 'required|min:1',
       'paydate' => 'required|date',
       'note' => 'nullable|string',
     ]);

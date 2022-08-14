@@ -14,11 +14,11 @@
           <h6>{{$subject->name}}</h6>
           <p>
             Teacher: <br>
-            {{$subject->teacher->fullname}}
+            {{$subject->teacher->fullname ?? ''}}
           </p>
           <div class="text-end">
             <a href="{{route('subjectreport', $subject->id)}}" class="btn btn-outline-danger">
-              <i class='fa fa-arrow-left ' ></i>
+              <i class='fa fa-arrow-right ' ></i>
             </a>
           </div>
         </div>

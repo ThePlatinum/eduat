@@ -30,61 +30,61 @@ Route::GET('/login', function () {
 
 Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
-// Menus
-Route::GET('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::GET('accounts', [AccountsController::class, 'index'])->name('accounts');
-Route::GET('items', [ItemsController::class, 'items'])->name('items');
-Route::GET('classes', [KlassController::class, 'index'])->name('classes');
-Route::GET('reports', [ReportsController::class, 'index'])->name('reports');
-Route::GET('teachers', [TeachersController::class, 'teachers'])->name('teachers');
-Route::GET('students', [StudentsController::class, 'students'])->name('students');
-Route::GET('profile',  [UserController::class, 'viewprofile'])->name('profile');
-Route::GET('settings',  [SettingsController::class, 'settings'])->name('settings');
+  // Menus
+  Route::GET('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+  Route::GET('accounts', [AccountsController::class, 'index'])->name('accounts');
+  Route::GET('items', [ItemsController::class, 'items'])->name('items');
+  Route::GET('classes', [KlassController::class, 'index'])->name('classes');
+  Route::GET('reports', [ReportsController::class, 'index'])->name('reports');
+  Route::GET('teachers', [TeachersController::class, 'teachers'])->name('teachers');
+  Route::GET('students', [StudentsController::class, 'students'])->name('students');
+  Route::GET('profile',  [UserController::class, 'viewprofile'])->name('profile');
+  Route::GET('settings',  [SettingsController::class, 'settings'])->name('settings');
 
-// Profile
-Route::GET('profile/edit/{user_id}',  [UserController::class, 'editprofile'])->name('editprofile');
-Route::GET('profile/view/{user_id}',  [UserController::class, 'viewprofile'])->name('viewprofile');
-Route::POST('profile/edit',  [UserController::class, 'update'])->name('profileedit');
+  // Profile
+  Route::GET('profile/edit/{user_id}',  [UserController::class, 'editprofile'])->name('editprofile');
+  Route::GET('profile/view/{user_id}',  [UserController::class, 'viewprofile'])->name('viewprofile');
+  Route::POST('profile/edit',  [UserController::class, 'update'])->name('profileedit');
 
-// Class
-Route::GET('classes/add', [KlassController::class, 'addclass'])->name('addclass');
-Route::POST('createclass', [KlassController::class, 'create'])->name('createclass');
-Route::GET('classes/edit/{class_id}', [KlassController::class, 'edit'])->name('edit');
-Route::POST('editclass', [KlassController::class, 'editclass'])->name('editclass');
-Route::GET('classes/view/{class_id}', [KlassController::class, 'viewclass'])->name('viewclass');
-Route::POST('classes/subject/createsubject', [KlassController::class, 'createsubject'])->name('createsubject');
-Route::POST('classes/subject/editsubject', [KlassController::class, 'editsubject'])->name('editsubject');
+  // Class
+  Route::GET('classes/add', [KlassController::class, 'addclass'])->name('addclass');
+  Route::POST('createclass', [KlassController::class, 'create'])->name('createclass');
+  Route::GET('classes/edit/{class_id}', [KlassController::class, 'edit'])->name('edit');
+  Route::POST('editclass', [KlassController::class, 'editclass'])->name('editclass');
+  Route::GET('classes/view/{class_id}', [KlassController::class, 'viewclass'])->name('viewclass');
+  Route::POST('classes/subject/createsubject', [KlassController::class, 'createsubject'])->name('createsubject');
+  Route::POST('classes/subject/editsubject', [KlassController::class, 'editsubject'])->name('editsubject');
 
-// Students
-Route::GET('students/admission', [StudentsController::class, 'newstudent'])->name('newstudent');
-Route::POST('admission', [StudentsController::class, 'admission'])->name('admission');
-Route::GET('report/view/{subject_id}', [ReportsController::class, 'subjectreport'])->name('subjectreport');
+  // Students
+  Route::GET('students/admission', [StudentsController::class, 'newstudent'])->name('newstudent');
+  Route::POST('admission', [StudentsController::class, 'admission'])->name('admission');
+  Route::GET('report/view/{subject_id}', [ReportsController::class, 'subjectreport'])->name('subjectreport');
 
-// Teachers
-Route::GET('teachers/new', [TeachersController::class, 'newteacher'])->name('newteacher');
-Route::POST('employ', [TeachersController::class, 'employ'])->name('employ');
-Route::GET('/subject/{subjects_id}', [SubjectController::class, 'teacherview'])->name('teacherview');
-Route::POST('/assessment/make', [AssessmentController::class, 'create'])->name('makeassessment');
-Route::GET('/assessment/{assessment_id}', [AssessmentController::class, 'gradingview'])->name('gradingview');
-Route::POST('/assessment/addscore/{assessment_id}', [AssessmentController::class, 'addscore'])->name('addscore');
-Route::POST('delete', [TeachersController::class, 'delete'])->name('delete_teacher');
+  // Teachers
+  Route::GET('teachers/new', [TeachersController::class, 'newteacher'])->name('newteacher');
+  Route::POST('employ', [TeachersController::class, 'employ'])->name('employ');
+  Route::GET('/subject/{subjects_id}', [SubjectController::class, 'teacherview'])->name('teacherview');
+  Route::POST('/assessment/make', [AssessmentController::class, 'create'])->name('makeassessment');
+  Route::GET('/assessment/{assessment_id}', [AssessmentController::class, 'gradingview'])->name('gradingview');
+  Route::POST('/assessment/addscore/{assessment_id}', [AssessmentController::class, 'addscore'])->name('addscore');
+  Route::POST('delete', [TeachersController::class, 'delete'])->name('delete_teacher');
 
-// Items
-Route::GET('item/add', [ItemsController::class, 'additem'])->name('additem');
-Route::POST('item/create', [ItemsController::class, 'create'])->name('create');
-Route::POST('item/update', [ItemsController::class, 'edit'])->name('edititem');
-Route::GET('item/edit/{item_id}', [ItemsController::class, 'edititem'])->name('updateitem');
-Route::GET('item/delete/{item_id}', [ItemsController::class, 'deleteitem'])->name('deleteitem');
-Route::POST('studentitem/create', [ItemsController::class, 'createstudentitem'])->name('createstudentitem');
+  // Items
+  Route::GET('item/add', [ItemsController::class, 'additem'])->name('additem');
+  Route::POST('item/create', [ItemsController::class, 'create'])->name('create');
+  Route::POST('item/update', [ItemsController::class, 'edit'])->name('edititem');
+  Route::GET('item/edit/{item_id}', [ItemsController::class, 'edititem'])->name('updateitem');
+  Route::GET('item/delete/{item_id}', [ItemsController::class, 'deleteitem'])->name('deleteitem');
+  Route::POST('studentitem/create', [ItemsController::class, 'createstudentitem'])->name('createstudentitem');
 
-// Accounts
-Route::GET('accounts/{student_id}', [AccountsController::class, 'getaccounts'])->name('getaccounts');
-Route::POST('addpayment', [AccountsController::class, 'storepayment'])->name('addpayment');
+  // Accounts
+  Route::GET('accounts/{student_id}', [AccountsController::class, 'getaccounts'])->name('getaccounts');
+  Route::POST('addpayment', [AccountsController::class, 'storepayment'])->name('addpayment');
 
-// Seetings
-Route::POST('migrateclass', [SettingsController::class, 'migrateclass'])->name('migrateclass');
+  // Seetings
+  Route::POST('migrateclass', [SettingsController::class, 'migrateclass'])->name('migrateclass');
 
-// Bulk Mails
-Route::GET('bulkmails', [BulkMailController::class, 'index'])->name('bulkmail');
-Route::POST('bulkmails', [BulkMailController::class, 'sendmail'])->name('sendbulkmail');
+  // Bulk Mails
+  Route::GET('bulkmails', [BulkMailController::class, 'index'])->name('bulkmail');
+  Route::POST('bulkmails', [BulkMailController::class, 'sendmail'])->name('sendbulkmail');
 });
