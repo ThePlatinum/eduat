@@ -64,7 +64,7 @@ class TeachersController extends Controller
 
   public function delete(Request $request) {
     $teacher = User::find($request->teacher_id);
-    if (!$teacher) return back()->withErrors('error', 'Invalid topic');
+    if (!$teacher) return back()->withErrors('error', 'Invalid User');
     $teacher->delete();
 
     \Illuminate\Support\Facades\Session::flash('message', 'Account deleted successfully');

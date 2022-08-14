@@ -6,6 +6,7 @@ use App\Models\Klass;
 use App\Models\StudentKlass;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class SettingsController extends Controller
 {
@@ -57,5 +58,46 @@ class SettingsController extends Controller
     foreach ($array as $el)
       if($a == $el) $count += 1;
     return $count;
+  }
+
+
+  public function create_admin(Request $request)
+  {
+    $validator = validator($request->all(), [
+      'firstname' => 'required|string|max:255|min:2',
+      'lastname' => 'required|string|max:255|min:2',
+      'role' => 'required|string',
+      'email' => 'required|string|email|max:255|unique:users',
+      'password' => 'required|string|confirmed|min:8',
+    ]);
+
+    if ($validator->fails())
+      return back()->withErrors($validator)
+        ->withInput()->with('error', $validator->errors()->first());
+
+    $user = User::create([
+      'firstname' => $request->firstname,
+      'lastname' => $request->lastname,
+      'email' => $request->email,
+      'password' => Hash::make($request->password)
+    ]);
+
+    if ($request->role == 'admin') {
+      $user->assignRole('Admin');
+    }
+    if ($request->role == 'accountant') {
+      $user->assignRole('Accountant');
+    }
+
+    return back()->with('message', 'Teacher added successfully');
+  }
+
+  public function delete(Request $request) {
+    $admin = User::find($request->admin_id);
+    if (!$admin) return back()->withErrors('error', 'Invalid User');
+    $admin->delete();
+
+    \Illuminate\Support\Facades\Session::flash('message', 'Account deleted successfully');
+    return ;
   }
 }

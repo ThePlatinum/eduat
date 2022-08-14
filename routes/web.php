@@ -83,6 +83,8 @@ Route::group(['middleware' => ['auth']], function () {
 
   // Seetings
   Route::POST('migrateclass', [SettingsController::class, 'migrateclass'])->name('migrateclass');
+  Route::POST('create_admin',  [SettingsController::class, 'create_admin'])->name('create_admin');
+  Route::POST('delete_admin',  [SettingsController::class, 'delete'])->name('delete_admin');
 
   // Bulk Mails
   Route::GET('bulkmails', [BulkMailController::class, 'index'])->name('bulkmail');
