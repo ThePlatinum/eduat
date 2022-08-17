@@ -133,10 +133,10 @@ $school_name = App\Models\Settings::Where('name', 'school_name')->first()->value
   <div class="p-3">
     <hr>
     <div class="d-flex d-flex justify-content-between credit">
-      EduAT
+      {{ config('app.name', 'EduAT') }}
       <!-- <img src="" alt=""> -->
       <div class="social">
-        <p>Product of <a href="">Platinum Innovations</a> </p>
+        <p>Powered by <a href="https://emmannueldesina.vercel.app">Platinum Innovations</a> </p>
       </div>
     </div>
   </div>

@@ -18,10 +18,10 @@
     <div class="footer p-3">
       <hr>
       <div class="d-flex justify-content-between credit">
-        EduAT
+        {{ config('app.name', 'EduAT') }}
         <!-- <img src="" alt=""> -->
         <div class="social">
-          <p>copywrite Platinum @2021</p>
+          <p>Powered by <a href="https://emmannueldesina.vercel.app">Platinum Innovations</a> </p>
         </div>
       </div>
     </div>
