@@ -21,7 +21,7 @@ class AssessmentsSeeder extends Seeder
 
     $subjects = Subjects::all();
 
-    $types = ['Test', 'Quiz', 'Assignment', 'Midterm'];
+    $types = ['CA 1', 'Quiz 1', 'CA 2', 'Assignment'];
 
     foreach ($subjects as $subject) {
       foreach ($types as $type) {
@@ -39,16 +39,16 @@ class AssessmentsSeeder extends Seeder
       }
     }
 
-    foreach ($subjects as $subject) {
-      Assessment::create([
-        'subject_id' => $subject->id,
-        'type' => 'Final',
-        'cesion_id' => 1,
-        'term_id' => 1,
-        'title' => 'Examination',
-        'grade_point' => 60,
-        'assessed_at' => now(),
-      ]);
-    }
+    // foreach ($subjects as $subject) {
+    //   Assessment::create([
+    //     'subject_id' => $subject->id,
+    //     'type' => 'Final',
+    //     'cesion_id' => 1,
+    //     'term_id' => 1,
+    //     'title' => 'Examination',
+    //     'grade_point' => 60,
+    //     'assessed_at' => now(),
+    //   ]);
+    // }
   }
 }

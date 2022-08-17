@@ -20,8 +20,8 @@ class SubjectsSeeder extends Seeder
       $names = [
         'Chemistry', 'Economics', 'Physics', 'Biology', 'Geography', 'History',
         'Civics', 'Agriculture', 'Commerce', 'Home Science', 'Literature',
-        'ICT', 'Music', 'Art', 'Physical Education', 'Computer Science',
-        'Business Studies', 'Accounting', 'Sports', 'Games', 'Drama', 'Dance',
+        // 'ICT', 'Music', 'Art', 'Physical Education', 'Computer Science',
+        // 'Business Studies', 'Accounting', 'Sports', 'Games', 'Drama', 'Dance',
         // 'Drawing', 'Painting', 'Singing', 'Photography', 'Film Making',
         // 'Visual Arts', 'Handwriting', 'Paste Art', 'Sketching', 'Crafting',
         // 'Cooking', 'Pastry', 'Dessert', 'Culinary Arts', 'Fashion', 'Jewellery',
