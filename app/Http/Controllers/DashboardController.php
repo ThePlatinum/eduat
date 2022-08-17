@@ -32,7 +32,7 @@ class DashboardController extends Controller
       $q->where("name", "Student");
     })->get();
     $students = $all_students->count();
-    $grad_students = $all_students->where('klass_id', 1)->count();
+    $grad_students = $all_students->where('name', 'Graduated')->count();
     $teachers = User::whereHas("roles", function ($q) {
       $q->where("name", "Teacher");
     })->count();
