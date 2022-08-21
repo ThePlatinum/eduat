@@ -7,21 +7,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class BulkMail extends Mailable implements ShouldQueue
+class ScoreAdded extends Mailable
 {
   use Queueable, SerializesModels;
 
-  public $bulkmail;
+  public $score;
 
   /**
    * Create a new message instance.
    *
    * @return void
    */
-  public function __construct($_bulkmail)
+  public function __construct($_score)
   {
     //
-    $this->bulkmail = $_bulkmail;
+    $this->score = $_score;
   }
 
   /**
@@ -31,6 +31,6 @@ class BulkMail extends Mailable implements ShouldQueue
    */
   public function build()
   {
-    return $this->subject(config('app.name').'NewsLetter')->markdown('mail.bulk-mail');
+    return $this->subject('New Assessment Score')->markdown('mail.score-added');
   }
 }

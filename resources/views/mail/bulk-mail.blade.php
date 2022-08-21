@@ -3,6 +3,13 @@
 
 {{$bulkmail->content}}
 
-From,<br>
+<br>
+<br>
+Regards,<br>
 {{ config('app.name') }}
+
+<br>
+<br>
+<hr>
+<p>Powered by <a href="https://emmannueldesina.vercel.app">Platinum Innovations</a></p>
 @endcomponent

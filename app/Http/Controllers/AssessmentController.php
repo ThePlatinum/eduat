@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ScoreAdded;
 use App\Models\Assessment;
 use App\Models\Score;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class AssessmentController extends Controller
@@ -66,6 +68,12 @@ class AssessmentController extends Controller
             'assessment_id' => $assessment_id,
             'score' => $request->value,
           ]);
+
+          try {
+            Mail::to($user)->send(new ScoreAdded($score));
+          } catch (\Throwable $th) {
+            //throw $th;
+          }
         } else {
           $score->score = $request->value;
           $score->save();
