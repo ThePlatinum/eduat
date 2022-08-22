@@ -31,6 +31,6 @@ class BulkMail extends Mailable implements ShouldQueue
    */
   public function build()
   {
-    return $this->subject(config('app.name').'NewsLetter')->markdown('mail.bulk-mail');
+    return $this->subject(config('app.name').' NewsLetter')->markdown('mail.bulk-mail');
   }
 }

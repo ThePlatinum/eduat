@@ -1,15 +1,18 @@
 @component('mail::message')
 # {{$bulkmail->subject}}
 
-{{$bulkmail->content}}
+<p>{{$bulkmail->content}}</p>
+
 
 <br>
 <br>
-Regards,<br>
-{{ config('app.name') }}
+<p>
+  Regards,<br>
+  {{config('app.name')}}
+</p>
 
-<br>
+
 <br>
 <hr>
-<p>Powered by <a href="https://emmannueldesina.vercel.app">Platinum Innovations</a></p>
+Powered by <a href="https://emmannueldesina.vercel.app">Platinum Innovations</a>
 @endcomponent

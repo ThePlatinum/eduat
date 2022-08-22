@@ -6,10 +6,10 @@
     <div class="card p-3">
       <div class="card-body">
         <form method="POST" action="{{ route('login') }}" class="p-3">
+          @csrf
           <div class="auth_header">
             <h4>{{ __('Login') }}</h4>
           </div>
-          @csrf
           <div class="col py-2">
             <label for="email" class="col-form-label">{{ __('Email Address') }}</label>
             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
