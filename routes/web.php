@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::GET('/', function () {
-    return view('auth.login');
+    return view('front.landing');
 })->middleware('guest');
 Route::GET('/login', function () {
     return view('auth.login');

@@ -12,11 +12,11 @@
   </style>
   
   <div class="d-flex flex-column justify-content-between h-100">
-    <div style="padding-top: 5%;">
+    <div >
       @yield('content')
     </div>
     <div class="footer p-3">
-      <hr>
+      <hr class='mt-0'>
       <div class="d-flex justify-content-between credit">
         {{ config('app.name', 'EduAT') }}
         <!-- <img src="" alt=""> -->
