@@ -18,8 +18,10 @@
 
   /* ===== Colors ===== */
   --body-color: #E4E9F7;
+  --front-body-color: #131827;
   --sidebar-color: #FFF;
   --primary-color: #695CFE;
+  --secondary-color: #fe5c8f;
   --primary-color-light: #F6F5FF;
   --toggle-color: #DDD;
   --text-color: #707070;

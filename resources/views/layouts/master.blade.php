@@ -7,7 +7,7 @@
     }
 
     body {
-      background-color: #131827;
+      background-color: var(--front-body-color) ;
     }
   </style>
   
@@ -21,7 +21,7 @@
         {{ config('app.name', 'EduAT') }}
         <!-- <img src="" alt=""> -->
         <div class="social">
-          <p>Powered by <a href="https://emmannueldesina.vercel.app">Platinum Innovations</a> </p>
+          <p>Built and Maintained by <a href="https://emmannueldesina.vercel.app">Platinum Innovations</a> </p>
         </div>
       </div>
     </div>
