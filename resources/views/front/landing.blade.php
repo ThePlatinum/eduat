@@ -334,7 +334,7 @@
   /* Hero */
   .hero-header {
     background: rgb(244, 219, 170);
-    background: linear-gradient(175deg, white 60.5%, var(--front-body-color) 39.5%);
+    background: linear-gradient(175deg, white 0%, white 69%, var(--front-body-color) 69.3%, var(--front-body-color) 100%);
   }
 
   .hero-button {
