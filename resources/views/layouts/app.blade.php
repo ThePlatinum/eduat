@@ -93,6 +93,12 @@ $school_name = App\Models\Settings::Where('name', 'school_name')->first()->value
     </div>
     <div class="bottom-content">
       <hr />
+      <li class="nav-link">
+        <a href="/">
+          <i class='fa fa-home icon'></i>
+          <span class="text nav-text">Back Home</span>
+        </a>
+      </li>
       @unlessrole('Admin|Accountant')
       <li class="nav-link">
         <a href="{{ route('profile') }}">
